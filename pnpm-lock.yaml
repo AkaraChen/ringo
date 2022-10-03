@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@akrc/fish': ^0.3.2
+  '@akrc/fish': 0.3.2
   '@typescript-eslint/eslint-plugin': 5.38.1
   '@typescript-eslint/parser': 5.38.1
   esbuild: 0.15.10
@@ -14,7 +14,7 @@ specifiers:
   prettier: 2.7.1
   rimraf: 3.0.2
   typescript: 4.8.4
-  vite: ^3.1.4
+  vite: 3.1.4
   vitest: 0.23.4
 
 dependencies:
