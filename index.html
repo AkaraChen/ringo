@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="max-width: 1200px; margin: auto; padding: 1em;" id="container">
+        <button id="message">Message</button>
+    </div>
+    <script type="module">
+        import { message } from "./src/index.ts"
+        import "./style/message/default.css"
+        import "@akrc/fish/fish.css"
+        document.getElementById("message").addEventListener('click', (e) => {
+            e.preventDefault()
+            message({
+                type: "error",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi fugit fuga incidunt.",
+                title: "Test",
+                duration: 0,
+            })
+        })
+    </script>
+</body>
+
+</html>

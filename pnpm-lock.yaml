@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@akrc/fish': ^0.3.2
   '@typescript-eslint/eslint-plugin': 5.38.1
   '@typescript-eslint/parser': 5.38.1
   esbuild: 0.15.10
@@ -9,12 +10,18 @@ specifiers:
   eslint-config-prettier: 8.5.0
   eslint-plugin-prettier: 4.2.1
   husky: 8.0.1
+  nanoid: ^4.0.0
   prettier: 2.7.1
   rimraf: 3.0.2
   typescript: 4.8.4
+  vite: ^3.1.4
   vitest: 0.23.4
 
+dependencies:
+  nanoid: 4.0.0
+
 devDependencies:
+  '@akrc/fish': 0.3.2
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   esbuild: 0.15.10
@@ -26,9 +33,14 @@ devDependencies:
   prettier: 2.7.1
   rimraf: 3.0.2
   typescript: 4.8.4
+  vite: 3.1.4
   vitest: 0.23.4
 
 packages:
+
+  /@akrc/fish/0.3.2:
+    resolution: {integrity: sha512-f4xZv5c9dJcC+/FanjIqzrXt1SnPS+Z1JW9OU/T2ExXNR1wAchCtyxmDBsAy9OYAaMyZ+I4pEdKBk3SkG9GdGw==}
+    dev: true
 
   /@esbuild/android-arm/0.15.10:
     resolution: {integrity: sha512-FNONeQPy/ox+5NBkcSbYJxoXj9GWu8gVGJTVmUyoOCKQFDTrHVKgNSzChdNt0I8Aj/iKcsDf2r9BFwv+FSNUXg==}
@@ -1448,6 +1460,12 @@ packages:
     hasBin: true
     dev: true
 
+  /nanoid/4.0.0:
+    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
+
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -1893,8 +1911,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite/3.1.0:
-    resolution: {integrity: sha512-YBg3dUicDpDWFCGttmvMbVyS9ydjntwEjwXRj2KBFwSB8SxmGcudo1yb8FW5+M/G86aS8x828ujnzUVdsLjs9g==}
+  /vite/3.1.4:
+    resolution: {integrity: sha512-JoQI08aBjY9lycL7jcEq4p9o1xUjq5aRvdH4KWaXtkSx7e7RpAh9D3IjzDWRD4Fg44LS3oDAIOG/Kq1L+82psA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -1952,7 +1970,7 @@ packages:
       tinybench: 2.1.5
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.1.0
+      vite: 3.1.4
     transitivePeerDependencies:
       - less
       - sass

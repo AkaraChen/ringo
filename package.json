@@ -8,12 +8,14 @@
         "build": "node build",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
         "test": "vitest run",
-        "prepublish": "npm run build"
+        "prepublish": "npm run build",
+        "dev": "vite"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@akrc/fish": "^0.3.2",
         "@typescript-eslint/eslint-plugin": "5.38.1",
         "@typescript-eslint/parser": "5.38.1",
         "esbuild": "0.15.10",
@@ -25,6 +27,7 @@
         "prettier": "2.7.1",
         "rimraf": "3.0.2",
         "typescript": "4.8.4",
+        "vite": "^3.1.4",
         "vitest": "0.23.4"
     },
     "exports": {
@@ -33,6 +36,10 @@
     },
     "types": "./dist/index.d.ts",
     "files": [
-        "./dist"
-    ]
+        "./dist",
+        "./style"
+    ],
+    "dependencies": {
+        "nanoid": "^4.0.0"
+    }
 }
