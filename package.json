@@ -1,5 +1,5 @@
 {
-    "name": "package-starter",
+    "name": "@akrc/ringo",
     "version": "0.0.0",
     "description": "",
     "main": "./dist/esm.js",
