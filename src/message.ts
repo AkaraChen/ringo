@@ -15,6 +15,8 @@ export const message = (prop: props) => {
         marginTop = 20,
         marginRight = 20,
         width = 300,
+        zIndex = 10000,
+        transitionDuration = 250,
     } = prop;
 
     const removeInstance = (id: string) => {
@@ -44,6 +46,12 @@ export const message = (prop: props) => {
     ]);
 
     message.style.width = `${width}px`;
+    message.style.boxSizing = 'border-box';
+    message.style.position = 'fixed';
+    message.style.right = `-${width}px`;
+    message.style.zIndex = `${zIndex}`;
+    message.style.transition = `top ${transitionDuration}ms ease-in-out, right ${transitionDuration}ms ease-in-out`;
+
     message.classList.add(`ringo-message-${type}`);
 
     const close = () => {
@@ -80,4 +88,6 @@ type props = {
     marginTop?: number;
     marginRight?: number;
     width?: number;
+    zIndex?: number;
+    transitionDuration: number;
 };

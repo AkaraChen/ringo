@@ -4,7 +4,7 @@ export const createElement = (
     child?: child
 ) => {
     const element = document.createElement(tag);
-    if (className) element.classList.add(className);
+    if (className) element.className = className;
     if (child) {
         if (typeof child === 'string') {
             element.textContent = child;

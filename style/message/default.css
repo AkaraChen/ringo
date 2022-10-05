@@ -53,15 +53,9 @@
 }
 
 .ringo-message {
-    box-sizing: border-box;
     border-radius: 4px;
     padding: 20px 24px;
-    width: 300px;
-    position: fixed;
-    right: -300px;
     background-color: var(--ringo-message-background);
-    z-index: 9999999;
-    transition: top 0.25s ease-in-out, right 0.25s ease-in-out;
     color: var(--ringo-font-color);
     border-top: 8px var(--ringo-message-primary) solid;
 }

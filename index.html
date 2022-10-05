@@ -16,13 +16,10 @@
         import { message } from "./src/index.ts"
         import "./style/message/default.css"
         import "@akrc/fish/fish.css"
-        document.getElementById("message").addEventListener('click', (e) => {
-            e.preventDefault()
+        document.getElementById("message").addEventListener('click', () => {
             message({
-                type: "error",
                 text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi fugit fuga incidunt.",
-                title: "Test",
-                duration: 0,
+                showClose: true
             })
         })
     </script>
