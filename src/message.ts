@@ -1,9 +1,12 @@
-import {createElement, addToDocument, removeFromDocument} from './dom';
-import {nanoid} from 'nanoid';
+import {createElement} from './dom';
+import {Height} from './util/height';
+import {num2px} from './util/style';
+import {once} from './util/function';
+import float from './util/float';
 
-const instances: Array<{id: string; target: HTMLElement; height: number}> = [];
+const height = new Height();
 
-export const message = (prop: props) => {
+export const message = (prop: MessageProps) => {
     const {
         type = 'info',
         text,
@@ -19,65 +22,38 @@ export const message = (prop: props) => {
         transitionDuration = 250,
     } = prop;
 
-    const removeInstance = (id: string) => {
-        const index = instances.findIndex((item) => item.id === id);
-        const removeHeight = marginTop + instances[index].height;
-        if (instances[index + 1]) {
-            for (let i = index + 1; i <= instances.length - 1; i++) {
-                const {target} = instances[i];
-                const currTop = Number(target.style.top.slice(0, -2));
-                target.style.top = `${currTop - removeHeight}px`;
-            }
-        }
-        instances.splice(index, 1);
-    };
-
-    const currHeight = () => {
-        let count = marginTop;
-        instances.forEach((item) => (count += item.height + marginTop));
-        return count;
-    };
-
-    const id = nanoid();
-
-    const message = createElement('div', 'ringo-message', [
+    const message = createElement('div', `ringo-message`, [
         createElement('h3', 'ringo-message-head', title),
         createElement('p', 'ringo-message-content', text),
     ]);
 
-    message.style.width = `${width}px`;
-    message.style.boxSizing = 'border-box';
-    message.style.position = 'fixed';
-    message.style.right = `-${width}px`;
-    message.style.zIndex = `${zIndex}`;
-    message.style.transition = `top ${transitionDuration}ms ease-in-out, right ${transitionDuration}ms ease-in-out`;
-
+    float(message, zIndex, transitionDuration);
+    message.style.width = num2px(width);
+    message.style.right = num2px(-width);
     message.classList.add(`ringo-message-${type}`);
 
-    const close = () => {
-        message.style.right = `-${width}px`;
-        if (onClose) onClose();
-        removeInstance(id);
-        setTimeout(() => {
-            removeFromDocument(message);
-        }, 250);
-    };
-
+    if (onClick) message.addEventListener('click', () => onClick(message));
     if (showClose || duration === 0) {
         const closeButton = createElement('i', 'ringo-message-close');
         closeButton.addEventListener('click', close);
         message.appendChild(closeButton);
     }
 
-    if (onClick) message.addEventListener('click', () => onClick(message));
-    addToDocument(message);
-    setTimeout(() => (message.style.right = `${marginRight}px`));
+    function close() {
+        once(() => {
+            message.style.right = num2px(-width);
+            if (onClose) onClose();
+            setTimeout(() => height.removeInstance(id), transitionDuration);
+        });
+    }
+
+    const id = height.addInstance(message, marginTop);
+
+    setTimeout(() => (message.style.right = num2px(marginRight)));
     if (duration != 0) setTimeout(close, duration);
-    message.style.top = `${currHeight()}px`;
-    instances.push({id, target: message, height: message.offsetHeight});
 };
 
-type props = {
+export type MessageProps = {
     type?: 'success' | 'info' | 'error' | 'warning';
     text: string;
     title?: string;
@@ -89,5 +65,5 @@ type props = {
     marginRight?: number;
     width?: number;
     zIndex?: number;
-    transitionDuration: number;
+    transitionDuration?: number;
 };
