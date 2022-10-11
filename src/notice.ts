@@ -1,7 +1,6 @@
 import {createElement} from './dom';
 import {Height} from './util/height';
 import {num2px} from './util/style';
-import {once} from './util/function';
 import float from './util/float';
 
 const height = new Height();
@@ -28,16 +27,20 @@ export const notice = (prop: NoticeProps) => {
 
     if (onClick) notice.addEventListener('click', () => onClick(notice));
 
+    let isClosed = false;
+
     function close() {
-        once(() => {
-            notice.style.top = num2px(-notice.offsetHeight);
+        if (!isClosed) {
             if (onClose) onClose();
             setTimeout(() => height.removeInstance(id), transitionDuration);
-        });
+            isClosed = true;
+        }
+
+        notice.style.top = num2px(-notice.offsetHeight);
     }
 
     const id = height.addInstance(notice, marginTop);
-    notice.style.left = `calc(50vw - ${num2px(notice.offsetHeight)})`;
+    notice.style.left = `calc(50vw - ${num2px(notice.offsetWidth / 2)})`;
     setTimeout(close, duration);
 };
 

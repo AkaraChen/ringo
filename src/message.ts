@@ -1,7 +1,6 @@
 import {createElement} from './dom';
 import {Height} from './util/height';
 import {num2px} from './util/style';
-import {once} from './util/function';
 import float from './util/float';
 
 const height = new Height();
@@ -39,12 +38,15 @@ export const message = (prop: MessageProps) => {
         message.appendChild(closeButton);
     }
 
+    let isClosed = false;
+
     function close() {
-        once(() => {
+        if (!isClosed) {
             message.style.right = num2px(-width);
             if (onClose) onClose();
             setTimeout(() => height.removeInstance(id), transitionDuration);
-        });
+            isClosed = true;
+        }
     }
 
     const id = height.addInstance(message, marginTop);

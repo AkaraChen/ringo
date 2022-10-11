@@ -1,6 +1,6 @@
 {
     "name": "@akrc/ringo",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "",
     "main": "./dist/esm.js",
     "scripts": {
@@ -9,7 +9,9 @@
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
         "test": "vitest run",
         "prepublish": "npm run build",
-        "dev": "vite"
+        "dev": "vite",
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
     },
     "keywords": [],
     "author": "",
@@ -18,17 +20,22 @@
         "@akrc/fish": "0.3.2",
         "@typescript-eslint/eslint-plugin": "5.40.0",
         "@typescript-eslint/parser": "5.40.0",
+        "@vuepress/client": "2.0.0-beta.51",
+        "@vuepress/plugin-register-components": "2.0.0-beta.51",
         "esbuild": "0.15.10",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.25.0",
         "eslint-config-prettier": "8.5.0",
         "eslint-plugin-prettier": "4.2.1",
         "husky": "8.0.1",
+        "nanoid": "^4.0.0",
         "prettier": "2.7.1",
         "rimraf": "3.0.2",
         "typescript": "4.8.4",
         "vite": "3.1.7",
-        "vitest": "0.24.1"
+        "vitest": "0.24.1",
+        "vue": "^3.2.40",
+        "vuepress": "2.0.0-beta.51"
     },
     "exports": {
         ".": {
@@ -41,8 +48,5 @@
     "files": [
         "./dist",
         "./style"
-    ],
-    "dependencies": {
-        "nanoid": "4.0.0"
-    }
+    ]
 }
