@@ -11,7 +11,7 @@ import "../../style/notice/default.css"
 import Button from "./Button.vue"
 
 const $notice = (arg?: Partial<NoticeProps>) => {
-    notice(Object.assign({ text: 'Noticedasssssssssssssssssssssssssssssssssssssssssssssssssss', showClose: true, duration: 200000000 }, arg))
+    notice(Object.assign({ text: 'Notice' }, arg))
 }
 </script>
 
