@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@akrc/fish': 0.3.2
+  '@akrc/fish': 0.4.0
   '@typescript-eslint/eslint-plugin': 5.40.0
   '@typescript-eslint/parser': 5.40.0
   '@vuepress/client': 2.0.0-beta.51
@@ -22,7 +22,7 @@ specifiers:
   vuepress: 2.0.0-beta.51
 
 devDependencies:
-  '@akrc/fish': 0.3.2
+  '@akrc/fish': 0.4.0
   '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
   '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
   '@vuepress/client': 2.0.0-beta.51
@@ -44,8 +44,8 @@ devDependencies:
 
 packages:
 
-  /@akrc/fish/0.3.2:
-    resolution: {integrity: sha512-f4xZv5c9dJcC+/FanjIqzrXt1SnPS+Z1JW9OU/T2ExXNR1wAchCtyxmDBsAy9OYAaMyZ+I4pEdKBk3SkG9GdGw==}
+  /@akrc/fish/0.4.0:
+    resolution: {integrity: sha512-upzchWNDgMPixYkiytEsuoQH3h5fagmRMqVQ8YXoqRUI6x9k66RX0QdzXraKhd7vS5qFsqp4e68i1AgfpVYETw==}
     dev: true
 
   /@babel/helper-string-parser/7.19.4:
