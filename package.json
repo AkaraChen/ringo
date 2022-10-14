@@ -22,7 +22,7 @@
         "@typescript-eslint/parser": "5.40.0",
         "@vuepress/client": "2.0.0-beta.51",
         "@vuepress/plugin-register-components": "2.0.0-beta.51",
-        "esbuild": "0.15.10",
+        "esbuild": "0.15.11",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.25.0",
         "eslint-config-prettier": "8.5.0",
