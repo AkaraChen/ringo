@@ -16,28 +16,6 @@ title: Get Started
 
 ## Install
 
-<CodeGroup>
-  <CodeGroupItem title="pnpm" active>
-
-```bash:no-line-numbers
+```bash
 pnpm install @akrc/ringo
 ```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="yarn">
-
-```bash:no-line-numbers
-yarn add @akrc/ringo
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="npm">
-
-```bash:no-line-numbers
-npm install @akrc/ringo
-```
-
-  </CodeGroupItem>
-</CodeGroup>

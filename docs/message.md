@@ -2,6 +2,10 @@
 title: Message
 ---
 
+<script setup>
+import Message from "./demo/Message.vue"
+</script>
+
 # Message
 
 Used to show feedback after an activity. The difference with Notice is that the latter is often used to show a system level passive notification.

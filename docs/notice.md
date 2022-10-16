@@ -2,6 +2,10 @@
 title: Notice
 ---
 
+<script setup>
+import Notice from "./demo/Notice.vue"
+</script>
+
 # Notice
 
 Displays a global notification message at the top of the page.

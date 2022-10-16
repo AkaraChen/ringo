@@ -6,8 +6,8 @@
 
 <style>
 .ringo-btn {
-    background-color: var(--c-text-accent);
-    padding: 12px 16px;
+    background-color: var(--vp-c-brand);
+    padding: 8px 16px;
     font-size: 16px;
     border: none;
     color: white;
