@@ -18,8 +18,8 @@
     "license": "ISC",
     "devDependencies": {
         "@akrc/fish": "0.4.0",
-        "@typescript-eslint/eslint-plugin": "5.40.0",
-        "@typescript-eslint/parser": "5.40.0",
+        "@typescript-eslint/eslint-plugin": "5.40.1",
+        "@typescript-eslint/parser": "5.40.1",
         "@vuepress/client": "2.0.0-beta.51",
         "@vuepress/plugin-register-components": "2.0.0-beta.51",
         "esbuild": "0.15.11",
