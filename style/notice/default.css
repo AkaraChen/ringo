@@ -15,7 +15,6 @@
 
 @media (prefers-color-scheme: dark) {
     .ringo-notice-info {
-        --ringo-notice-primary: #2980b9;
         --ringo-notice-background: rgb(32, 39, 46);
     }
 }
@@ -28,7 +27,6 @@
 @media (prefers-color-scheme: dark) {
     .ringo-notice-error {
         --ringo-notice-background: rgb(46, 33, 31);
-        --ringo-notice-primary: #c0392b;
     }
 }
 
@@ -39,7 +37,6 @@
 
 @media (prefers-color-scheme: dark) {
     .ringo-notice-success {
-        --ringo-notice-primary: #27ae60;
         --ringo-notice-background: rgb(34, 45, 36);
     }
 }
@@ -52,7 +49,6 @@
 @media (prefers-color-scheme: dark) {
     .ringo-notice-warning {
         --ringo-notice-background: rgb(48, 44, 31);
-        --ringo-notice-primary: #e67e22;
     }
 }
 
@@ -71,6 +67,7 @@
 
 .ringo-notice-content {
     opacity: 0.75;
+    font-size: 14px;
 }
 
 .ringo-notice-close {
