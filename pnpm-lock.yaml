@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@akrc/fish': 0.4.0
+  '@akrc/fish': 0.4.1
   '@typescript-eslint/eslint-plugin': 5.40.1
   '@typescript-eslint/parser': 5.40.1
   '@vuepress/client': 2.0.0-beta.51
@@ -23,7 +23,7 @@ specifiers:
   vuepress: 2.0.0-beta.51
 
 devDependencies:
-  '@akrc/fish': 0.4.0
+  '@akrc/fish': 0.4.1
   '@typescript-eslint/eslint-plugin': 5.40.1_ukgdydjtebaxmxfqp5v5ulh64y
   '@typescript-eslint/parser': 5.40.1_z4bbprzjrhnsfa24uvmcbu7f5q
   '@vuepress/client': 2.0.0-beta.51
@@ -46,8 +46,8 @@ devDependencies:
 
 packages:
 
-  /@akrc/fish/0.4.0:
-    resolution: {integrity: sha512-upzchWNDgMPixYkiytEsuoQH3h5fagmRMqVQ8YXoqRUI6x9k66RX0QdzXraKhd7vS5qFsqp4e68i1AgfpVYETw==}
+  /@akrc/fish/0.4.1:
+    resolution: {integrity: sha512-vJ/gdaW4HeKfBMbK1fqB5/KS7EeCLbGHxlGNnQGlUvN5SlTlskpyjeBsdwbpPYwBze3EtXhuCv1mqPLnCOYUPg==}
     dev: true
 
   /@algolia/autocomplete-core/1.7.1:
