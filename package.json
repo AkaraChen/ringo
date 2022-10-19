@@ -17,7 +17,6 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@akrc/fish": "0.4.1",
         "@typescript-eslint/eslint-plugin": "5.40.1",
         "@typescript-eslint/parser": "5.40.1",
         "@vuepress/client": "2.0.0-beta.51",
