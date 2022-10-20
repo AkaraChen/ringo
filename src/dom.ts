@@ -27,3 +27,8 @@ export const addToDocument = (element: HTMLElement) =>
 export const removeFromDocument = (element: HTMLElement) => {
     document.body.removeChild(element);
 };
+
+export const parseHTMLString = (text: string) => {
+    const document = new DOMParser().parseFromString(text, 'text/html');
+    return document.body.childNodes;
+};

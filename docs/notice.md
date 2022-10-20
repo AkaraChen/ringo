@@ -29,5 +29,6 @@ export type NoticeProps = {
     marginTop?: number;
     zIndex?: number;
     transitionDuration?: number;
+    dangerouslyUseHTML?: boolean;
 };
 ```

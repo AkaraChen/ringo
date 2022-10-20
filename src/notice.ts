@@ -1,4 +1,4 @@
-import {createElement} from './dom';
+import {createElement, parseHTMLString} from './dom';
 import {Height} from './util/height';
 import {num2px} from './util/style';
 import float from './util/float';
@@ -15,11 +15,22 @@ export const notice = (prop: NoticeProps) => {
         marginTop = 20,
         zIndex = 10000,
         transitionDuration = 250,
+        dangerouslyUseHTML = false,
     } = prop;
 
-    const notice = createElement('div', `ringo-notice`, [
-        createElement('p', 'ringo-notice-content', text),
-    ]);
+    const notice = createElement('div', `ringo-notice`);
+
+    const content = createElement('p', 'ringo-notice-content');
+
+    if (dangerouslyUseHTML) {
+        for (const node of parseHTMLString(text)) {
+            content.appendChild(node);
+        }
+    } else {
+        content.appendChild(document.createTextNode(text));
+    }
+
+    notice.appendChild(content);
 
     float(notice, zIndex, transitionDuration);
     notice.classList.add(`ringo-notice-${type}`);
@@ -53,4 +64,5 @@ export type NoticeProps = {
     marginTop?: number;
     zIndex?: number;
     transitionDuration?: number;
+    dangerouslyUseHTML?: boolean;
 };

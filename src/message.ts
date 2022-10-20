@@ -1,4 +1,4 @@
-import {createElement} from './dom';
+import {createElement, parseHTMLString} from './dom';
 import {Height} from './util/height';
 import {num2px} from './util/style';
 import float from './util/float';
@@ -19,12 +19,24 @@ export const message = (prop: MessageProps) => {
         width = 300,
         zIndex = 10000,
         transitionDuration = 250,
+        dangerouslyUseHTML = false,
     } = prop;
 
     const message = createElement('div', `ringo-message`, [
         createElement('h3', 'ringo-message-head', title),
-        createElement('p', 'ringo-message-content', text),
     ]);
+
+    const content = createElement('p', 'ringo-message-content');
+
+    if (dangerouslyUseHTML) {
+        for (const node of parseHTMLString(text)) {
+            content.appendChild(node);
+        }
+    } else {
+        content.appendChild(document.createTextNode(text));
+    }
+
+    message.appendChild(content);
 
     float(message, zIndex, transitionDuration);
     message.style.width = num2px(width);
@@ -68,4 +80,5 @@ export type MessageProps = {
     width?: number;
     zIndex?: number;
     transitionDuration?: number;
+    dangerouslyUseHTML?: boolean;
 };

@@ -13,5 +13,6 @@
     color: white;
     margin-right: 4px;
     border-radius: 4px;
+    margin-bottom: 4px;
 }
 </style>

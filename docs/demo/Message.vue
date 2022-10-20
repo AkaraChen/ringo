@@ -3,6 +3,7 @@
     <Button @click="$message({type: 'warning'})">Warning</Button>
     <Button @click="$message({type: 'error'})">Error</Button>
     <Button @click="$message({type: 'success'})">Success</Button>
+    <Button @click="$message({text:'<i>This is a HTML string</i>', dangerouslyUseHTML: true})">UseHTML</Button>
 </template>
 
 <script lang="ts" setup>

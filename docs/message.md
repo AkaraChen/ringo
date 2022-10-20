@@ -33,5 +33,6 @@ export type MessageProps = {
     width?: number;
     zIndex?: number;
     transitionDuration?: number;
+    dangerouslyUseHTML?: boolean;
 };
 ```
