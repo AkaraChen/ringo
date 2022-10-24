@@ -13,6 +13,7 @@ export default defineConfig({
                     {text: 'Message', link: '/message'},
                     {text: 'Notice', link: '/notice'},
                     {text: 'Backdrop', link: '/backdrop'},
+                    {text: 'Drawer', link: '/drawer'},
                 ],
             },
         ],

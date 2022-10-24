@@ -1,4 +1,4 @@
-import {createElement} from './dom';
+import {addToDocument, createElement, removeFromDocument} from './dom';
 import {isDark, onColorChange} from './util/color';
 
 export const backdrop = (prop: BackdropProp = {}) => {
@@ -31,7 +31,7 @@ export const backdrop = (prop: BackdropProp = {}) => {
                     ? colorDark
                     : colorLight;
             });
-            document.body.appendChild(backdrop);
+            addToDocument(backdrop);
 
             if (onClick) backdrop.addEventListener('click', onClick);
 
@@ -41,7 +41,7 @@ export const backdrop = (prop: BackdropProp = {}) => {
 
     const removeBackdrop = () => {
         if (isCreated) {
-            document.body.removeChild(backdrop);
+            removeFromDocument(backdrop);
             isCreated = false;
         }
     };
