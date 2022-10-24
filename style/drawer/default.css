@@ -3,6 +3,8 @@
     background-color: inherit;
     border-right: 1px #e6e8eb solid;
     padding: 1em 1.5em;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,9 +37,7 @@
 }
 
 .ringo-drawer-btns {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
+    margin-top: auto;
 }
 
 .ringo-drawer-button {
