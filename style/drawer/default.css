@@ -35,6 +35,7 @@
 
 .ringo-drawer-content {
     margin-top: 1em;
+    font-size: 15px;
 }
 
 .ringo-drawer-btns {
@@ -44,7 +45,7 @@
 }
 
 .ringo-drawer-button {
-    padding: 0.33em 1em;
+    padding: 0.4em 1.2em;
     background-color: #f2f2f2;
     border-radius: 4px;
     margin-top: 0.5em;
@@ -60,4 +61,5 @@
 .ringo-drawer-button.ringo-drawer-button-primary {
     background-color: #3498db;
     color: white;
+    font-weight: bold;
 }
