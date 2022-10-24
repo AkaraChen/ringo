@@ -12,6 +12,7 @@ export default defineConfig({
                     {text: 'Get Started', link: '/'},
                     {text: 'Message', link: '/message'},
                     {text: 'Notice', link: '/notice'},
+                    {text: 'Backdrop', link: '/backdrop'},
                 ],
             },
         ],
