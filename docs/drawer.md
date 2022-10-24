@@ -16,6 +16,7 @@ Informs users while preserving the current page state.
 
 ```ts
 import {drawer} from '@akrc/ringo';
+import '@akrc/ringo/style/drawer/default.css';
 
 drawer({
     title: 'Test',
