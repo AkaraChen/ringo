@@ -16,10 +16,11 @@ test('notice', async () => {
     expect(document.getElementsByClassName('ringo-notice')).toStrictEqual([]);
 });
 
-test('backdrop', () => {
+test('backdrop', async () => {
     const {add, remove} = backdrop();
     add();
     expect(document.getElementsByTagName('div')).not.toBe(null);
     remove();
+    await sleep(500);
     expect(document.getElementsByTagName('div')).toStrictEqual([]);
 });
