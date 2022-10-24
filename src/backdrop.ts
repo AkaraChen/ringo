@@ -11,29 +11,39 @@ export const backdrop = (prop: BackdropProp = {}) => {
     } = prop;
 
     let count = 0;
-
-    const backdrop = createElement('div');
-    backdrop.style.position = 'fixed';
-    backdrop.style.top = '0';
-    backdrop.style.left = '0';
-    backdrop.style.width = '100vw';
-    backdrop.style.height = '100vh';
-    backdrop.style.zIndex = String(zIndex);
-    backdrop.style.opacity = String(opacity);
-
-    backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
-    onColorChange((e) => {
-        backdrop.style.backgroundColor = e.matches ? colorDark : colorLight;
-    });
-
-    if (onClick) backdrop.addEventListener('click', onClick);
+    let isCreated = false;
+    let backdrop: HTMLElement;
 
     const createBackdrop = () => {
-        document.body.appendChild(backdrop);
+        if (!isCreated) {
+            backdrop = createElement('div');
+            backdrop.style.position = 'fixed';
+            backdrop.style.top = '0';
+            backdrop.style.left = '0';
+            backdrop.style.width = '100vw';
+            backdrop.style.height = '100vh';
+            backdrop.style.zIndex = String(zIndex);
+            backdrop.style.opacity = String(opacity);
+
+            backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
+            onColorChange((e) => {
+                backdrop.style.backgroundColor = e.matches
+                    ? colorDark
+                    : colorLight;
+            });
+            document.body.appendChild(backdrop);
+
+            if (onClick) backdrop.addEventListener('click', onClick);
+
+            isCreated = true;
+        }
     };
 
     const removeBackdrop = () => {
-        document.body.removeChild(backdrop);
+        if (isCreated) {
+            document.body.removeChild(backdrop);
+            isCreated = false;
+        }
     };
 
     return {
