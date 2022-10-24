@@ -19,7 +19,7 @@ export const createElement = (
     return element;
 };
 
-type child = string | HTMLElement | HTMLElement[];
+type child = string | HTMLElement | HTMLElement[] | Node[] | Node;
 
 export const addToDocument = (element: HTMLElement) =>
     document.body.appendChild(element);
@@ -30,5 +30,5 @@ export const removeFromDocument = (element: HTMLElement) => {
 
 export const parseHTMLString = (text: string) => {
     const document = new DOMParser().parseFromString(text, 'text/html');
-    return document.body.childNodes;
+    return Array.from(document.body.childNodes);
 };

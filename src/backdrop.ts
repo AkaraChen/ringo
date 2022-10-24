@@ -8,6 +8,7 @@ export const backdrop = (prop: BackdropProp = {}) => {
         zIndex = 9000,
         opacity = 0.8,
         onClick,
+        transitionDuration = 250,
     } = prop;
 
     let count = 0;
@@ -23,7 +24,10 @@ export const backdrop = (prop: BackdropProp = {}) => {
             backdrop.style.width = '100vw';
             backdrop.style.height = '100vh';
             backdrop.style.zIndex = String(zIndex);
-            backdrop.style.opacity = String(opacity);
+            backdrop.style.transition = 'opacity 0.5s';
+            backdrop.style.transitionDuration = String(transitionDuration);
+            backdrop.style.opacity = '0';
+            setTimeout(() => (backdrop.style.opacity = String(opacity)));
 
             backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
             onColorChange((e) => {
@@ -41,7 +45,8 @@ export const backdrop = (prop: BackdropProp = {}) => {
 
     const removeBackdrop = () => {
         if (isCreated) {
-            removeFromDocument(backdrop);
+            backdrop.style.opacity = '0';
+            setTimeout(() => removeFromDocument(backdrop), transitionDuration);
             isCreated = false;
         }
     };
@@ -73,4 +78,5 @@ export type BackdropProp = {
     zIndex?: number;
     opacity?: number;
     onClick?(): any;
+    transitionDuration?: number;
 };

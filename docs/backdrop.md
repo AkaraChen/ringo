@@ -33,7 +33,8 @@ export type BackdropProp = {
     colorLight?: string;
     colorDark?: string;
     zIndex?: number;
-    opacity?: string;
+    opacity?: number;
     onClick?(): any;
+    transitionDuration?: number;
 };
 ```

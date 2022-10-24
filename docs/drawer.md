@@ -8,4 +8,6 @@ import Drawer from "./demo/Drawer.vue"
 
 # Drawer
 
+Informs users while preserving the current page state.
+
 <Drawer />

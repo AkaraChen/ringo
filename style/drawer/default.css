@@ -1,11 +1,63 @@
+:root {
+    --ringo-close: url("data: image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='rgb(114, 118, 123)' fill='none' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none' /%3E%3Cline x1='18' y1='6' x2='6' y2='18' /%3E%3Cline x1='6' y1='6' x2='18' y2='18' /%3E%3C/svg%3E");
+}
+
 .ringo-drawer {
     box-sizing: border-box;
     background-color: inherit;
     border-right: 1px #e6e8eb solid;
+    padding: 1em 1.5em;
 }
 
 @media (prefers-color-scheme: dark) {
     .ringo-drawer {
         border: 1px #30363d solid;
     }
+}
+
+.ringo-drawer-head {
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-between;
+}
+
+.ringo-drawer-title {
+    font-size: 18px;
+    color: #72767b;
+}
+
+.ringo-drawer-close {
+    background: var(--ringo-close);
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.ringo-drawer-content {
+    margin-top: 1em;
+}
+
+.ringo-drawer-btns {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}
+
+.ringo-drawer-button {
+    padding: 0.33em 1em;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-drawer-button {
+        background-color: #303133;
+    }
+}
+
+.ringo-drawer-button.ringo-drawer-button-primary {
+    background-color: #3498db;
+    color: white;
 }
