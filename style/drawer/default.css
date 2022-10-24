@@ -1,4 +1,11 @@
 .ringo-drawer {
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: inherit;
+    border-right: 1px #e6e8eb solid;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-drawer {
+        border: 1px #30363d solid;
+    }
 }

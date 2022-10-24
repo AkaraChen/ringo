@@ -3,8 +3,8 @@ import {isDark, onColorChange} from './util/color';
 
 export const backdrop = (prop: BackdropProp = {}) => {
     const {
-        colorLight = '#fff',
-        colorDark = '#000',
+        colorLight = 'rgba(0, 0, 0, 0.6)',
+        colorDark = 'rgba(0, 0, 0, 0.6)',
         zIndex = 9000,
         opacity = 0.8,
         onClick,

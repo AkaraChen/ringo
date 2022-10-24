@@ -1,5 +1,5 @@
 <template>
-    <Button @click="drawer({width: '70vw'})">Open</Button>
+    <Button @click="drawer({})">Open</Button>
 </template>
 
 <script setup lang="ts">
