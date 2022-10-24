@@ -71,9 +71,9 @@ export const drawer = (prop: DrawerProp) => {
     drawer.style.top = '0';
     drawer.style.zIndex = String(zIndex);
 
-    drawer.style.transition = 'all 0.25s';
+    drawer.style.transition = 'all 0.25s ease-in-out';
     drawer.style[position] = '-' + width;
-    setTimeout(() => (drawer.style[position] = '0'));
+    setTimeout(() => (drawer.style[position] = '0'), 15);
     addToDocument(drawer);
 
     function close() {
@@ -82,7 +82,7 @@ export const drawer = (prop: DrawerProp) => {
         drawer.style[position] = '-' + width;
         setTimeout(() => {
             removeFromDocument(drawer);
-        }, 250);
+        }, transitionDuration);
     }
 
     const Backdrop = backdrop({
@@ -90,10 +90,6 @@ export const drawer = (prop: DrawerProp) => {
         transitionDuration,
     });
     if (withBackdrop) Backdrop.add();
-
-    return {
-        close,
-    };
 };
 
 export type DrawerProp = {

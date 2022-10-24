@@ -24,10 +24,10 @@ export const backdrop = (prop: BackdropProp = {}) => {
             backdrop.style.width = '100vw';
             backdrop.style.height = '100vh';
             backdrop.style.zIndex = String(zIndex);
-            backdrop.style.transition = 'opacity 0.5s';
+            backdrop.style.transition = `all ${transitionDuration}ms`;
             backdrop.style.transitionDuration = String(transitionDuration);
             backdrop.style.opacity = '0';
-            setTimeout(() => (backdrop.style.opacity = String(opacity)));
+            setTimeout(() => (backdrop.style.opacity = String(opacity)), 15);
 
             backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
             onColorChange((e) => {

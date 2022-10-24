@@ -63,7 +63,7 @@ export const message = (prop: MessageProps) => {
 
     const id = height.addInstance(message, marginTop);
 
-    setTimeout(() => (message.style.right = num2px(marginRight)));
+    setTimeout(() => (message.style.right = num2px(marginRight)), 15);
     if (duration != 0) setTimeout(close, duration);
 };
 
