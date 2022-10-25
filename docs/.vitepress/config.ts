@@ -14,6 +14,7 @@ export default defineConfig({
                     {text: 'Notice', link: '/notice'},
                     {text: 'Backdrop', link: '/backdrop'},
                     {text: 'Drawer', link: '/drawer'},
+                    {text: 'Dialog', link: '/dialog'},
                 ],
             },
         ],

@@ -1,7 +1,3 @@
 # Ringo
 
-<pre align="center">
-🧪 Working in Progress
-</pre>
-
-Message, Dialog, Notice component written in Pure TypeScript.
+The message, Dialog, and Notice components are written in Pure TypeScript.

@@ -5,6 +5,7 @@ import {
     parseHTMLString,
     removeFromDocument,
 } from './dom';
+import float from './util/float';
 
 export const drawer = (prop: DrawerProp) => {
     const {
@@ -65,30 +66,29 @@ export const drawer = (prop: DrawerProp) => {
 
     drawer.appendChild(BtnGroup);
 
-    drawer.style.position = 'fixed';
+    float(drawer, zIndex, transitionDuration);
     drawer.style.width = width;
     drawer.style.height = '100vh';
     drawer.style.top = '0';
-    drawer.style.zIndex = String(zIndex);
 
-    drawer.style.transition = 'all 0.25s ease-in-out';
     drawer.style[position] = '-' + width;
     setTimeout(() => (drawer.style[position] = '0'), 15);
     addToDocument(drawer);
 
+    const Backdrop = backdrop({
+        onClick: clickBackdropClose ? close : () => {},
+        transitionDuration,
+    });
+
     function close() {
         if (onClose) onClose();
-        Backdrop.remove();
+        if (withBackdrop) Backdrop.remove();
         drawer.style[position] = '-' + width;
         setTimeout(() => {
             removeFromDocument(drawer);
         }, transitionDuration);
     }
 
-    const Backdrop = backdrop({
-        onClick: clickBackdropClose ? close : () => {},
-        transitionDuration,
-    });
     if (withBackdrop) Backdrop.add();
 };
 
@@ -108,7 +108,7 @@ export type DrawerProp = {
     clickBackdropClose?: boolean;
 };
 
-type Btn = {
+export type Btn = {
     text: string;
     onClick(closeFn: () => void): any;
     close?: true;

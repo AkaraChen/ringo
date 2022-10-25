@@ -1,6 +1,6 @@
 .ringo-drawer {
     box-sizing: border-box;
-    background-color: inherit;
+    background-color: #fff;
     border-right: 1px #e6e8eb solid;
     padding: 1em 1.5em;
     display: flex;
@@ -10,6 +10,7 @@
 @media (prefers-color-scheme: dark) {
     .ringo-drawer {
         border: none;
+        background-color: #242424;
     }
 }
 
