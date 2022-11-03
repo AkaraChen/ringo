@@ -16,7 +16,7 @@ Informs users while preserving the current page state.
 
 ```ts
 import {dialog} from '@akrc/ringo';
-import '@akrc/ringo/style/dialog/default.css';
+import '@akrc/ringo/style/dialog/ant.css';
 
 dialog({
     title: 'Error Occurred',

@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import Button from "./Button.vue"
 import { drawer } from "../../src/index"
-import "../../style/drawer/default.css"
+import "../../style/drawer/ant.css"
 
 const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, odit, corrupti unde velit minus commodi eaque libero dolor laudantium aliquid laboriosam est? Mollitia delectus sequi nesciunt placeat rerum exercitationem facilis?"
 const onClick = (position: 'left' | 'right' = 'right') => drawer({

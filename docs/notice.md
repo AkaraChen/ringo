@@ -16,7 +16,7 @@ Displays a global notification message at the top of the page.
 
 ```ts
 import {notice} from '@akrc/ringo';
-import '@akrc/ringo/style/notice/default.css';
+import '@akrc/ringo/style/notice/ant.css';
 ```
 
 ```ts

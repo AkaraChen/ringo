@@ -16,7 +16,7 @@ Used to show feedback after an activity. The difference with Notice is that the 
 
 ```ts
 import {message} from '@akrc/ringo';
-import '@akrc/ringo/style/message/default.css';
+import '@akrc/ringo/style/message/ant.css';
 ```
 
 ```ts

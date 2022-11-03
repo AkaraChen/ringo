@@ -4,7 +4,7 @@
 <script setup lang="ts">
 import Button from './Button.vue';
 import { dialog } from '../../src';
-import '../../style/dialog/default.css'
+import '../../style/dialog/ant.css'
 
 const onClick = () => {
     dialog({

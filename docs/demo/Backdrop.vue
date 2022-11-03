@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import Button from "./Button.vue"
 import { backdrop, notice } from "../../src";
-import "../../style/notice/default.css"
+import "../../style/notice/ant.css"
 
 const { add, remove } = backdrop()
 const show = () => {

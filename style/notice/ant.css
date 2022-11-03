@@ -8,9 +8,20 @@
     background-color: #fff;
 }
 
+@media (prefers-color-scheme: dark) {
+    .ringo-notice {
+        background-color: #1f1f1f;
+        color: #fff;
+        box-shadow: 0 3px 6px -4px rgb(0 0 0 / 48%),
+            0 6px 16px 0 rgb(0 0 0 / 32%),
+            0 9px 28px 8px rgb(0 0 0 / 20%);
+    }
+}
+
 .ringo-notice-content {
     display: flex;
     align-items: center;
+    vertical-align: middle;
 }
 
 .ringo-notice-content::before {
