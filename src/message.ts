@@ -23,7 +23,9 @@ export const message = (prop: MessageProps) => {
     } = prop;
 
     const message = createElement('div', `ringo-message`, [
-        createElement('h3', 'ringo-message-head', title),
+        createElement('h3', 'ringo-message-head', [
+            createElement('p', 'ringo-message-title', title),
+        ]),
     ]);
 
     const content = createElement('p', 'ringo-message-content');
