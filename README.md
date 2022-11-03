@@ -1,3 +1,3 @@
-# 🍏Ringo
+# 🍏 Ringo
 
-The message, Dialog, and Notice components are written in Pure TypeScript.
+The message, Dialog, and Notice components written in Pure TypeScript.
