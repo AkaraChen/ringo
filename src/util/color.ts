@@ -5,7 +5,8 @@ export const isDark = () => {
 };
 
 export const onColorChange = (
-    handler: (this: MediaQueryList, ev: MediaQueryListEvent) => any
+    // eslint-disable-next-line no-unused-vars
+    handler: (event: MediaQueryListEvent) => any
 ) => {
     media()?.addEventListener('change', handler);
 };

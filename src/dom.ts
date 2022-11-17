@@ -8,12 +8,10 @@ export const createElement = (
     if (child) {
         if (typeof child === 'string') {
             element.textContent = child;
+        } else if (Array.isArray(child)) {
+            for (const item of child) element.append(item);
         } else {
-            if (child instanceof Array) {
-                child.forEach((item) => element.appendChild(item));
-            } else {
-                element.appendChild(child);
-            }
+            element.append(child);
         }
     }
     return element;
@@ -22,13 +20,13 @@ export const createElement = (
 type child = string | HTMLElement | HTMLElement[] | Node[] | Node;
 
 export const addToDocument = (element: HTMLElement) =>
-    document.body.appendChild(element);
+    document.body.append(element);
 
 export const removeFromDocument = (element: HTMLElement) => {
-    document.body.removeChild(element);
+    element.remove();
 };
 
 export const parseHTMLString = (text: string) => {
     const document = new DOMParser().parseFromString(text, 'text/html');
-    return Array.from(document.body.childNodes);
+    return [...document.body.childNodes];
 };

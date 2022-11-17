@@ -1,23 +1,12 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
-    },
-    "overrides": [],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "prettier"
+    "extends": [
+        "akrc"
     ],
     "rules": {
-        "prettier/prettier": "error"
-    },
-    "extends": [
-        "plugin:prettier/recommended"
-    ]
+        "no-param-reassign": 0,
+        "no-plusplus": 0,
+        "no-shadow": 0,
+        "no-use-before-define": 0,
+        "no-unused-vars": 0
+    }
 }

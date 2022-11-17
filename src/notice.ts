@@ -1,11 +1,11 @@
 import {createElement, parseHTMLString} from './dom';
 import {Height} from './util/height';
-import {num2px} from './util/style';
+import {num2px as number2px} from './util/style';
 import float from './util/float';
 
 const height = new Height();
 
-export const notice = (prop: NoticeProps) => {
+export const notice = (property: NoticeProperty) => {
     const {
         type = 'info',
         text,
@@ -13,28 +13,28 @@ export const notice = (prop: NoticeProps) => {
         onClick,
         onClose,
         marginTop = 20,
-        zIndex = 10000,
+        zIndex = 10_000,
         transitionDuration = 250,
-        dangerouslyUseHTML = false,
-    } = prop;
+        dangerouslyUseHTML = false
+    } = property;
 
-    const notice = createElement('div', `ringo-notice`);
+    const notice = createElement('div', 'ringo-notice');
 
     const content = createElement('p', 'ringo-notice-content');
 
     if (dangerouslyUseHTML) {
         for (const node of parseHTMLString(text)) {
-            content.appendChild(node);
+            content.append(node);
         }
     } else {
-        content.appendChild(document.createTextNode(text));
+        content.append(document.createTextNode(text));
     }
 
-    notice.appendChild(content);
+    notice.append(content);
 
     float(notice, zIndex, transitionDuration);
     notice.classList.add(`ringo-notice-${type}`);
-    notice.style.top = num2px(-notice.offsetHeight);
+    notice.style.top = number2px(-notice.offsetHeight);
 
     if (onClick) notice.addEventListener('click', () => onClick(notice));
 
@@ -47,15 +47,15 @@ export const notice = (prop: NoticeProps) => {
             isClosed = true;
         }
 
-        notice.style.top = num2px(-notice.offsetHeight);
+        notice.style.top = number2px(-notice.offsetHeight);
     }
 
     const id = height.addInstance(notice, marginTop);
-    notice.style.left = `calc(50vw - ${num2px(notice.offsetWidth / 2)})`;
+    notice.style.left = `calc(50vw - ${number2px(notice.offsetWidth / 2)})`;
     setTimeout(close, duration);
 };
 
-export type NoticeProps = {
+export type NoticeProperty = {
     type?: 'success' | 'info' | 'error' | 'warning';
     text: string;
     duration?: number;

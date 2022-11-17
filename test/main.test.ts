@@ -4,23 +4,23 @@ import {sleep} from './util';
 
 test('message', async () => {
     message({text: 'Hello', duration: 100, transitionDuration: 0});
-    expect(document.getElementsByClassName('ringo-message')).not.toBeNull();
+    expect(document.querySelectorAll('.ringo-message')).not.toBeNull();
     await sleep(200);
-    expect(document.getElementsByClassName('ringo-message')).toStrictEqual([]);
+    expect(document.querySelectorAll('.ringo-message')).toStrictEqual([]);
 });
 
 test('notice', async () => {
     notice({text: 'Hello', duration: 100, transitionDuration: 0});
-    expect(document.getElementsByClassName('ringo-notice')).not.toBeNull();
+    expect(document.querySelectorAll('.ringo-notice')).not.toBeNull();
     await sleep(200);
-    expect(document.getElementsByClassName('ringo-notice')).toStrictEqual([]);
+    expect(document.querySelectorAll('.ringo-notice')).toStrictEqual([]);
 });
 
 test('backdrop', async () => {
     const {add, remove} = backdrop();
     add();
-    expect(document.getElementsByTagName('div')).not.toBe(null);
+    expect(document.querySelectorAll('div')).not.toBeNull();
     remove();
     await sleep(500);
-    expect(document.getElementsByTagName('div')).toStrictEqual([]);
+    expect(document.querySelectorAll('div')).toStrictEqual([]);
 });

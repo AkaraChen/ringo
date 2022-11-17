@@ -3,14 +3,30 @@ import {
     addToDocument,
     createElement,
     parseHTMLString,
-    removeFromDocument,
+    removeFromDocument
 } from './dom';
 import float from './util/float';
 
-export const drawer = (prop: DrawerProp) => {
+export type DrawerProperty = {
+    width?: string;
+    zIndex?: number;
+    withBackdrop?: boolean;
+    position?: 'left' | 'right';
+    transitionDuration?: number;
+    title?: string;
+    showClose?: boolean;
+    onClose?(): void;
+    content?: string;
+    primaryButton?: Button;
+    secondaryButton?: Button;
+    dangerouslyUseHTML?: boolean;
+    clickBackdropClose?: boolean;
+};
+
+export const drawer = (property: DrawerProperty) => {
     const {
         width = '300px',
-        zIndex = 10000,
+        zIndex = 10_000,
         withBackdrop = true,
         position = 'right',
         transitionDuration = 250,
@@ -21,50 +37,49 @@ export const drawer = (prop: DrawerProp) => {
         primaryButton,
         secondaryButton,
         dangerouslyUseHTML = false,
-        clickBackdropClose = true,
-    } = prop;
+        clickBackdropClose = true
+    } = property;
 
     const drawer = createElement('div', 'ringo-drawer');
 
     const head = createElement('div', 'ringo-drawer-head', [
-        createElement('h2', 'ringo-drawer-title', title),
+        createElement('h2', 'ringo-drawer-title', title)
     ]);
     if (showClose) {
-        const closeBtn = createElement('i', 'ringo-drawer-close');
-        head.appendChild(closeBtn);
-        closeBtn.addEventListener('click', close);
+        const closeButton = createElement('i', 'ringo-drawer-close');
+        head.append(closeButton);
+        closeButton.addEventListener('click', close);
     }
-    drawer.appendChild(head);
+    drawer.append(head);
 
-    const child =
-        dangerouslyUseHTML && content != undefined
-            ? parseHTMLString(content)
-            : content || '';
+    const child = dangerouslyUseHTML && content !== undefined
+        ? parseHTMLString(content)
+        : content || '';
 
     const contentBox = createElement('div', 'ringo-drawer-content', child);
-    drawer.appendChild(contentBox);
+    drawer.append(contentBox);
 
-    const BtnGroup = createElement('div', 'ringo-drawer-btns');
+    const ButtonGroup = createElement('div', 'ringo-drawer-btns');
 
-    function createButton(prop: Btn) {
-        const btn = createElement('button', 'ringo-drawer-button', prop.text);
-        btn.addEventListener('click', () => prop.onClick(close));
-        if (prop.close) btn.addEventListener('click', close);
-        return btn;
+    function createButton(property_: Button) {
+        const button = createElement('button', 'ringo-drawer-button', property_.text);
+        button.addEventListener('click', () => property_.onClick(close));
+        if (property_.close) button.addEventListener('click', close);
+        return button;
     }
 
     if (primaryButton) {
-        const btn = createButton(primaryButton);
-        btn.classList.add('ringo-drawer-button-primary');
-        BtnGroup.appendChild(btn);
+        const button = createButton(primaryButton);
+        button.classList.add('ringo-drawer-button-primary');
+        ButtonGroup.append(button);
     }
 
     if (secondaryButton) {
-        const btn = createButton(secondaryButton);
-        BtnGroup.appendChild(btn);
+        const button = createButton(secondaryButton);
+        ButtonGroup.append(button);
     }
 
-    drawer.appendChild(BtnGroup);
+    drawer.append(ButtonGroup);
 
     float(drawer, zIndex, transitionDuration);
     drawer.style.width = width;
@@ -72,12 +87,12 @@ export const drawer = (prop: DrawerProp) => {
     drawer.style.top = '0';
 
     drawer.style[position] = '-' + width;
-    setTimeout(() => (drawer.style[position] = '0'), 15);
+    setTimeout(() => { drawer.style[position] = '0'; }, 15);
     addToDocument(drawer);
 
     const Backdrop = backdrop({
         onClick: clickBackdropClose ? close : () => {},
-        transitionDuration,
+        transitionDuration
     });
 
     function close() {
@@ -92,24 +107,9 @@ export const drawer = (prop: DrawerProp) => {
     if (withBackdrop) Backdrop.add();
 };
 
-export type DrawerProp = {
-    width?: string;
-    zIndex?: number;
-    withBackdrop?: boolean;
-    position?: 'left' | 'right';
-    transitionDuration?: number;
-    title?: string;
-    showClose?: boolean;
-    onClose?(): void;
-    content?: string;
-    primaryButton?: Btn;
-    secondaryButton?: Btn;
-    dangerouslyUseHTML?: boolean;
-    clickBackdropClose?: boolean;
-};
-
-export type Btn = {
+export type Button = {
     text: string;
-    onClick(closeFn: () => void): any;
+    // eslint-disable-next-line no-unused-vars
+    onClick(closeFunction: () => void): any;
     close?: true;
 };

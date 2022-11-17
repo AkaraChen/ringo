@@ -1,18 +1,29 @@
 import {addToDocument, createElement, removeFromDocument} from './dom';
 import {isDark, onColorChange} from './util/color';
 
-export const backdrop = (prop: BackdropProp = {}) => {
+export type BackdropProperty = {
+    color?: 'light' | 'dark';
+    colorLight?: string;
+    colorDark?: string;
+    zIndex?: number;
+    opacity?: number;
+    onClick?(): any;
+    transitionDuration?: number;
+};
+
+export const backdrop = (property: BackdropProperty = {}) => {
     const {
         colorLight = 'rgba(0, 0, 0, 0.6)',
         colorDark = 'rgba(0, 0, 0, 0.6)',
         zIndex = 9000,
         opacity = 0.8,
         onClick,
-        transitionDuration = 250,
-    } = prop;
+        transitionDuration = 250
+    } = property;
 
     let count = 0;
     let isCreated = false;
+    // eslint-disable-next-line no-shadow
     let backdrop: HTMLElement;
 
     const createBackdrop = () => {
@@ -27,11 +38,11 @@ export const backdrop = (prop: BackdropProp = {}) => {
             backdrop.style.transition = `all ${transitionDuration}ms`;
             backdrop.style.transitionDuration = String(transitionDuration);
             backdrop.style.opacity = '0';
-            setTimeout(() => (backdrop.style.opacity = String(opacity)), 15);
+            setTimeout(() => { backdrop.style.opacity = String(opacity); }, 15);
 
             backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
-            onColorChange((e) => {
-                backdrop.style.backgroundColor = e.matches
+            onColorChange(event => {
+                backdrop.style.backgroundColor = event.matches
                     ? colorDark
                     : colorLight;
             });
@@ -67,16 +78,6 @@ export const backdrop = (prop: BackdropProp = {}) => {
                 count = 0;
                 removeBackdrop();
             }
-        },
+        }
     };
-};
-
-export type BackdropProp = {
-    color?: 'light' | 'dark';
-    colorLight?: string;
-    colorDark?: string;
-    zIndex?: number;
-    opacity?: number;
-    onClick?(): any;
-    transitionDuration?: number;
 };

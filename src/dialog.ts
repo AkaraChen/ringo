@@ -1,22 +1,36 @@
 import {backdrop} from './backdrop';
 import {addToDocument, createElement, removeFromDocument} from './dom';
 import float from './util/float';
-import {Btn} from './drawer';
+import {Btn as Button} from './drawer';
 
-export const dialog = (prop: DialogProp) => {
+export type DialogProperty = {
+    title: string;
+    withBackdrop?: boolean;
+    width?: string;
+    zIndex?: number;
+    transitionDuration?: number;
+    clickBackdropClose?: boolean;
+    text: string;
+    showClose?: boolean;
+    primaryButton?: Button;
+    secondaryButton?: Button;
+    form?: HTMLFormElement;
+};
+
+export const dialog = (property: DialogProperty) => {
     const {
         title,
         withBackdrop = true,
         width = '300px',
-        zIndex = 10000,
+        zIndex = 10_000,
         transitionDuration = 250,
         clickBackdropClose = true,
         text,
         showClose = true,
         primaryButton,
         secondaryButton,
-        form,
-    } = prop;
+        form
+    } = property;
     const dialog = createElement('div', 'ringo-dialog') as HTMLDialogElement;
     const head = createElement(
         'div',
@@ -24,46 +38,46 @@ export const dialog = (prop: DialogProp) => {
         createElement('h2', 'ringo-dialog-title', title)
     );
     if (showClose) {
-        const closeBtn = createElement('i', 'ringo-dialog-close');
-        closeBtn.addEventListener('click', close);
-        head.appendChild(closeBtn);
+        const closeButton = createElement('i', 'ringo-dialog-close');
+        closeButton.addEventListener('click', close);
+        head.append(closeButton);
     }
-    dialog.appendChild(head);
+    dialog.append(head);
 
     const body = createElement('div', 'ringo-dialog-body', text);
     if (form) {
-        body.appendChild(form);
+        body.append(form);
     }
-    dialog.appendChild(body);
+    dialog.append(body);
 
-    const BtnGroup = createElement('div', 'ringo-dialog-btns');
+    const ButtonGroup = createElement('div', 'ringo-dialog-btns');
 
-    function createButton(prop: Btn) {
-        const btn = createElement('button', 'ringo-dialog-button', prop.text);
-        btn.addEventListener('click', () => prop.onClick(close));
-        if (prop.close) btn.addEventListener('click', close);
-        return btn;
+    function createButton(property_: Button) {
+        const button = createElement('button', 'ringo-dialog-button', property_.text);
+        button.addEventListener('click', () => property_.onClick(close));
+        if (property_.close) button.addEventListener('click', close);
+        return button;
     }
 
     if (primaryButton) {
-        const btn = createButton(primaryButton);
-        btn.classList.add('ringo-dialog-button-primary');
-        BtnGroup.appendChild(btn);
+        const button = createButton(primaryButton);
+        button.classList.add('ringo-dialog-button-primary');
+        ButtonGroup.append(button);
     }
 
     if (secondaryButton) {
-        const btn = createButton(secondaryButton);
-        BtnGroup.appendChild(btn);
+        const button = createButton(secondaryButton);
+        ButtonGroup.append(button);
     }
 
-    dialog.appendChild(BtnGroup);
+    dialog.append(ButtonGroup);
 
     float(dialog, zIndex, transitionDuration);
     dialog.style.width = width;
     dialog.style.transition = 'opacity 0.5s';
     dialog.style.opacity = '0';
     addToDocument(dialog);
-    setTimeout(() => (dialog.style.opacity = '1'), 15);
+    setTimeout(() => { dialog.style.opacity = '1'; }, 15);
     dialog.style.top = `calc(50vh - ${dialog.offsetHeight / 2 + 50}px)`;
     dialog.style.left = `calc(50vw - ${dialog.offsetWidth / 2}px)`;
 
@@ -74,18 +88,4 @@ export const dialog = (prop: DialogProp) => {
         dialog.style.opacity = '0';
         setTimeout(() => removeFromDocument(dialog), transitionDuration);
     }
-};
-
-export type DialogProp = {
-    title: string;
-    withBackdrop?: boolean;
-    width?: string;
-    zIndex?: number;
-    transitionDuration?: number;
-    clickBackdropClose?: boolean;
-    text: string;
-    showClose?: boolean;
-    primaryButton?: Btn;
-    secondaryButton?: Btn;
-    form?: HTMLFormElement;
 };
