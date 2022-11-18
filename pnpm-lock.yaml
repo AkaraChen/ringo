@@ -6,7 +6,7 @@ specifiers:
   esbuild: 0.15.14
   esbuild-plugin-d.ts: 1.1.0
   eslint: 8.27.0
-  eslint-config-akrc: ^0.0.2
+  eslint-config-akrc: ^0.0.4
   eslint-config-prettier: 8.5.0
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-unicorn: ^44.0.2
@@ -29,7 +29,7 @@ devDependencies:
   esbuild: 0.15.14
   esbuild-plugin-d.ts: 1.1.0_typescript@4.9.3
   eslint: 8.27.0
-  eslint-config-akrc: 0.0.2_ttcikbw5yztdadzhevg6ml5cuy
+  eslint-config-akrc: 0.0.4_ttcikbw5yztdadzhevg6ml5cuy
   eslint-config-prettier: 8.5.0_eslint@8.27.0
   eslint-plugin-prettier: 4.2.1_v7o5sx5x3wbs57ifz6wc4f76we
   happy-dom: 7.7.0
@@ -1527,8 +1527,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-akrc/0.0.2_ttcikbw5yztdadzhevg6ml5cuy:
-    resolution: {integrity: sha512-yoTgCY7l0poRUB2w3Z+Rxmuhd6voURTeUauF4m2sUbPtnLrt90cwgiTpLj2ba9/soBMHrhNo+yRtee8I0V+xoQ==}
+  /eslint-config-akrc/0.0.4_ttcikbw5yztdadzhevg6ml5cuy:
+    resolution: {integrity: sha512-o1md9yiYPHO+o8GUk55HIBcmrFo7DopO4XNV6khd60XzXx9nkbQZoSz4+DivUUR5N+zJ2JwmvXAntWyNo/FX6g==}
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.43.0_wze2rj5tow7zwqpgbdx2buoy3m
       '@typescript-eslint/parser': 5.43.0_e3uo4sehh4zr4i6m57mkkxxv7y
