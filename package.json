@@ -55,6 +55,6 @@
         }
     },
     "dependencies": {
-        "eslint-plugin-unicorn": "^44.0.2"
+        "eslint-plugin-unicorn": "^45.0.0"
     }
 }
