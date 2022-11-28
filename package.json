@@ -23,8 +23,6 @@
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.28.0",
         "eslint-config-akrc": "^0.0.7",
-        "eslint-config-prettier": "8.5.0",
-        "eslint-plugin-prettier": "4.2.1",
         "happy-dom": "7.7.0",
         "husky": "8.0.2",
         "nanoid": "4.0.0",
@@ -55,6 +53,7 @@
         }
     },
     "dependencies": {
-        "eslint-plugin-unicorn": "^45.0.0"
+        "eslint-plugin-unicorn": "^45.0.0",
+        "motion": "^10.14.3"
     }
 }

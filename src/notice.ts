@@ -1,68 +1,62 @@
-import {createElement, parseHTMLString} from './dom';
-import {Height} from './util/height';
-import {num2px as number2px} from './util/style';
-import float from './util/float';
+import {createElement, setOnClick, useHTML} from './dom';
+import {animate} from 'motion';
+import {Height} from './height';
+import {numberToPixel} from './style';
 
 const height = new Height();
 
-export const notice = (property: NoticeProperty) => {
-    const {
-        type = 'info',
-        text,
-        duration = 3000,
-        onClick,
-        onClose,
-        marginTop = 20,
-        zIndex = 10_000,
-        transitionDuration = 250,
-        dangerouslyUseHTML = false
-    } = property;
-
-    const notice = createElement('div', 'ringo-notice');
-
-    const content = createElement('p', 'ringo-notice-content');
-
-    if (dangerouslyUseHTML) {
-        for (const node of parseHTMLString(text)) {
-            content.append(node);
-        }
-    } else {
-        content.append(document.createTextNode(text));
-    }
-
-    notice.append(content);
-
-    float(notice, zIndex, transitionDuration);
-    notice.classList.add(`ringo-notice-${type}`);
-    notice.style.top = number2px(-notice.offsetHeight);
-
-    if (onClick) notice.addEventListener('click', () => onClick(notice));
-
-    let isClosed = false;
-
-    function close() {
-        if (!isClosed) {
-            if (onClose) onClose();
-            setTimeout(() => height.removeInstance(id), transitionDuration);
-            isClosed = true;
-        }
-
-        notice.style.top = number2px(-notice.offsetHeight);
-    }
-
-    const id = height.addInstance(notice, marginTop);
-    notice.style.left = `calc(50vw - ${number2px(notice.offsetWidth / 2)})`;
-    setTimeout(close, duration);
-};
-
-export type NoticeProperty = {
-    type?: 'success' | 'info' | 'error' | 'warning';
-    text: string;
-    duration?: number;
-    onClick?: (element?: HTMLElement) => any;
+type NoticeProperties = {
+    text: string,
+    marginTop?: number,
+    type: 'info' | 'warning' | 'error' | 'success',
+    duration: number,
+    onClick?: (element: HTMLElement) => any;
     onClose?: () => any;
-    marginTop?: number;
     zIndex?: number;
     transitionDuration?: number;
     dangerouslyUseHTML?: boolean;
-};
+}
+
+function createNoticeElement({text, type, dangerouslyUseHTML}: Partial<NoticeProperties>) {
+    return createElement({
+        tag: 'div',
+        className: `ringo-notice ringo-notice-${type || 'info'}`,
+        child: createElement({
+            tag: 'p',
+            className: 'ringo-notice-content',
+            child: dangerouslyUseHTML ? useHTML(text!) : text!
+        })
+    });
+}
+
+export function notice(property: NoticeProperties) {
+    const {
+        marginTop = 12, duration = 3000, onClick, zIndex = 10_000,
+        transitionDuration, onClose
+    } = property;
+    const element = createNoticeElement(property);
+    document.body.append(element);
+    element.style.top = `${-element.offsetHeight}px`;
+    element.style.left = `calc(50vw - ${element.offsetWidth}px)`;
+    element.addEventListener('ringotop', event => {
+        const top = numberToPixel((event as CustomEvent).detail);
+        animate(
+            element,
+            {top},
+            {
+                easing: 'ease-in-out',
+                duration: (transitionDuration || 300) / 1000
+            }
+        );
+    });
+    const target = {target: element, marginTop};
+    height.add(target);
+    function close() {
+        height.remove(target);
+        setTimeout(() => element.remove(), transitionDuration);
+        if (onClose) onClose();
+    }
+    setTimeout(close, duration);
+    setOnClick(element, onClick);
+    element.style.zIndex = zIndex.toString(10);
+}

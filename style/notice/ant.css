@@ -1,4 +1,6 @@
 .ringo-notice {
+    position: fixed;
+    box-sizing: border-box;
     padding: 10px 16px;
     color: #333;
     box-shadow: 0 3px 6px -4px #0000001f,
@@ -6,6 +8,7 @@
         0 9px 28px 8px #0000000d;
     font-size: 14px;
     background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +25,8 @@
     display: flex;
     align-items: center;
     vertical-align: middle;
+    margin: 4px;
+    font-size: 15px;
 }
 
 .ringo-notice-content::before {
