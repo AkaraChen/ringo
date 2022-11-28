@@ -59,7 +59,7 @@ export function message(property: MessageProperties) {
     } = property;
     element.style.width = numberToPixel(width);
     element.style.right = numberToPixel(-element.offsetWidth);
-    element.style.zIndex = numberToPixel(zIndex);
+    element.style.zIndex = String(zIndex);
     animate(element, {right: numberToPixel(marginRight)}, {easing: spring()});
     element.style.top = numberToPixel(height.getHeight() + marginRight);
     const target = {target: element, marginTop};
