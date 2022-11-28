@@ -23,7 +23,7 @@ type MessageProperties = {
 
 function createMessageElement({
     type = 'info', text, title = type, dangerouslyUseHTML, duration, showClose = duration === 0
-}: MessageProperties) {
+}: MessageProperties, close: () => void) {
     return createElement({
         tag: 'div',
         className: `ringo-message ringo-message-${type}`,
@@ -43,13 +43,14 @@ function createMessageElement({
         }),
         createElement({
             tag: 'i',
-            className: `ringo-message-close ringo-message-close-${showClose}`
+            className: `ringo-message-close ringo-message-close-${showClose}`,
+            onClick: close
         })]
     });
 }
 
 export function message(property: MessageProperties) {
-    const element = createMessageElement(property);
+    const element = createMessageElement(property, close);
     document.body.append(element);
     const {
         width = 300, marginRight = 20, marginTop = 10,

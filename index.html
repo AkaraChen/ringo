@@ -22,7 +22,7 @@
         const buttons = document.querySelectorAll('sw-button')
         const types = ['info', 'warning', 'error', 'success']
         buttons.forEach(((item,index) => item.addEventListener('click', () => 
-            message({ text: lorem, type: types[index] })
+            message({ text: lorem, type: types[index], duration: 0 })
         )))
     </script>
 </body>
