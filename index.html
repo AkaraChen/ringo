@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/notice/ant.css">
-    <link rel="stylesheet" href="./style/message/ant.css">
-    <link rel="stylesheet" href="./style/drawer/ant.css">
+    <link rel="stylesheet" href="./style/all/ant.css">
     <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
+    <script src="https://unpkg.com/@akrc/nashi@latest/dist/legacy.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@akrc/fish@latest/fish.css">
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
             max-width: 768px;
             margin: auto;
             padding: 16px;
@@ -48,7 +47,6 @@
         <sw-button>Open</sw-button>
     </div>
     <script type="module">
-        import nashi from 'https://esm.sh/@akrc/nashi@latest';
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
         import {message, notice, drawer} from './src/index.ts';
