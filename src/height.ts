@@ -1,4 +1,5 @@
-import {pixelToNumber} from './style';
+import {pixelToNumber, numberToPixel} from './style';
+import {animate} from 'motion';
 
 type Instance = {
     target: HTMLElement,
@@ -24,13 +25,15 @@ export class Height {
         this.list.push(instance);
     }
 
-    remove(instance: Instance) {
+    remove(instance: Instance, setTop = true) {
         const {target, marginTop} = instance;
         const height = target.offsetHeight + marginTop;
-        target.dispatchEvent(new CustomEvent(
-            'ringotop',
-            {detail: -height}
-        ));
+        if (setTop) {
+            target.dispatchEvent(new CustomEvent(
+                'ringotop',
+                {detail: -height}
+            ));
+        }
         const index = this.list.indexOf(instance);
         if (index !== -1) {
             for (const item of this.list.slice(index + 1)) {
@@ -45,3 +48,14 @@ export class Height {
         this.list.splice(index, 1);
     }
 }
+
+export const useHeight = (element: HTMLElement, transitionDuration?: number) => {
+    element.addEventListener('ringotop', event => {
+        const top = numberToPixel((event as CustomEvent).detail);
+        animate(
+            element,
+            {top},
+            {easing: 'ease-in-out', duration: (transitionDuration || 300) / 1000}
+        );
+    });
+};

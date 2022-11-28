@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/notice/ant.css">
+    <link rel="stylesheet" href="./style/message/ant.css">
     <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
     <title>Document</title>
 </head>
@@ -16,11 +17,12 @@
     <sw-button type="error" primary>Error</sw-button>
     <sw-button type="success" primary>Success</sw-button>
     <script type="module">
-        import {notice} from './src/notice.ts';
+        const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
+        import {message} from './src/index.ts';
         const buttons = document.querySelectorAll('sw-button')
         const types = ['info', 'warning', 'error', 'success']
         buttons.forEach(((item,index) => item.addEventListener('click', () => 
-            notice({ text: 'this is a notice', type: types[index] })
+            message({ text: lorem, type: types[index] })
         )))
     </script>
 </body>

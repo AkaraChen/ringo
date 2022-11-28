@@ -1,11 +1,14 @@
 type createElementProperties = {
     tag: string,
     className?: string,
-    child?: string | Node | Node[]
+    child?: string | Node | Node[],
+    onClick?: (element: HTMLElement) => any
 }
 
 export const createElement = (property: createElementProperties) => {
-    let {tag, className = '', child} = property;
+    let {
+        tag, className = '', child, onClick
+    } = property;
     const element = document.createElement(tag);
     element.className = className;
     if (typeof child === 'string') {
@@ -18,6 +21,7 @@ export const createElement = (property: createElementProperties) => {
     if (Array.isArray(child)) {
         for (const node of child) element.append(node);
     }
+    setOnClick(element, onClick);
     return element;
 };
 

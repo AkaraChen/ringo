@@ -1,6 +1,6 @@
 import {createElement, setOnClick, useHTML} from './dom';
 import {animate} from 'motion';
-import {Height} from './height';
+import {Height, useHeight} from './height';
 import {numberToPixel} from './style';
 
 const height = new Height();
@@ -17,14 +17,14 @@ type NoticeProperties = {
     dangerouslyUseHTML?: boolean;
 }
 
-function createNoticeElement({text, type, dangerouslyUseHTML}: Partial<NoticeProperties>) {
+function createNoticeElement({text, type, dangerouslyUseHTML}: NoticeProperties) {
     return createElement({
         tag: 'div',
         className: `ringo-notice ringo-notice-${type || 'info'}`,
         child: createElement({
             tag: 'p',
             className: 'ringo-notice-content',
-            child: dangerouslyUseHTML ? useHTML(text!) : text!
+            child: dangerouslyUseHTML ? useHTML(text!) : text
         })
     });
 }
@@ -38,17 +38,7 @@ export function notice(property: NoticeProperties) {
     document.body.append(element);
     element.style.top = `${-element.offsetHeight}px`;
     element.style.left = `calc(50vw - ${element.offsetWidth}px)`;
-    element.addEventListener('ringotop', event => {
-        const top = numberToPixel((event as CustomEvent).detail);
-        animate(
-            element,
-            {top},
-            {
-                easing: 'ease-in-out',
-                duration: (transitionDuration || 300) / 1000
-            }
-        );
-    });
+    useHeight(element, transitionDuration);
     const target = {target: element, marginTop};
     height.add(target);
     function close() {
