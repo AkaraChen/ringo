@@ -32,7 +32,7 @@ function createNoticeElement({text, type, dangerouslyUseHTML}: NoticeProperties)
 export function notice(property: NoticeProperties) {
     const {
         marginTop = 12, duration = 3000, onClick, zIndex = 10_000,
-        transitionDuration, onClose
+        transitionDuration = 300, onClose
     } = property;
     const element = createNoticeElement(property);
     document.body.append(element);

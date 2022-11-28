@@ -7,23 +7,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/notice/ant.css">
     <link rel="stylesheet" href="./style/message/ant.css">
+    <link rel="stylesheet" href="./style/drawer/ant.css">
     <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 768px;
+            margin: auto;
+            padding: 16px;
+        }
+    </style>
     <title>Document</title>
 </head>
 
 <body>
-    <sw-button primary>Info</sw-button>
-    <sw-button type="warning" primary>Warning</sw-button>
-    <sw-button type="error" primary>Error</sw-button>
-    <sw-button type="success" primary>Success</sw-button>
+    <header>
+        <h1>Ringo Playground</h1>
+    </header>
+    <div>
+        <p>Message</p>
+        <sw-button primary id="mi">Info</sw-button>
+        <sw-button type="warning" primary id="mw">Warning</sw-button>
+        <sw-button type="error" primary id="me">Error</sw-button>
+        <sw-button type="success" primary id="ms">Success</sw-button>
+    </div>
+    <div>
+        <p>Notice</p>
+        <sw-button primary id="ni">Info</sw-button>
+        <sw-button type="warning" primary id="nw">Warning</sw-button>
+        <sw-button type="error" primary id="ne">Error</sw-button>
+        <sw-button type="success" primary id="ns">Success</sw-button>
+    </div>
+    <div>
+        <p>Drawer</p>
+        <sw-button id="dl">Left</sw-button>
+        <sw-button id="dr">Right</sw-button>
+    </div>
+    <div>
+        <p>Dialog</p>
+        <sw-button>Open</sw-button>
+    </div>
     <script type="module">
+        import nashi from 'https://esm.sh/@akrc/nashi@latest';
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
-        import {message} from './src/index.ts';
-        const buttons = document.querySelectorAll('sw-button')
-        const types = ['info', 'warning', 'error', 'success']
-        buttons.forEach(((item,index) => item.addEventListener('click', () => 
-            message({ text: lorem, type: types[index], duration: 0 })
-        )))
+        const short = 'This is a short message.'
+        import {message, notice, drawer} from './src/index.ts';
+        nashi('#mi').click(() => message({text: lorem, type: 'info'}))
+        nashi('#mw').click(() => message({ text: lorem, type: 'warning' }))
+        nashi('#me').click(() => message({ text: lorem, type: 'error' }))
+        nashi('#ms').click(() => message({ text: lorem, type: 'success' }))
+        nashi('#ni').click(() => notice({ text: short, type: 'info' }))
+        nashi('#nw').click(() => notice({ text: short, type: 'warning' }))
+        nashi('#ne').click(() => notice({ text: short, type: 'error' }))
+        nashi('#ns').click(() => notice({ text: short, type: 'success' }))
+        nashi('#dl').click(() => drawer({ 
+            title: short, 
+            content: lorem,
+            position: 'left',
+            buttons: [
+                { text: 'Primary', onClick: () => {}, close: true, primary: true },
+                { text: 'Secondary', onClick: (close) => {
+                        if (1 === 1) close();
+                    },
+                }
+            ],
+        }))
+        nashi('#dr').click(() => drawer({
+            title: short,
+            content: lorem,
+            position: 'right',
+            buttons: [
+                { text: 'Primary', onClick: () => {}, close: true, primary: true },
+                { text: 'Secondary', onClick: (close) => {
+                        if (1 === 1) close();
+                    },
+                }
+            ],
+        }))
     </script>
 </body>
 

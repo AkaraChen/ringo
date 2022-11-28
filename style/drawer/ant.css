@@ -1,9 +1,12 @@
 .ringo-drawer {
     box-sizing: border-box;
+    position: fixed;
     background-color: #fff;
     border-right: 1px #e6e8eb solid;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    top: 0;
 }
 
 
@@ -32,6 +35,8 @@
 .ringo-drawer-title {
     font-size: 18px;
     color: #333;
+    margin: 0;
+    font-weight: 400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,6 +63,7 @@
 .ringo-drawer-content {
     font-size: 14px;
     padding: 24px;
+    line-height: 1.5;
 }
 
 .ringo-drawer-btns {
@@ -93,7 +99,7 @@
     }
 }
 
-.ringo-drawer-button.ringo-drawer-button-primary {
+.ringo-drawer-button.ringo-button-primary-true {
     background-color: #3498db;
     color: #fff;
     border-color: #3498db;

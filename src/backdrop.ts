@@ -1,7 +1,7 @@
 import {createElement} from './dom';
 import {isDark, onColorChange} from './theme';
 
-export type BackdropProperty = {
+export type BackdropProperties = {
     color?: 'light' | 'dark';
     colorLight?: string;
     colorDark?: string;
@@ -11,7 +11,7 @@ export type BackdropProperty = {
     transitionDuration?: number;
 };
 
-export const backdrop = (property: BackdropProperty = {}) => {
+export const backdrop = (property: BackdropProperties = {}) => {
     const {
         colorLight = 'rgba(0, 0, 0, 0.6)',
         colorDark = 'rgba(0, 0, 0, 0.6)',

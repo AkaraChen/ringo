@@ -2,6 +2,7 @@ import {createElement, setOnClick, useHTML} from './dom';
 import {animate, spring} from 'motion';
 import {Height, useHeight} from './height';
 import {numberToPixel} from './style';
+import {when} from './util';
 
 const height = new Height();
 
@@ -21,9 +22,13 @@ type MessageProperties = {
     dangerouslyUseHTML?: boolean;
 }
 
-function createMessageElement({
-    type = 'info', text, title = type, dangerouslyUseHTML, duration, showClose = duration === 0
-}: MessageProperties, close: () => void) {
+function createMessageElement(
+    {
+        type = 'info', text, title = type, dangerouslyUseHTML,
+        duration, showClose = duration === 0
+    }: MessageProperties,
+    close: () => void
+) {
     return createElement({
         tag: 'div',
         className: `ringo-message ringo-message-${type}`,
@@ -41,11 +46,12 @@ function createMessageElement({
             className: 'ringo-message-content',
             child: dangerouslyUseHTML ? useHTML(text!) : text!
         }),
-        createElement({
+        when(showClose, createElement({
             tag: 'i',
-            className: `ringo-message-close ringo-message-close-${showClose}`,
+            className: 'ringo-message-close',
             onClick: close
-        })]
+        }))
+        ]
     });
 }
 
