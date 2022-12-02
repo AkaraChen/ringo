@@ -12,7 +12,9 @@ const option = {
     logLevel: 'info',
     sourcemap: true,
     entryPoints: ['./src/index.ts'],
-    minify: true
+    minify: true,
+    external: ['motion']
+
 };
 
 async function run() {
