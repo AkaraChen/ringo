@@ -1,7 +1,7 @@
-import {addToDocument, createElement, removeFromDocument} from './dom';
-import {isDark, onColorChange} from './util/color';
+import {createElement} from './dom';
+import {isDark, onColorChange} from './theme';
 
-export type BackdropProperty = {
+export type BackdropProperties = {
     color?: 'light' | 'dark';
     colorLight?: string;
     colorDark?: string;
@@ -11,7 +11,7 @@ export type BackdropProperty = {
     transitionDuration?: number;
 };
 
-export const backdrop = (property: BackdropProperty = {}) => {
+export const backdrop = (property: BackdropProperties = {}) => {
     const {
         colorLight = 'rgba(0, 0, 0, 0.6)',
         colorDark = 'rgba(0, 0, 0, 0.6)',
@@ -23,12 +23,11 @@ export const backdrop = (property: BackdropProperty = {}) => {
 
     let count = 0;
     let isCreated = false;
-    // eslint-disable-next-line no-shadow
     let backdrop: HTMLElement;
 
     const createBackdrop = () => {
         if (!isCreated) {
-            backdrop = createElement('div');
+            backdrop = createElement({tag: 'div'});
             backdrop.style.position = 'fixed';
             backdrop.style.top = '0';
             backdrop.style.left = '0';
@@ -38,30 +37,25 @@ export const backdrop = (property: BackdropProperty = {}) => {
             backdrop.style.transition = `all ${transitionDuration}ms`;
             backdrop.style.transitionDuration = String(transitionDuration);
             backdrop.style.opacity = '0';
-            setTimeout(() => { backdrop.style.opacity = String(opacity); }, 15);
-
+            requestAnimationFrame(() => { backdrop.style.opacity = String(opacity); });
             backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
             onColorChange(event => {
                 backdrop.style.backgroundColor = event.matches
                     ? colorDark
                     : colorLight;
             });
-            addToDocument(backdrop);
-
+            document.body.append(backdrop);
             if (onClick) backdrop.addEventListener('click', onClick);
-
             isCreated = true;
         }
     };
-
     const removeBackdrop = () => {
         if (isCreated) {
             backdrop.style.opacity = '0';
-            setTimeout(() => removeFromDocument(backdrop), transitionDuration);
+            setTimeout(() => backdrop.remove(), transitionDuration);
             isCreated = false;
         }
     };
-
     return {
         add() {
             if (++count === 1) {

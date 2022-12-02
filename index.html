@@ -5,38 +5,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./docs/prism.css">
-    <script type="module" src="./docs/index.ts"></script>
+    <link rel="stylesheet" href="./style/all/ant.css">
+    <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
+    <script src="https://unpkg.com/@akrc/nashi@latest/dist/legacy.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@akrc/fish@latest/fish.css">
+    <style>
+        body {
+            max-width: 768px;
+            margin: auto;
+            padding: 16px;
+        }
+    </style>
     <title>Document</title>
 </head>
 
 <body>
-    <div style="max-width: 800px; margin: 1em auto; padding: 1em" id="container">
-        <hgroup>
-            <h1>Ringo.js</h1>
-            <p>Message, Dialog, Notice component written in Pure TypeScript.</p>
-        </hgroup>
-
-        <h2>Get Started</h2>
-
-        <pre class="lang-js"><code style="padding: 0">import {message} from '@akrc/ringo'
-message({text: 'Hello, Ringo'})</code></pre>
-
-        <h2>Message</h2>
-        <button class="filled" id="message_info">Info</button>
-        <button class="filled success" id="message_success">Success</button>
-        <button class="filled warn" id="message_warning">Warn</button>
-        <button class="filled error" id="message_error">Error</button>
-
-        <h2>Notice</h2>
-        <button class="filled" id="notice_info">Info</button>
-        <button class="filled success" id="notice_success">Success</button>
-        <button class="filled warn" id="notice_warning">Warn</button>
-        <button class="filled error" id="notice_error">Error</button>
+    <header>
+        <h1>Ringo Playground</h1>
+    </header>
+    <div>
+        <p>Message</p>
+        <sw-button primary id="mi">Info</sw-button>
+        <sw-button type="warning" primary id="mw">Warning</sw-button>
+        <sw-button type="error" primary id="me">Error</sw-button>
+        <sw-button type="success" primary id="ms">Success</sw-button>
     </div>
-
-    <script src="./docs/prism.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AkaraChen/seaweed@main/seaweed.min.css">
+    <div>
+        <p>Notice</p>
+        <sw-button primary id="ni">Info</sw-button>
+        <sw-button type="warning" primary id="nw">Warning</sw-button>
+        <sw-button type="error" primary id="ne">Error</sw-button>
+        <sw-button type="success" primary id="ns">Success</sw-button>
+    </div>
+    <div>
+        <p>Drawer</p>
+        <sw-button id="dl">Left</sw-button>
+        <sw-button id="dr">Right</sw-button>
+    </div>
+    <div>
+        <p>Dialog</p>
+        <sw-button id="dialog">Open</sw-button>
+    </div>
+    <script type="module">
+        const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
+        const short = 'This is a short message.'
+        import {message, notice, drawer, dialog} from './src/index.ts';
+        nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
+        nashi('#mw').click(() => message({ text: lorem, type: 'warning' }))
+        nashi('#me').click(() => message({ text: lorem, type: 'error' }))
+        nashi('#ms').click(() => message({ text: lorem, type: 'success' }))
+        nashi('#ni').click(() => notice({ text: short, type: 'info' }))
+        nashi('#nw').click(() => notice({ text: short, type: 'warning' }))
+        nashi('#ne').click(() => notice({ text: short, type: 'error' }))
+        nashi('#ns').click(() => notice({ text: short, type: 'success' }))
+        nashi('#dl').click(() => drawer({ 
+            title: short, 
+            content: lorem,
+            position: 'left',
+            buttons: [
+                { text: 'Primary', onClick: () => {}, close: true, primary: true },
+                { text: 'Secondary', onClick: (close) => {
+                        if (1 === 1) close();
+                    },
+                }
+            ],
+        }))
+        nashi('#dr').click(() => drawer({
+            title: short,
+            content: lorem,
+            position: 'right',
+            buttons: [
+                { text: 'Primary', onClick: () => {}, close: true, primary: true },
+                { text: 'Secondary', onClick: (close) => {
+                        if (1 === 1) close();
+                    },
+                }
+            ],
+        }))
+        nashi('#dialog').click(() => {
+            dialog({
+                title: short,
+                text: lorem.slice(0, 100),
+                showClose: true,
+            })
+        })
+    </script>
 </body>
 
 </html>

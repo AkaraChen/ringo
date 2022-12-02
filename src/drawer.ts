@@ -1,14 +1,18 @@
+import {createElement, useHTML} from './dom';
+import {animate} from 'motion';
+import {numberToPixel} from './style';
 import {backdrop} from './backdrop';
-import {
-    addToDocument,
-    createElement,
-    parseHTMLString,
-    removeFromDocument
-} from './dom';
-import float from './util/float';
+import {when} from './util';
 
-export type DrawerProperty = {
-    width?: string;
+export type Button = {
+    text: string;
+    onClick: (closeFunction: () => void) => any
+    close?: boolean;
+    primary?: boolean
+};
+
+export type DrawerProperties = {
+    width?: number;
     zIndex?: number;
     withBackdrop?: boolean;
     position?: 'left' | 'right';
@@ -17,99 +21,80 @@ export type DrawerProperty = {
     showClose?: boolean;
     onClose?(): void;
     content?: string;
-    primaryButton?: Button;
-    secondaryButton?: Button;
+    buttons: Button[];
     dangerouslyUseHTML?: boolean;
     clickBackdropClose?: boolean;
+}
+
+export const createButton = ({
+    primary = false, text, onClick = () => {}, close
+}: Button, closeFunction: () => any, name: string = 'drawer') => {
+    return createElement({
+        tag: 'button',
+        className: `ringo-${name}-button ${when(primary, 'ringo-button-primary')}`,
+        child: text,
+        onClick: () => {
+            onClick(closeFunction);
+            if (close) closeFunction();
+        }
+    });
 };
 
-export const drawer = (property: DrawerProperty) => {
+const createDrawerElement = (
+    {
+        title, content, dangerouslyUseHTML, buttons
+    }: DrawerProperties,
+    close: () => void
+) => {
+    return createElement({
+        className: 'ringo-drawer',
+        child: [createElement({
+            tag: 'div',
+            className: 'ringo-drawer-head',
+            child: [createElement({
+                tag: 'h2',
+                className: 'ringo-drawer-title',
+                child: title
+            }), createElement({
+                tag: 'i',
+                className: 'ringo-drawer-close',
+                onClick: close
+            })]
+        }), createElement({
+            className: 'ringo-drawer-content',
+            child: dangerouslyUseHTML ? useHTML(content!) : content
+        }), createElement({
+            className: 'ringo-drawer-btns',
+            child: when(buttons, buttons.map(button => createButton(button, close)))
+        })]
+    });
+};
+
+export const drawer = (property: DrawerProperties) => {
+    const element = createDrawerElement(property, close);
+    document.body.append(element);
     const {
-        width = '300px',
-        zIndex = 10_000,
-        withBackdrop = true,
-        position = 'right',
-        transitionDuration = 250,
-        title,
-        showClose = true,
-        onClose,
-        content,
-        primaryButton,
-        secondaryButton,
-        dangerouslyUseHTML = false,
-        clickBackdropClose = true
+        position = 'right', width = 300,
+        clickBackdropClose = true, transitionDuration = 300,
+        withBackdrop = true, onClose, zIndex = 10_000
     } = property;
-
-    const drawer = createElement('div', 'ringo-drawer');
-
-    const head = createElement('div', 'ringo-drawer-head', [
-        createElement('h2', 'ringo-drawer-title', title)
-    ]);
-    if (showClose) {
-        const closeButton = createElement('i', 'ringo-drawer-close');
-        head.append(closeButton);
-        closeButton.addEventListener('click', close);
-    }
-    drawer.append(head);
-
-    const child = dangerouslyUseHTML && content !== undefined
-        ? parseHTMLString(content)
-        : content || '';
-
-    const contentBox = createElement('div', 'ringo-drawer-content', child);
-    drawer.append(contentBox);
-
-    const ButtonGroup = createElement('div', 'ringo-drawer-btns');
-
-    function createButton(property_: Button) {
-        const button = createElement('button', 'ringo-drawer-button', property_.text);
-        button.addEventListener('click', () => property_.onClick(close));
-        if (property_.close) button.addEventListener('click', close);
-        return button;
-    }
-
-    if (primaryButton) {
-        const button = createButton(primaryButton);
-        button.classList.add('ringo-drawer-button-primary');
-        ButtonGroup.append(button);
-    }
-
-    if (secondaryButton) {
-        const button = createButton(secondaryButton);
-        ButtonGroup.append(button);
-    }
-
-    drawer.append(ButtonGroup);
-
-    float(drawer, zIndex, transitionDuration);
-    drawer.style.width = width;
-    drawer.style.height = '100vh';
-    drawer.style.top = '0';
-
-    drawer.style[position] = '-' + width;
-    setTimeout(() => { drawer.style[position] = '0'; }, 15);
-    addToDocument(drawer);
-
+    element.style.width = numberToPixel(width);
+    element.style.zIndex = String(zIndex);
+    element.style[position] = numberToPixel(-width);
+    animate(element, {[`${position}`]: 0});
     const Backdrop = backdrop({
         onClick: clickBackdropClose ? close : () => {},
         transitionDuration
     });
-
+    if (withBackdrop) Backdrop.add();
     function close() {
         if (onClose) onClose();
         if (withBackdrop) Backdrop.remove();
-        drawer.style[position] = '-' + width;
-        setTimeout(() => {
-            removeFromDocument(drawer);
-        }, transitionDuration);
+        animate(
+            element,
+            {[`${position}`]: numberToPixel(-width)},
+            {duration: transitionDuration / 1000}
+        );
+        setTimeout(() => element.remove, transitionDuration);
     }
-
-    if (withBackdrop) Backdrop.add();
-};
-
-export type Button = {
-    text: string;
-    // eslint-disable-next-line no-unused-vars
-    onClick(closeFunction: () => void): any;
-    close?: true;
 };

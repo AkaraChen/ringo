@@ -1,91 +1,83 @@
+import {createElement} from './dom';
+import {animate, spring} from 'motion';
+import {Button, createButton} from './drawer';
+import {when} from './util';
+import {numberToPixel} from './style';
 import {backdrop} from './backdrop';
-import {addToDocument, createElement, removeFromDocument} from './dom';
-import float from './util/float';
-import {Btn as Button} from './drawer';
 
-export type DialogProperty = {
+type DialogProperties = {
     title: string;
     withBackdrop?: boolean;
-    width?: string;
+    width?: number;
     zIndex?: number;
     transitionDuration?: number;
     clickBackdropClose?: boolean;
     text: string;
     showClose?: boolean;
-    primaryButton?: Button;
-    secondaryButton?: Button;
+    buttons?: Button[]
     form?: HTMLFormElement;
+}
+
+const createDialogElement = ({
+    title, showClose, text, form,
+    buttons = [
+        {text: 'Yes', onClick: close => close(), primary: true},
+        {text: 'No', onClick: close => close()}
+    ]
+}: DialogProperties, close: () => any) => {
+    return createElement({
+        className: 'ringo-dialog',
+        child: [createElement({
+            className: 'ringo-dialog-head',
+            child: [
+                createElement({
+                    tag: 'p',
+                    className: 'ringo-dialog-title',
+                    child: title
+                }),
+                when(
+                    showClose,
+                    createElement({
+                        tag: 'i',
+                        className: 'ringo-dialog-close',
+                        onClick: close
+                    })
+                )
+            ]
+        }),
+        createElement({
+            className: 'ringo-dialog-body',
+            child: [text, when(form)]
+        }),
+        createElement({
+            className: 'ringo-dialog-btns',
+            child: when(buttons, () => buttons!.map(button => createButton(button, close, 'dialog')))
+        })]
+    });
 };
 
-export const dialog = (property: DialogProperty) => {
+export const dialog = (property: DialogProperties) => {
     const {
-        title,
-        withBackdrop = true,
-        width = '300px',
-        zIndex = 10_000,
-        transitionDuration = 250,
-        clickBackdropClose = true,
-        text,
-        showClose = true,
-        primaryButton,
-        secondaryButton,
-        form
+        width = 350, zIndex = 10_000, transitionDuration = 300,
+        withBackdrop = true, clickBackdropClose = true
     } = property;
-    const dialog = createElement('div', 'ringo-dialog') as HTMLDialogElement;
-    const head = createElement(
-        'div',
-        'ringo-dialog-head',
-        createElement('h2', 'ringo-dialog-title', title)
-    );
-    if (showClose) {
-        const closeButton = createElement('i', 'ringo-dialog-close');
-        closeButton.addEventListener('click', close);
-        head.append(closeButton);
-    }
-    dialog.append(head);
-
-    const body = createElement('div', 'ringo-dialog-body', text);
-    if (form) {
-        body.append(form);
-    }
-    dialog.append(body);
-
-    const ButtonGroup = createElement('div', 'ringo-dialog-btns');
-
-    function createButton(property_: Button) {
-        const button = createElement('button', 'ringo-dialog-button', property_.text);
-        button.addEventListener('click', () => property_.onClick(close));
-        if (property_.close) button.addEventListener('click', close);
-        return button;
-    }
-
-    if (primaryButton) {
-        const button = createButton(primaryButton);
-        button.classList.add('ringo-dialog-button-primary');
-        ButtonGroup.append(button);
-    }
-
-    if (secondaryButton) {
-        const button = createButton(secondaryButton);
-        ButtonGroup.append(button);
-    }
-
-    dialog.append(ButtonGroup);
-
-    float(dialog, zIndex, transitionDuration);
-    dialog.style.width = width;
-    dialog.style.transition = 'opacity 0.5s';
-    dialog.style.opacity = '0';
-    addToDocument(dialog);
-    setTimeout(() => { dialog.style.opacity = '1'; }, 15);
-    dialog.style.top = `calc(50vh - ${dialog.offsetHeight / 2 + 50}px)`;
-    dialog.style.left = `calc(50vw - ${dialog.offsetWidth / 2}px)`;
-
-    const Backdrop = backdrop({onClick: clickBackdropClose ? close : () => {}});
+    const element = createDialogElement(property, close);
+    document.body.append(element);
+    element.style.zIndex = String(zIndex);
+    element.style.width = numberToPixel(width);
+    element.style.top = `calc(40vh - ${element.offsetHeight / 2}px)`;
+    element.style.left = `calc(50vw - ${element.offsetWidth / 2}px)`;
+    element.style.opacity = '0';
+    animate(element, {opacity: 1}, {duration: transitionDuration / 1000});
+    const Backdrop = backdrop({onClick: when(clickBackdropClose, () => close)});
     if (withBackdrop) Backdrop.add();
     function close() {
         if (withBackdrop) Backdrop.remove();
-        dialog.style.opacity = '0';
-        setTimeout(() => removeFromDocument(dialog), transitionDuration);
+        animate(element, {
+            opacity: 0
+        }, {easing: spring(), duration: transitionDuration / 1000});
+        setTimeout(() => {
+            element.remove();
+        }, transitionDuration);
     }
 };

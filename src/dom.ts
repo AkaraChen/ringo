@@ -1,32 +1,37 @@
-export const createElement = (
-    tag: string,
+type createElementProperties = {
+    tag?: string,
     className?: string,
-    child?: child
-) => {
+    child?: string | Node | Array<Node | string | undefined> | undefined,
+    onClick?: (element: HTMLElement) => any
+}
+
+export const createElement = (property: createElementProperties) => {
+    let {
+        tag = 'div', className = '', child, onClick
+    } = property;
     const element = document.createElement(tag);
-    if (className) element.className = className;
-    if (child) {
-        if (typeof child === 'string') {
-            element.textContent = child;
-        } else if (Array.isArray(child)) {
-            for (const item of child) element.append(item);
-        } else {
-            element.append(child);
+    element.className = className;
+    if (typeof child === 'string') {
+        const textNode = document.createTextNode(child);
+        element.append(textNode);
+    }
+    if (child instanceof Node) {
+        child = [child];
+    }
+    if (Array.isArray(child)) {
+        for (const node of child) {
+            if (node) { element.append(node); }
         }
     }
+    setOnClick(element, onClick);
     return element;
 };
 
-type child = string | HTMLElement | HTMLElement[] | Node[] | Node;
-
-export const addToDocument = (element: HTMLElement) =>
-    document.body.append(element);
-
-export const removeFromDocument = (element: HTMLElement) => {
-    element.remove();
+export const setOnClick = (target: HTMLElement, onClick?: (element: HTMLElement) => any) => {
+    if (onClick) target.addEventListener('click', () => onClick(target));
 };
 
-export const parseHTMLString = (text: string) => {
-    const document = new DOMParser().parseFromString(text, 'text/html');
-    return [...document.body.childNodes];
+export const useHTML = (html: string) => {
+    const document = new DOMParser().parseFromString(html, 'text/html');
+    return [...document.body.childNodes] as HTMLElement[];
 };

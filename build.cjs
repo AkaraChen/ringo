@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-top-level-await */
+/* eslint-disable unicorn/no-process-exit */
 const esbuild = require('esbuild');
 const {dtsPlugin} = require('esbuild-plugin-d.ts');
 const rimraf = require('rimraf');
@@ -10,7 +12,7 @@ const option = {
     logLevel: 'info',
     sourcemap: true,
     entryPoints: ['./src/index.ts'],
-    minify: true,
+    minify: true
 };
 
 async function run() {
@@ -20,7 +22,7 @@ async function run() {
             outdir: 'dist',
             splitting: true,
             plugins: [dtsPlugin()],
-            ...option,
+            ...option
         })
         .catch(() => process.exit(1));
 
@@ -28,7 +30,7 @@ async function run() {
         .build({
             format: 'cjs',
             outfile: './dist/cjs.js',
-            ...option,
+            ...option
         })
         .catch(() => process.exit(1));
 }

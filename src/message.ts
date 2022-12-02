@@ -1,75 +1,12 @@
-import {createElement, parseHTMLString} from './dom';
-import {Height} from './util/height';
-import {num2px as number2px} from './util/style';
-import float from './util/float';
+import {createElement, setOnClick, useHTML} from './dom';
+import {animate, spring} from 'motion';
+import {Height, useHeight} from './height';
+import {numberToPixel} from './style';
+import {when} from './util';
 
 const height = new Height();
 
-export const message = (property: MessageProperty) => {
-    const {
-        type = 'info',
-        text,
-        title = type,
-        duration = 5000,
-        onClick,
-        showClose = false,
-        onClose,
-        marginTop = 20,
-        marginRight = 20,
-        width = 300,
-        zIndex = 10_000,
-        transitionDuration = 250,
-        dangerouslyUseHTML = false
-    } = property;
-
-    const message = createElement('div', 'ringo-message', [
-        createElement('h3', 'ringo-message-head', [
-            createElement('p', 'ringo-message-title', title)
-        ])
-    ]);
-
-    const content = createElement('p', 'ringo-message-content');
-
-    if (dangerouslyUseHTML) {
-        for (const node of parseHTMLString(text)) {
-            content.append(node);
-        }
-    } else {
-        content.append(document.createTextNode(text));
-    }
-
-    message.append(content);
-
-    float(message, zIndex, transitionDuration);
-    message.style.width = number2px(width);
-    message.style.right = number2px(-width);
-    message.classList.add(`ringo-message-${type}`);
-
-    if (onClick) message.addEventListener('click', () => onClick(message));
-    if (showClose || duration === 0) {
-        const closeButton = createElement('i', 'ringo-message-close');
-        closeButton.addEventListener('click', close);
-        message.append(closeButton);
-    }
-
-    let isClosed = false;
-
-    function close() {
-        if (!isClosed) {
-            message.style.right = number2px(-width);
-            if (onClose) onClose();
-            setTimeout(() => height.removeInstance(id), transitionDuration);
-            isClosed = true;
-        }
-    }
-
-    const id = height.addInstance(message, marginTop);
-
-    setTimeout(() => { message.style.right = number2px(marginRight); }, 15);
-    if (duration !== 0) setTimeout(close, duration);
-};
-
-export type MessageProperty = {
+type MessageProperties = {
     type?: 'success' | 'info' | 'error' | 'warning';
     text: string;
     title?: string;
@@ -83,4 +20,63 @@ export type MessageProperty = {
     zIndex?: number;
     transitionDuration?: number;
     dangerouslyUseHTML?: boolean;
-};
+}
+
+function createMessageElement(
+    {
+        type = 'info', text, title = type, dangerouslyUseHTML,
+        duration, showClose = duration === 0
+    }: MessageProperties,
+    close: () => void
+) {
+    return createElement({
+        tag: 'div',
+        className: `ringo-message ringo-message-${type}`,
+        child: [createElement({
+            tag: 'h3',
+            className: 'ringo-message-head',
+            child: createElement({
+                tag: 'div',
+                className: 'ringo-message-title',
+                child: title
+            })
+        }),
+        createElement({
+            tag: 'p',
+            className: 'ringo-message-content',
+            child: dangerouslyUseHTML ? useHTML(text!) : text!
+        }),
+        when(showClose, createElement({
+            tag: 'i',
+            className: 'ringo-message-close',
+            onClick: close
+        }))
+        ]
+    });
+}
+
+export function message(property: MessageProperties) {
+    const element = createMessageElement(property, close);
+    document.body.append(element);
+    const {
+        width = 300, marginRight = 20, marginTop = 10,
+        transitionDuration = 300, onClick, duration = 3000,
+        zIndex = 10_000, onClose
+    } = property;
+    element.style.width = numberToPixel(width);
+    element.style.right = numberToPixel(-element.offsetWidth);
+    element.style.zIndex = String(zIndex);
+    animate(element, {right: numberToPixel(marginRight)}, {easing: spring()});
+    element.style.top = numberToPixel(height.getHeight() + marginRight);
+    const target = {target: element, marginTop};
+    height.add(target);
+    function close() {
+        height.remove(target, false);
+        animate(element, {right: numberToPixel(-element.offsetWidth)});
+        setTimeout(() => element.remove(), transitionDuration);
+        if (onClose) onClose();
+    }
+    useHeight(element, transitionDuration);
+    setOnClick(element, onClick);
+    if (duration) setTimeout(close, duration);
+}
