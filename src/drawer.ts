@@ -27,11 +27,11 @@ export type DrawerProperties = {
 }
 
 export const createButton = ({
-    primary, text, onClick = () => {}, close
+    primary = false, text, onClick = () => {}, close
 }: Button, closeFunction: () => any, name: string = 'drawer') => {
     return createElement({
         tag: 'button',
-        className: `ringo-${name}-button ringo-button-primary-${primary || false}`,
+        className: `ringo-${name}-button ${when(primary, 'ringo-button-primary')}`,
         child: text,
         onClick: () => {
             onClick(closeFunction);

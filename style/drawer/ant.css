@@ -33,7 +33,7 @@
 }
 
 .ringo-drawer-title {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     margin: 0;
     font-weight: 400;
@@ -96,11 +96,12 @@
     .ringo-drawer-button {
         border-color: #434343;
         color: #eee;
+        opacity: 0.9;
     }
 }
 
-.ringo-drawer-button.ringo-button-primary-true {
-    background-color: #3498db;
+.ringo-drawer-button.ringo-button-primary {
+    background-color: #1890ff;
     color: #fff;
-    border-color: #3498db;
+    border-color: #1890ff;
 }
