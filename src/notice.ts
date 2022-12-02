@@ -6,7 +6,7 @@ const height = new Height();
 type NoticeProperties = {
     text: string,
     marginTop?: number,
-    type: 'info' | 'warning' | 'error' | 'success',
+    type?: 'info' | 'warning' | 'error' | 'success',
     duration: number,
     onClick?: (element: HTMLElement) => any;
     onClose?: () => any;
@@ -30,7 +30,7 @@ function createNoticeElement({text, type, dangerouslyUseHTML}: NoticeProperties)
 export function notice(property: NoticeProperties) {
     const {
         marginTop = 12, duration = 3000, onClick, zIndex = 10_000,
-        transitionDuration = 300, onClose
+        transitionDuration = 300, onClose, type = 'info'
     } = property;
     const element = createNoticeElement(property);
     document.body.append(element);

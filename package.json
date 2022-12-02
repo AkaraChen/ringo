@@ -53,7 +53,7 @@
         }
     },
     "dependencies": {
-        "eslint-plugin-unicorn": "^45.0.0",
+        "eslint-plugin-unicorn": "^45.0.1",
         "motion": "^10.14.3"
     }
 }
