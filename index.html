@@ -44,13 +44,13 @@
     </div>
     <div>
         <p>Dialog</p>
-        <sw-button>Open</sw-button>
+        <sw-button id="dialog">Open</sw-button>
     </div>
     <script type="module">
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
-        import {message, notice, drawer} from './src/index.ts';
-        nashi('#mi').click(() => message({text: lorem, type: 'info'}))
+        import {message, notice, drawer, dialog} from './src/index.ts';
+        nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
         nashi('#mw').click(() => message({ text: lorem, type: 'warning' }))
         nashi('#me').click(() => message({ text: lorem, type: 'error' }))
         nashi('#ms').click(() => message({ text: lorem, type: 'success' }))
@@ -82,6 +82,13 @@
                 }
             ],
         }))
+        nashi('#dialog').click(() => {
+            dialog({
+                title: short,
+                text: lorem.slice(0, 100),
+                showClose: true,
+            })
+        })
     </script>
 </body>
 

@@ -1,7 +1,5 @@
 import {createElement, setOnClick, useHTML} from './dom';
-import {animate} from 'motion';
 import {Height, useHeight} from './height';
-import {numberToPixel} from './style';
 
 const height = new Height();
 
@@ -37,7 +35,7 @@ export function notice(property: NoticeProperties) {
     const element = createNoticeElement(property);
     document.body.append(element);
     element.style.top = `${-element.offsetHeight}px`;
-    element.style.left = `calc(50vw - ${element.offsetWidth}px)`;
+    element.style.left = `calc(50vw - ${element.offsetWidth / 2}px)`;
     useHeight(element, transitionDuration);
     const target = {target: element, marginTop};
     height.add(target);

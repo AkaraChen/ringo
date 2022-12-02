@@ -1,11 +1,10 @@
 .ringo-dialog {
+    position: fixed;
     background-color: #fff;
     border: none;
     box-shadow: 0 3px 6px -4px #0000001f,
         0 6px 16px #00000014,
         0 9px 28px 8px #0000000d;
-    padding: 1em 0;
-    word-break: normal;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,25 +20,26 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgba(0, 0, 0, .06);
-    padding: 0 1em;
-    padding-bottom: 10px;
+    padding: 16px 24px;
 }
 
 .ringo-dialog-title {
     font-size: 16px;
-    font-weight: normal;
+    font-weight: medium;
+    margin: 0;
 }
 
 .ringo-dialog-body {
-    padding: 0.5em 1em;
-    font-size: 14px;
+    padding: 24px;
+    font-size: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, .06);
+    opacity: 0.8;
+    line-height: 1.5;
 }
 
 @media (prefers-color-scheme: dark) {
     .ringo-dialog-head {
         border-bottom: 1px solid #303030;
-
     }
 
     .ringo-dialog-body {
@@ -55,29 +55,26 @@
 
 
 .ringo-dialog-btns {
-    margin-top: 1em;
-    padding: 0 1em;
+    padding: 12px 24px;
+    text-align: right;
 }
 
 .ringo-dialog-button {
     display: inline-flex;
     height: 32px;
     align-items: center;
-    justify-content: center;
-    padding: 4px 15px;
+    padding: 0.5em 1.5em;
     border-radius: 2px;
     outline: none;
-    border: none;
     border: 1px solid #d9d9d9;
     background-color: transparent;
     box-shadow: 0 2px #00000004;
-    transition: 0.25s all;
     color: #000;
-    font-size: 15px;
     cursor: pointer;
     user-select: none;
     margin-right: 4px;
     font-size: 14px;
+    margin-left: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,12 +84,12 @@
         color: #eee;
     }
 
-    .ringo-dialog-button.ringo-dialog-button-primary {
+    .ringo-dialog-button.ringo-button-primary-true {
         border: none;
     }
 }
 
-.ringo-dialog-button.ringo-dialog-button-primary {
+.ringo-dialog-button.ringo-button-primary-true {
     background-color: #3498db;
     color: white;
     border: none;

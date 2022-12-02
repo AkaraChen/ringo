@@ -1,7 +1,7 @@
 type createElementProperties = {
     tag?: string,
     className?: string,
-    child?: string | Node | Array<Node | undefined> | undefined,
+    child?: string | Node | Array<Node | string | undefined> | undefined,
     onClick?: (element: HTMLElement) => any
 }
 
@@ -19,7 +19,9 @@ export const createElement = (property: createElementProperties) => {
         child = [child];
     }
     if (Array.isArray(child)) {
-        for (const node of child) { if (node) element.append(node); }
+        for (const node of child) {
+            if (node) { element.append(node); }
+        }
     }
     setOnClick(element, onClick);
     return element;

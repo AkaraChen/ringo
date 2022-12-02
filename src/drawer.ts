@@ -2,6 +2,7 @@ import {createElement, useHTML} from './dom';
 import {animate} from 'motion';
 import {numberToPixel} from './style';
 import {backdrop} from './backdrop';
+import {when} from './util';
 
 export type Button = {
     text: string;
@@ -25,12 +26,12 @@ export type DrawerProperties = {
     clickBackdropClose?: boolean;
 }
 
-const createButton = ({
+export const createButton = ({
     primary, text, onClick = () => {}, close
-}: Button, closeFunction: () => any) => {
+}: Button, closeFunction: () => any, name: string = 'drawer') => {
     return createElement({
         tag: 'button',
-        className: `ringo-drawer-button ringo-button-primary-${primary || false}`,
+        className: `ringo-${name}-button ringo-button-primary-${primary || false}`,
         child: text,
         onClick: () => {
             onClick(closeFunction);
@@ -45,8 +46,6 @@ const createDrawerElement = (
     }: DrawerProperties,
     close: () => void
 ) => {
-    const buttonList = [];
-    for (const button of buttons) { buttonList.push(createButton(button, close)); }
     return createElement({
         className: 'ringo-drawer',
         child: [createElement({
@@ -66,7 +65,7 @@ const createDrawerElement = (
             child: dangerouslyUseHTML ? useHTML(content!) : content
         }), createElement({
             className: 'ringo-drawer-btns',
-            child: buttonList
+            child: when(buttons, buttons.map(button => createButton(button, close)))
         })]
     });
 };
