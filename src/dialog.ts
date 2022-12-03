@@ -1,6 +1,6 @@
 import {createElement} from './dom';
 import {animate, spring} from 'motion';
-import {Button, createButton} from './drawer';
+import {Button, createButton} from './button';
 import {when} from './util';
 import {numberToPixel} from './style';
 import {backdrop} from './backdrop';
@@ -51,7 +51,7 @@ const createDialogElement = ({
         }),
         createElement({
             className: 'ringo-dialog-btns',
-            child: when(buttons, () => buttons!.map(button => createButton(button, close, 'dialog')))
+            child: when(buttons, () => buttons!.map(button => createButton(button, close)))
         })]
     });
 };

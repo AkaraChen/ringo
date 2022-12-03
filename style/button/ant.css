@@ -1,0 +1,110 @@
+.ringo-button {
+    --primary: #1890ff;
+    --primary-hover: #40a9ff;
+    --font-color: #000;
+    --border-color: #d9d9d9;
+
+    display: inline-flex;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 15px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    box-shadow: 0 2px #00000004;
+    transition: 0.25s all;
+    color: #000;
+    font-size: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-button {
+        --primary: #177ddc;
+        --primary-hover: #095cb5;
+        --font-color: #fff;
+        --border-color: #434343;
+
+        color: #fff;
+        box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    }
+}
+
+.ringo-button:hover,
+.ringo-button:focus {
+    border-color: var(--primary-hover);
+    color: var(--primary-hover);
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-button:hover,
+    .ringo-button:focus {
+        border-color: var(--primary-hover);
+        color: var(--primary-hover);
+    }
+}
+
+.ringo-button-primary {
+    background-color: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.ringo-button-primary:hover,
+.ringo-button-primary:focus {
+    border-color: var(--primary-hover);
+    background-color: var(--primary-hover);
+    color: #fff;
+}
+
+.ringo-button.ringo-button-type-error {
+    --primary: #ff4d4f;
+    --primary-hover: #ff7875;
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-button.ringo-button-type-error {
+        --primary: #a61d24;
+        --primary-hover: #800f19;
+    }
+}
+
+.ringo-button.ringo-button-type-warning {
+    --primary: #faad14;
+    --primary-hover: #ffc53d;
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-button.ringo-button-type-warning {
+        --primary: #d48806;
+        --primary-hover: #ad6800;
+    }
+}
+
+.ringo-button.ringo-button-type-success {
+    --primary: #52c41a;
+    --primary-hover: #73d13d;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ringo-button.ringo-button-type-success {
+        --primary: #389e0d;
+        --primary-hover: #237804;
+    }
+}
+
+.ringo-button[disabled] {
+    cursor: no-drop;
+    opacity: 0.5;
+}
+
+.ringo-button + .ringo-button {
+    margin-left: 4px;
+}

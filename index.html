@@ -51,9 +51,9 @@
         const short = 'This is a short message.'
         import {message, notice, drawer, dialog} from './src/index.ts';
         nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
-        nashi('#mw').click(() => message({ text: lorem, type: 'warning' }))
-        nashi('#me').click(() => message({ text: lorem, type: 'error' }))
-        nashi('#ms').click(() => message({ text: lorem, type: 'success' }))
+        nashi('#mw').click(() => message({ text: lorem, type: 'warning', showClose: true }))
+        nashi('#me').click(() => message({ text: lorem, type: 'error', showClose: true }))
+        nashi('#ms').click(() => message({ text: lorem, type: 'success', showClose: true }))
         nashi('#ni').click(() => notice({ text: short, type: 'info' }))
         nashi('#nw').click(() => notice({ text: short, type: 'warning' }))
         nashi('#ne').click(() => notice({ text: short, type: 'error' }))
@@ -63,7 +63,7 @@
             content: lorem,
             position: 'left',
             buttons: [
-                { text: 'Primary', onClick: () => {}, close: true, primary: true },
+                { text: 'Primary', close: true, primary: true },
                 { text: 'Secondary', onClick: (close) => {
                         if (1 === 1) close();
                     },

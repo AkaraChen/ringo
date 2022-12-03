@@ -3,13 +3,7 @@ import {animate} from 'motion';
 import {numberToPixel} from './style';
 import {backdrop} from './backdrop';
 import {when} from './util';
-
-export type Button = {
-    text: string;
-    onClick: (closeFunction: () => void) => any
-    close?: boolean;
-    primary?: boolean
-};
+import {Button, createButton} from './button';
 
 export type DrawerProperties = {
     width?: number;
@@ -25,20 +19,6 @@ export type DrawerProperties = {
     dangerouslyUseHTML?: boolean;
     clickBackdropClose?: boolean;
 }
-
-export const createButton = ({
-    primary = false, text, onClick = () => {}, close
-}: Button, closeFunction: () => any, name: string = 'drawer') => {
-    return createElement({
-        tag: 'button',
-        className: `ringo-${name}-button ${when(primary, 'ringo-button-primary')}`,
-        child: text,
-        onClick: () => {
-            onClick(closeFunction);
-            if (close) closeFunction();
-        }
-    });
-};
 
 const createDrawerElement = (
     {
@@ -95,6 +75,6 @@ export const drawer = (property: DrawerProperties) => {
             {[`${position}`]: numberToPixel(-width)},
             {duration: transitionDuration / 1000}
         );
-        setTimeout(() => element.remove, transitionDuration);
+        setTimeout(() => element.remove(), transitionDuration);
     }
 };

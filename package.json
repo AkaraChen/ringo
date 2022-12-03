@@ -1,6 +1,6 @@
 {
     "name": "@akrc/ringo",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "",
     "main": "./dist/esm.js",
     "scripts": {
@@ -11,7 +11,8 @@
         "prepublish": "npm run build",
         "docs:dev": "vitepress dev docs",
         "docs:build": "vitepress build docs",
-        "docs:serve": "vitepress serve docs"
+        "docs:serve": "vitepress serve docs",
+        "dev": "vite"
     },
     "keywords": [],
     "author": "",
@@ -25,8 +26,10 @@
         "eslint-config-akrc": "^0.0.8",
         "eslint-config-prettier": "8.5.0",
         "eslint-plugin-prettier": "4.2.1",
+        "eslint-plugin-unicorn": "^45.0.1",
         "happy-dom": "7.7.0",
         "husky": "8.0.2",
+        "motion": "^10.14.3",
         "nanoid": "4.0.0",
         "prettier": "2.8.0",
         "rimraf": "3.0.2",
@@ -54,9 +57,5 @@
                 "@algolia/client-search"
             ]
         }
-    },
-    "dependencies": {
-        "eslint-plugin-unicorn": "^45.0.1",
-        "motion": "^10.14.3"
     }
 }

@@ -1,3 +1,5 @@
+@import '../button/ant.css';
+
 .ringo-drawer {
     box-sizing: border-box;
     position: fixed;
@@ -69,39 +71,4 @@
 .ringo-drawer-btns {
     padding: 12px 24px;
     margin-top: auto;
-}
-
-.ringo-drawer-button {
-    display: inline-flex;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 15px;
-    border-radius: 2px;
-    outline: none;
-    border: none;
-    border: 1px solid #d9d9d9;
-    background-color: transparent;
-    box-shadow: 0 2px #00000004;
-    transition: 0.25s all;
-    color: #000;
-    font-size: 15px;
-    cursor: pointer;
-    user-select: none;
-    margin-right: 4px;
-    font-size: 14px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .ringo-drawer-button {
-        border-color: #434343;
-        color: #eee;
-        opacity: 0.9;
-    }
-}
-
-.ringo-drawer-button.ringo-button-primary {
-    background-color: #1890ff;
-    color: #fff;
-    border-color: #1890ff;
 }

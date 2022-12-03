@@ -1,3 +1,4 @@
+@import '../button/ant.css';
 .ringo-dialog {
     position: fixed;
     background-color: #fff;
@@ -56,41 +57,4 @@
 .ringo-dialog-btns {
     padding: 12px 24px;
     text-align: right;
-}
-
-.ringo-dialog-button {
-    display: inline-flex;
-    height: 32px;
-    align-items: center;
-    padding: 0.5em 1.5em;
-    border-radius: 2px;
-    outline: none;
-    border: 1px solid #d9d9d9;
-    background-color: transparent;
-    box-shadow: 0 2px #00000004;
-    color: #000;
-    cursor: pointer;
-    user-select: none;
-    margin-right: 4px;
-    font-size: 14px;
-    margin-left: auto;
-}
-
-@media (prefers-color-scheme: dark) {
-    .ringo-dialog-button {
-        background-color: transparent;
-        border-color: #434343;
-        color: #eee;
-    }
-
-    .ringo-dialog-button.ringo-button-primary {
-        border: none;
-        opacity: 0.9;
-    }
-}
-
-.ringo-dialog-button.ringo-button-primary {
-    background-color: #1890ff;
-    color: white;
-    border: none;
 }
