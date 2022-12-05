@@ -19,7 +19,7 @@ specifiers:
   typescript: 4.9.3
   vite: ^3.2.4
   vitepress: 1.0.0-alpha.30
-  vitest: 0.25.3
+  vitest: 0.25.4
   vue: 3.2.45
 
 devDependencies:
@@ -41,7 +41,7 @@ devDependencies:
   typescript: 4.9.3
   vite: 3.2.4
   vitepress: 1.0.0-alpha.30
-  vitest: 0.25.3_happy-dom@7.7.2
+  vitest: 0.25.4_happy-dom@7.7.2
   vue: 3.2.45
 
 packages:
@@ -3350,8 +3350,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /strip-literal/0.4.2:
-    resolution: {integrity: sha512-pv48ybn4iE1O9RLgCAN0iU4Xv7RlBTiit6DKmMiErbs9x1wH6vXBs45tWc0H5wUIF6TLTrKweqkmYF/iraQKNw==}
+  /strip-literal/1.0.0:
+    resolution: {integrity: sha512-5o4LsH1lzBzO9UFH63AJ2ad2/S2AVx6NtjOcaz+VTT2h1RiRvbipW72z8M/lxEhcPHDBQwpDrnTF7sXy/7OwCQ==}
     dependencies:
       acorn: 8.8.1
     dev: true
@@ -3708,8 +3708,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.25.3_happy-dom@7.7.2:
-    resolution: {integrity: sha512-/UzHfXIKsELZhL7OaM2xFlRF8HRZgAHtPctacvNK8H4vOcbJJAMEgbWNGSAK7Y9b1NBe5SeM7VTuz2RsTHFJJA==}
+  /vitest/0.25.4_happy-dom@7.7.2:
+    resolution: {integrity: sha512-v/qoSEYPrf8qa1CbKIKYK+1GGmPPEJyXFbkuD6jhh080cfNBsuUDAdMu6hV2h9Uv34EMiUrVETL/wB+EHxFtbA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -3740,7 +3740,7 @@ packages:
       happy-dom: 7.7.2
       local-pkg: 0.4.2
       source-map: 0.6.1
-      strip-literal: 0.4.2
+      strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
