@@ -23,36 +23,36 @@ export const backdrop = (property: BackdropProperties = {}) => {
 
     let count = 0;
     let isCreated = false;
-    let backdrop: HTMLElement;
+    let backdropElement: HTMLElement;
 
     const createBackdrop = () => {
         if (!isCreated) {
-            backdrop = createElement({tag: 'div'});
-            backdrop.style.position = 'fixed';
-            backdrop.style.top = '0';
-            backdrop.style.left = '0';
-            backdrop.style.width = '100vw';
-            backdrop.style.height = '100vh';
-            backdrop.style.zIndex = String(zIndex);
-            backdrop.style.transition = `all ${transitionDuration}ms`;
-            backdrop.style.transitionDuration = String(transitionDuration);
-            backdrop.style.opacity = '0';
-            requestAnimationFrame(() => { backdrop.style.opacity = String(opacity); });
-            backdrop.style.backgroundColor = isDark() ? colorDark : colorLight;
+            backdropElement = createElement({tag: 'div'});
+            backdropElement.style.position = 'fixed';
+            backdropElement.style.top = '0';
+            backdropElement.style.left = '0';
+            backdropElement.style.width = '100vw';
+            backdropElement.style.height = '100vh';
+            backdropElement.style.zIndex = String(zIndex);
+            backdropElement.style.transition = `all ${transitionDuration}ms`;
+            backdropElement.style.transitionDuration = String(transitionDuration);
+            backdropElement.style.opacity = '0';
+            requestAnimationFrame(() => { backdropElement.style.opacity = String(opacity); });
+            backdropElement.style.backgroundColor = isDark() ? colorDark : colorLight;
             onColorChange(event => {
-                backdrop.style.backgroundColor = event.matches
+                backdropElement.style.backgroundColor = event.matches
                     ? colorDark
                     : colorLight;
             });
-            document.body.append(backdrop);
-            if (onClick) backdrop.addEventListener('click', onClick);
+            document.body.append(backdropElement);
+            if (onClick) backdropElement.addEventListener('click', onClick);
             isCreated = true;
         }
     };
     const removeBackdrop = () => {
         if (isCreated) {
-            backdrop.style.opacity = '0';
-            setTimeout(() => backdrop.remove(), transitionDuration);
+            backdropElement.style.opacity = '0';
+            setTimeout(() => backdropElement.remove(), transitionDuration);
             isCreated = false;
         }
     };

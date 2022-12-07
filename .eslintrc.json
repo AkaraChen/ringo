@@ -3,10 +3,7 @@
         "akrc"
     ],
     "rules": {
-        "no-param-reassign": 0,
-        "no-plusplus": 0,
-        "no-shadow": 0,
-        "no-use-before-define": 0,
-        "no-unused-vars": 0
+        "no-unused-vars": "off",
+        "no-use-before-define": 0
     }
 }
