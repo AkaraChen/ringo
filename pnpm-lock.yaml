@@ -6,7 +6,7 @@ specifiers:
   esbuild: 0.16.5
   esbuild-plugin-d.ts: 1.1.0
   eslint: 8.29.0
-  eslint-config-akrc: ^0.0.8
+  eslint-config-akrc: ^0.0.9
   eslint-plugin-unicorn: ^45.0.1
   happy-dom: 8.1.0
   husky: 8.0.2
@@ -25,7 +25,7 @@ devDependencies:
   esbuild: 0.16.5
   esbuild-plugin-d.ts: 1.1.0_typescript@4.9.4
   eslint: 8.29.0
-  eslint-config-akrc: 0.0.8
+  eslint-config-akrc: 0.0.9
   eslint-plugin-unicorn: 45.0.1_eslint@8.29.0
   happy-dom: 8.1.0
   husky: 8.0.2
@@ -1576,8 +1576,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-akrc/0.0.8:
-    resolution: {integrity: sha512-RChYdPEyloK+naoOZFIMS+ihY2tsIw1rsWoiUPp03wlYtEnWXhM4DM9SAdvUiJe97uJSbvieZOpM0IAJTBxyDg==}
+  /eslint-config-akrc/0.0.9:
+    resolution: {integrity: sha512-7WxSYmTQrc7G3Nn1XIvGNtc7nBlzqpkjvDmEmExtpaFYnjFM5NPuffo9wbLUB0BmHnslJNhcfV+W5eUsRUK3PQ==}
     requiresBuild: true
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
@@ -1587,7 +1587,7 @@ packages:
       eslint-plugin-import: 2.26.0_z7hwuz3w5sq2sbhy7d4iqrnsvq
       eslint-plugin-node: 11.1.0_eslint@8.29.0
       eslint-plugin-react: 7.31.11_eslint@8.29.0
-      eslint-plugin-unicorn: 45.0.1_eslint@8.29.0
+      eslint-plugin-unicorn: 45.0.2_eslint@8.29.0
       eslint-plugin-vue: 9.8.0_eslint@8.29.0
       typescript: 4.9.4
       vue-eslint-parser: 9.1.0_eslint@8.29.0
@@ -1718,6 +1718,31 @@ packages:
 
   /eslint-plugin-unicorn/45.0.1_eslint@8.29.0:
     resolution: {integrity: sha512-tLnIw5oDJJc3ILYtlKtqOxPP64FZLTkZkgeuoN6e7x6zw+rhBjOxyvq2c7577LGxXuIhBYrwisZuKNqOOHp3BA==}
+    engines: {node: '>=14.18'}
+    peerDependencies:
+      eslint: '>=8.28.0'
+    dependencies:
+      '@babel/helper-validator-identifier': 7.19.1
+      '@eslint-community/eslint-utils': 4.1.2_eslint@8.29.0
+      ci-info: 3.7.0
+      clean-regexp: 1.0.0
+      eslint: 8.29.0
+      esquery: 1.4.0
+      indent-string: 4.0.0
+      is-builtin-module: 3.2.0
+      jsesc: 3.0.2
+      lodash: 4.17.21
+      pluralize: 8.0.0
+      read-pkg-up: 7.0.1
+      regexp-tree: 0.1.24
+      regjsparser: 0.9.1
+      safe-regex: 2.1.1
+      semver: 7.3.8
+      strip-indent: 3.0.0
+    dev: true
+
+  /eslint-plugin-unicorn/45.0.2_eslint@8.29.0:
+    resolution: {integrity: sha512-Y0WUDXRyGDMcKLiwgL3zSMpHrXI00xmdyixEGIg90gHnj0PcHY4moNv3Ppje/kDivdAy5vUeUr7z211ImPv2gw==}
     engines: {node: '>=14.18'}
     peerDependencies:
       eslint: '>=8.28.0'
