@@ -15,7 +15,7 @@ specifiers:
   rimraf: 3.0.2
   typescript: 4.9.4
   vite: ^4.0.0
-  vitepress: 1.0.0-alpha.31
+  vitepress: 1.0.0-alpha.32
   vitest: 0.25.8
   vue: 3.2.45
 
@@ -34,7 +34,7 @@ devDependencies:
   rimraf: 3.0.2
   typescript: 4.9.4
   vite: 4.0.0
-  vitepress: 1.0.0-alpha.31
+  vitepress: 1.0.0-alpha.32
   vitest: 0.25.8_happy-dom@8.1.0
   vue: 3.2.45
 
@@ -3473,8 +3473,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.31:
-    resolution: {integrity: sha512-FWFXLs7WLbFbemxjBWo2S2+qUZCIoeLLyAKfVUpIu3LUB8oQ8cyIANRGO6f6zsM51u2bvJU9Sm+V6Z0WjOWS2Q==}
+  /vitepress/1.0.0-alpha.32:
+    resolution: {integrity: sha512-Q45N1cLdRr8MAu/+wAKKow7CNQD4sNBlSNsW1UxYfkvSgwPN/dlEmpEkQl/uOpE3C1kv3jvvEJVY0RAIaJFWYQ==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.0
