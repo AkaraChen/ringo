@@ -1,5 +1,5 @@
 import {test, expect} from 'vitest';
-import {backdrop, message, notice} from '../src/index';
+import {backdrop, message, notice} from '../dist/index';
 import {sleep} from './util';
 
 test('message', async () => {
