@@ -9,7 +9,7 @@ The message, Dialog, and Notice components written in Pure TypeScript.
 ## Usage
 
 ```shell
-pnpm add ringo motion
+pnpm add ringo 
 ```
 
 ```ts
