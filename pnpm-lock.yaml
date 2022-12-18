@@ -6,7 +6,7 @@ specifiers:
   esbuild: 0.16.9
   esbuild-plugin-d.ts: 1.1.0
   eslint: 8.30.0
-  eslint-config-akrc: ^0.0.9
+  eslint-config-akrc: ^0.0.10
   eslint-plugin-unicorn: ^45.0.1
   happy-dom: 8.1.0
   husky: 8.0.2
@@ -25,7 +25,7 @@ devDependencies:
   esbuild: 0.16.9
   esbuild-plugin-d.ts: 1.1.0_typescript@4.9.4
   eslint: 8.30.0
-  eslint-config-akrc: 0.0.9
+  eslint-config-akrc: 0.0.10
   eslint-plugin-unicorn: 45.0.1_eslint@8.30.0
   happy-dom: 8.1.0
   husky: 8.0.2
@@ -1576,8 +1576,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-akrc/0.0.9:
-    resolution: {integrity: sha512-7WxSYmTQrc7G3Nn1XIvGNtc7nBlzqpkjvDmEmExtpaFYnjFM5NPuffo9wbLUB0BmHnslJNhcfV+W5eUsRUK3PQ==}
+  /eslint-config-akrc/0.0.10:
+    resolution: {integrity: sha512-G/Gc+YchTG+IGCWRny6aabH9+5xTijTDNLYj460rPGPRDA0bGvoRc9x6IZPjAgLZojrQCiIwkHCp4rQ0binBWg==}
     requiresBuild: true
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
