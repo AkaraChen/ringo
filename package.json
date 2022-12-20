@@ -20,7 +20,7 @@
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "5.47.0",
         "@typescript-eslint/parser": "5.47.0",
-        "esbuild": "0.16.9",
+        "esbuild": "0.16.10",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.30.0",
         "eslint-config-akrc": "^0.0.10",
