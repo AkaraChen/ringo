@@ -23,7 +23,7 @@
         "esbuild": "0.16.10",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.30.0",
-        "eslint-config-akrc": "^0.0.10",
+        "eslint-config-akrc": "^0.0.11",
         "eslint-plugin-unicorn": "^45.0.1",
         "happy-dom": "8.1.1",
         "husky": "8.0.2",
