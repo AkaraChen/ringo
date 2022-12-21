@@ -8,7 +8,7 @@ specifiers:
   eslint: 8.30.0
   eslint-config-akrc: ^0.0.10
   eslint-plugin-unicorn: ^45.0.1
-  happy-dom: 8.1.0
+  happy-dom: 8.1.1
   husky: 8.0.2
   motion: ^10.14.3
   nanoid: 4.0.0
@@ -27,7 +27,7 @@ devDependencies:
   eslint: 8.30.0
   eslint-config-akrc: 0.0.10
   eslint-plugin-unicorn: 45.0.1_eslint@8.30.0
-  happy-dom: 8.1.0
+  happy-dom: 8.1.1
   husky: 8.0.2
   motion: 10.14.3
   nanoid: 4.0.0
@@ -35,7 +35,7 @@ devDependencies:
   typescript: 4.9.4
   vite: 4.0.0
   vitepress: 1.0.0-alpha.32
-  vitest: 0.26.1_happy-dom@8.1.0
+  vitest: 0.26.1_happy-dom@8.1.1
   vue: 3.2.45
 
 packages:
@@ -2126,8 +2126,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /happy-dom/8.1.0:
-    resolution: {integrity: sha512-R9NVb5815gpMFsldZF0wVSHw2uSobx6yitSkCdQPda1kwfAmVw4Ut8ZspxGHXkK6OA93SznldkcvrbhKFr6JcA==}
+  /happy-dom/8.1.1:
+    resolution: {integrity: sha512-uI8NneN2B0D+vwIhjQVKtIUYOSh/zymfj61bU/fxkoAw+Aktn0ewG6dYKyFPOvyBoFLPg3S8fsn2OqSoYCqJeQ==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -3561,7 +3561,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.26.1_happy-dom@8.1.0:
+  /vitest/0.26.1_happy-dom@8.1.1:
     resolution: {integrity: sha512-qTLRnjYmjmJpHlLUtErxtlRqGCe8WItFhGXKklpWivu7CLP9KXN9iTezROe+vf51Kb+BB/fzxK6fUG9DvFGL5Q==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -3590,7 +3590,7 @@ packages:
       acorn-walk: 8.2.0
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.1.0
+      happy-dom: 8.1.1
       local-pkg: 0.4.2
       source-map: 0.6.1
       strip-literal: 1.0.0
