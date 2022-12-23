@@ -25,7 +25,7 @@ type MessageProperties = {
 function createMessageElement(
     {
         type = 'info', text, title = type, dangerouslyUseHTML,
-        duration, showClose = duration === 0
+        duration = 0, showClose = duration === 0
     }: MessageProperties,
     close: () => void
 ) {
