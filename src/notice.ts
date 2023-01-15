@@ -1,5 +1,5 @@
-import {createElement, setOnClick, useHTML} from './dom';
-import {Height, useHeight} from './height';
+import { createElement, setOnClick, useHTML } from './dom';
+import { Height, useHeight } from './height';
 
 const height = new Height();
 
@@ -15,7 +15,7 @@ type NoticeProperties = {
     dangerouslyUseHTML?: boolean;
 }
 
-function createNoticeElement({text, type, dangerouslyUseHTML}: NoticeProperties) {
+function createNoticeElement({ text, type, dangerouslyUseHTML }: NoticeProperties) {
     return createElement({
         tag: 'div',
         className: `ringo-notice ringo-notice-${type || 'info'}`,
@@ -36,7 +36,7 @@ export function notice(property: NoticeProperties) {
     document.body.append(element);
     element.style.top = `${-element.offsetHeight}px`;
     useHeight(element, transitionDuration);
-    const target = {target: element, marginTop};
+    const target = { target: element, marginTop };
     height.add(target);
     function close() {
         height.remove(target);

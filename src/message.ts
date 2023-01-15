@@ -1,8 +1,8 @@
-import {createElement, setOnClick, useHTML} from './dom';
-import {animate, spring} from 'motion';
-import {Height, useHeight} from './height';
-import {numberToPixel} from './style';
-import {when} from './util';
+import { createElement, setOnClick, useHTML } from './dom';
+import { animate, spring } from 'motion';
+import { Height, useHeight } from './height';
+import { numberToPixel } from './style';
+import { when } from './util';
 
 const height = new Height();
 
@@ -66,13 +66,13 @@ export function message(property: MessageProperties) {
     element.style.width = numberToPixel(width);
     element.style.right = numberToPixel(-element.offsetWidth);
     element.style.zIndex = String(zIndex);
-    animate(element, {right: numberToPixel(marginRight)}, {easing: spring()});
+    animate(element, { right: numberToPixel(marginRight) }, { easing: spring() });
     element.style.top = numberToPixel(height.getHeight() + marginRight);
-    const target = {target: element, marginTop};
+    const target = { target: element, marginTop };
     height.add(target);
     function close() {
         height.remove(target, false);
-        animate(element, {right: numberToPixel(-element.offsetWidth)});
+        animate(element, { right: numberToPixel(-element.offsetWidth) });
         setTimeout(() => element.remove(), transitionDuration);
         if (onClose) onClose();
     }

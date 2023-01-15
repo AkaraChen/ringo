@@ -1,5 +1,5 @@
-import {createElement} from './dom';
-import {isDark, onColorChange} from './theme';
+import { createElement } from './dom';
+import { isDark, onColorChange } from './theme';
 
 export type BackdropProperties = {
     color?: 'light' | 'dark';
@@ -27,7 +27,7 @@ export const backdrop = (property: BackdropProperties = {}) => {
 
     const createBackdrop = () => {
         if (!isCreated) {
-            backdropElement = createElement({tag: 'div'});
+            backdropElement = createElement({ tag: 'div' });
             backdropElement.style.position = 'fixed';
             backdropElement.style.top = '0';
             backdropElement.style.left = '0';

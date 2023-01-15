@@ -1,5 +1,5 @@
-import {pixelToNumber, numberToPixel} from './style';
-import {animate} from 'motion';
+import { pixelToNumber, numberToPixel } from './style';
+import { animate } from 'motion';
 
 type Instance = {
     target: HTMLElement,
@@ -19,19 +19,19 @@ export class Height {
     }
 
     add(instance: Instance) {
-        const {target, marginTop} = instance;
+        const { target, marginTop } = instance;
         const height = this.getHeight() + marginTop;
-        target.dispatchEvent(new CustomEvent('ringotop', {detail: height}));
+        target.dispatchEvent(new CustomEvent('ringotop', { detail: height }));
         this.list.push(instance);
     }
 
     remove(instance: Instance, setTop = true) {
-        const {target, marginTop} = instance;
+        const { target, marginTop } = instance;
         const height = target.offsetHeight + marginTop;
         if (setTop) {
             target.dispatchEvent(new CustomEvent(
                 'ringotop',
-                {detail: -height}
+                { detail: -height }
             ));
         }
         const index = this.list.indexOf(instance);
@@ -41,7 +41,7 @@ export class Height {
                 const currentHeight = pixelToNumber(element.style.top);
                 element.dispatchEvent(new CustomEvent(
                     'ringotop',
-                    {detail: currentHeight - height}
+                    { detail: currentHeight - height }
                 ));
             }
         }
@@ -54,8 +54,8 @@ export const useHeight = (element: HTMLElement, transitionDuration?: number) => 
         const top = numberToPixel((event as CustomEvent).detail);
         animate(
             element,
-            {top},
-            {easing: 'ease-in-out', duration: (transitionDuration || 300) / 1000}
+            { top },
+            { easing: 'ease-in-out', duration: (transitionDuration || 300) / 1000 }
         );
     });
 };

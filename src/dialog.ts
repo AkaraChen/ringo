@@ -1,9 +1,9 @@
-import {createElement} from './dom';
-import {animate, spring} from 'motion';
-import {Button, createButton} from './button';
-import {when} from './util';
-import {numberToPixel} from './style';
-import {backdrop} from './backdrop';
+import { createElement } from './dom';
+import { animate, spring } from 'motion';
+import { Button, createButton } from './button';
+import { when } from './util';
+import { numberToPixel } from './style';
+import { backdrop } from './backdrop';
 
 type DialogProperties = {
     title: string;
@@ -21,8 +21,8 @@ type DialogProperties = {
 const createDialogElement = ({
     title, showClose, text, form,
     buttons = [
-        {text: 'Yes', onClick: close => close(), primary: true},
-        {text: 'No', onClick: close => close()}
+        { text: 'Yes', onClick: close => close(), primary: true },
+        { text: 'No', onClick: close => close() }
     ]
 }: DialogProperties, close: () => any) => {
     return createElement({
@@ -68,14 +68,14 @@ export const dialog = (property: DialogProperties) => {
     element.style.top = `calc(40vh - ${element.offsetHeight / 2}px)`;
     element.style.left = `calc(50vw - ${element.offsetWidth / 2}px)`;
     element.style.opacity = '0';
-    animate(element, {opacity: 1}, {duration: transitionDuration / 1000});
-    const Backdrop = backdrop({onClick: when(clickBackdropClose, () => close)});
+    animate(element, { opacity: 1 }, { duration: transitionDuration / 1000 });
+    const Backdrop = backdrop({ onClick: when(clickBackdropClose, () => close) });
     if (withBackdrop) Backdrop.add();
     function close() {
         if (withBackdrop) Backdrop.remove();
         animate(element, {
             opacity: 0
-        }, {easing: spring(), duration: transitionDuration / 1000});
+        }, { easing: spring(), duration: transitionDuration / 1000 });
         setTimeout(() => {
             element.remove();
         }, transitionDuration);

@@ -1,5 +1,5 @@
-import {createElement} from './dom';
-import {when} from './util';
+import { createElement } from './dom';
+import { when } from './util';
 
 export type Button = {
     text: string;

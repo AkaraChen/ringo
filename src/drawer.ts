@@ -1,9 +1,9 @@
-import {createElement, useHTML} from './dom';
-import {animate} from 'motion';
-import {numberToPixel} from './style';
-import {backdrop} from './backdrop';
-import {when} from './util';
-import {Button, createButton} from './button';
+import { createElement, useHTML } from './dom';
+import { animate } from 'motion';
+import { numberToPixel } from './style';
+import { backdrop } from './backdrop';
+import { when } from './util';
+import { Button, createButton } from './button';
 
 export type DrawerProperties = {
     width?: number;
@@ -61,7 +61,7 @@ export const drawer = (property: DrawerProperties) => {
     element.style.width = numberToPixel(width);
     element.style.zIndex = String(zIndex);
     element.style[position] = numberToPixel(-width);
-    animate(element, {[`${position}`]: 0});
+    animate(element, { [`${position}`]: 0 });
     const Backdrop = backdrop({
         onClick: clickBackdropClose ? close : () => {},
         transitionDuration
@@ -72,8 +72,8 @@ export const drawer = (property: DrawerProperties) => {
         if (withBackdrop) Backdrop.remove();
         animate(
             element,
-            {[`${position}`]: numberToPixel(-width)},
-            {duration: transitionDuration / 1000}
+            { [`${position}`]: numberToPixel(-width) },
+            { duration: transitionDuration / 1000 }
         );
         setTimeout(() => element.remove(), transitionDuration);
     }
