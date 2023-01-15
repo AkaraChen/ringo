@@ -22,7 +22,7 @@
         "@typescript-eslint/parser": "5.48.1",
         "esbuild": "0.17.0",
         "esbuild-plugin-d.ts": "1.1.0",
-        "eslint": "8.31.0",
+        "eslint": "8.32.0",
         "eslint-config-akrc": "^1.0.0",
         "eslint-plugin-unicorn": "^45.0.1",
         "happy-dom": "8.1.4",
