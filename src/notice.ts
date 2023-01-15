@@ -1,5 +1,6 @@
 import { createElement, setOnClick, useHTML } from './dom';
 import { Height, useHeight } from './height';
+import { stlx } from 'stlx';
 
 const height = new Height();
 
@@ -34,7 +35,7 @@ export function notice(property: NoticeProperties) {
     } = property;
     const element = createNoticeElement(property);
     document.body.append(element);
-    element.style.top = `${-element.offsetHeight}px`;
+    stlx(element).top(`${-element.offsetHeight}px`);
     useHeight(element, transitionDuration);
     const target = { target: element, marginTop };
     height.add(target);
@@ -45,5 +46,5 @@ export function notice(property: NoticeProperties) {
     }
     setTimeout(close, duration);
     setOnClick(element, onClick);
-    element.style.zIndex = zIndex.toString(10);
+    stlx(element).zIndex('' + zIndex);
 }

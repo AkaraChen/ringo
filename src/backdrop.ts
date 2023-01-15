@@ -1,5 +1,6 @@
 import { createElement } from './dom';
 import { isDark, onColorChange } from './theme';
+import { stlx } from 'stlx';
 
 export type BackdropProperties = {
     color?: 'light' | 'dark';
@@ -28,21 +29,23 @@ export const backdrop = (property: BackdropProperties = {}) => {
     const createBackdrop = () => {
         if (!isCreated) {
             backdropElement = createElement({ tag: 'div' });
-            backdropElement.style.position = 'fixed';
-            backdropElement.style.top = '0';
-            backdropElement.style.left = '0';
-            backdropElement.style.width = '100vw';
-            backdropElement.style.height = '100vh';
-            backdropElement.style.zIndex = String(zIndex);
-            backdropElement.style.transition = `all ${transitionDuration}ms`;
-            backdropElement.style.transitionDuration = String(transitionDuration);
-            backdropElement.style.opacity = '0';
-            requestAnimationFrame(() => { backdropElement.style.opacity = String(opacity); });
-            backdropElement.style.backgroundColor = isDark() ? colorDark : colorLight;
+            stlx(backdropElement)
+                .position('fixed')
+                .top('0')
+                .left('0')
+                .width('100vw')
+                .height('100vh')
+                .zIndex('' + zIndex)
+                .transition('all', `${transitionDuration}ms`)
+                .opacity('0');
+            requestAnimationFrame(() => { backdropElement.style.opacity = '' + opacity; });
+            stlx(backdropElement).backgroundColor(isDark() ? colorDark : colorLight);
             onColorChange(event => {
-                backdropElement.style.backgroundColor = event.matches
-                    ? colorDark
-                    : colorLight;
+                stlx(backdropElement).backgroundColor(
+                    event.matches
+                        ? colorDark
+                        : colorLight
+                );
             });
             document.body.append(backdropElement);
             if (onClick) backdropElement.addEventListener('click', onClick);
@@ -51,7 +54,7 @@ export const backdrop = (property: BackdropProperties = {}) => {
     };
     const removeBackdrop = () => {
         if (isCreated) {
-            backdropElement.style.opacity = '0';
+            stlx(backdropElement).opacity('0');
             setTimeout(() => backdropElement.remove(), transitionDuration);
             isCreated = false;
         }

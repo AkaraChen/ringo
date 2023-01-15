@@ -4,6 +4,7 @@ import { Button, createButton } from './button';
 import { when } from './util';
 import { numberToPixel } from './style';
 import { backdrop } from './backdrop';
+import { stlx } from 'stlx';
 
 type DialogProperties = {
     title: string;
@@ -63,11 +64,12 @@ export const dialog = (property: DialogProperties) => {
     } = property;
     const element = createDialogElement(property, close);
     document.body.append(element);
-    element.style.zIndex = String(zIndex);
-    element.style.width = numberToPixel(width);
-    element.style.top = `calc(40vh - ${element.offsetHeight / 2}px)`;
-    element.style.left = `calc(50vw - ${element.offsetWidth / 2}px)`;
-    element.style.opacity = '0';
+    stlx(element)
+        .zIndex('' + zIndex)
+        .width(numberToPixel(width))
+        .top(`calc(40vh - ${element.offsetHeight / 2}px)`)
+        .left(`calc(50vw - ${element.offsetWidth / 2}px)`)
+        .opacity('0');
     animate(element, { opacity: 1 }, { duration: transitionDuration / 1000 });
     const Backdrop = backdrop({ onClick: when(clickBackdropClose, () => close) });
     if (withBackdrop) Backdrop.add();
@@ -76,8 +78,6 @@ export const dialog = (property: DialogProperties) => {
         animate(element, {
             opacity: 0
         }, { easing: spring(), duration: transitionDuration / 1000 });
-        setTimeout(() => {
-            element.remove();
-        }, transitionDuration);
+        setTimeout(() => element.remove(), transitionDuration);
     }
 };

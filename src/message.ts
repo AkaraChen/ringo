@@ -3,6 +3,7 @@ import { animate, spring } from 'motion';
 import { Height, useHeight } from './height';
 import { numberToPixel } from './style';
 import { when } from './util';
+import { stlx } from 'stlx';
 
 const height = new Height();
 
@@ -63,11 +64,12 @@ export function message(property: MessageProperties) {
         transitionDuration = 300, onClick, duration = 3000,
         zIndex = 10_000, onClose
     } = property;
-    element.style.width = numberToPixel(width);
-    element.style.right = numberToPixel(-element.offsetWidth);
-    element.style.zIndex = String(zIndex);
+    stlx(element)
+        .width(numberToPixel(width))
+        .right(numberToPixel(-element.offsetWidth))
+        .zIndex('' + zIndex);
     animate(element, { right: numberToPixel(marginRight) }, { easing: spring() });
-    element.style.top = numberToPixel(height.getHeight() + marginRight);
+    stlx(element).top(numberToPixel(height.getHeight() + marginRight));
     const target = { target: element, marginTop };
     height.add(target);
     function close() {

@@ -4,6 +4,7 @@ import { numberToPixel } from './style';
 import { backdrop } from './backdrop';
 import { when } from './util';
 import { Button, createButton } from './button';
+import { stlx } from 'stlx';
 
 export type DrawerProperties = {
     width?: number;
@@ -58,8 +59,9 @@ export const drawer = (property: DrawerProperties) => {
         clickBackdropClose = true, transitionDuration = 300,
         withBackdrop = true, onClose, zIndex = 10_000
     } = property;
-    element.style.width = numberToPixel(width);
-    element.style.zIndex = String(zIndex);
+    stlx(element)
+        .width(numberToPixel(width))
+        .zIndex('' + zIndex);
     element.style[position] = numberToPixel(-width);
     animate(element, { [`${position}`]: 0 });
     const Backdrop = backdrop({
