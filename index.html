@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/all/ant.css">
+    <link rel="stylesheet" href="./style/button/ant.css">
+    <link rel="stylesheet" href="./style/dialog/ant.css">
+    <link rel="stylesheet" href="./style/drawer/ant.css">
+    <link rel="stylesheet" href="./style/message/ant.css">
+    <link rel="stylesheet" href="./style/notice/innei.css">
     <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
     <script src="https://unpkg.com/@akrc/nashi@latest/dist/legacy.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@akrc/fish@latest/fish.min.css">
@@ -51,7 +55,7 @@
     <script type="module">
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
-        import {message, notice, drawer, dialog} from './src/index.ts';
+        import { message, notice, drawer, dialog } from './src/index.ts';
         nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
         nashi('#mw').click(() => message({ text: lorem, type: 'warning', showClose: true }))
         nashi('#me').click(() => message({ text: lorem, type: 'error', showClose: true }))
@@ -60,13 +64,14 @@
         nashi('#nw').click(() => notice({ text: short, type: 'warning' }))
         nashi('#ne').click(() => notice({ text: short, type: 'error' }))
         nashi('#ns').click(() => notice({ text: short, type: 'success' }))
-        nashi('#dl').click(() => drawer({ 
-            title: short, 
+        nashi('#dl').click(() => drawer({
+            title: short,
             content: lorem,
             position: 'left',
             buttons: [
                 { text: 'Primary', close: true, primary: true },
-                { text: 'Secondary', onClick: (close) => {
+                {
+                    text: 'Secondary', onClick: (close) => {
                         if (1 === 1) close();
                     },
                 }
@@ -77,8 +82,9 @@
             content: lorem,
             position: 'right',
             buttons: [
-                { text: 'Primary', onClick: () => {}, close: true, primary: true },
-                { text: 'Secondary', onClick: (close) => {
+                { text: 'Primary', onClick: () => { }, close: true, primary: true },
+                {
+                    text: 'Secondary', onClick: (close) => {
                         if (1 === 1) close();
                     },
                 }
