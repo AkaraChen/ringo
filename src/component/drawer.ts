@@ -1,8 +1,8 @@
-import { createElement, useHTML } from './dom';
+import { createElement, useHTML } from '../util/dom';
 import { animate } from 'motion';
-import { numberToPixel } from './style';
+import { numberToPixel } from '../util/style';
 import { backdrop } from './backdrop';
-import { when } from './util';
+import { when } from '../util/util';
 import { Button, createButton } from './button';
 import { stlx } from 'stlx';
 

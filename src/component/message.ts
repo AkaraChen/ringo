@@ -1,8 +1,8 @@
-import { createElement, setOnClick, useHTML } from './dom';
+import { createElement, setOnClick, useHTML } from '../util/dom';
 import { animate, spring } from 'motion';
-import { Height, useHeight } from './height';
-import { numberToPixel } from './style';
-import { when } from './util';
+import { Height, useHeight } from '../util/height';
+import { numberToPixel } from '../util/style';
+import { when } from '../util/util';
 import { stlx } from 'stlx';
 
 const height = new Height();

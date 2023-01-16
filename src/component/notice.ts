@@ -1,5 +1,5 @@
-import { createElement, setOnClick, useHTML } from './dom';
-import { Height, useHeight } from './height';
+import { createElement, setOnClick, useHTML } from '../util/dom';
+import { Height, useHeight } from '../util/height';
 import { stlx } from 'stlx';
 
 const height = new Height();

@@ -1,8 +1,8 @@
-import { createElement } from './dom';
+import { createElement } from '../util/dom';
 import { animate, spring } from 'motion';
 import { Button, createButton } from './button';
-import { when } from './util';
-import { numberToPixel } from './style';
+import { when } from '../util/util';
+import { numberToPixel } from '../util/style';
 import { backdrop } from './backdrop';
 import { stlx } from 'stlx';
 
