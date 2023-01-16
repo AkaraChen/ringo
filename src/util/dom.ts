@@ -1,14 +1,12 @@
 type createElementProperties = {
-    tag?: string,
-    className?: string,
-    child?: string | Node | Array<Node | string | undefined> | undefined,
-    onClick?: (element: HTMLElement) => any
-}
+    tag?: string;
+    className?: string;
+    child?: string | Node | Array<Node | string | undefined> | undefined;
+    onClick?: (element: HTMLElement) => any;
+};
 
 export const createElement = (property: createElementProperties) => {
-    let {
-        tag = 'div', className = '', child, onClick
-    } = property;
+    let { tag = 'div', className = '', child, onClick } = property;
     const element = document.createElement(tag);
     element.className = className;
     if (typeof child === 'string') {
@@ -20,14 +18,19 @@ export const createElement = (property: createElementProperties) => {
     }
     if (Array.isArray(child)) {
         for (const node of child) {
-            if (node) { element.append(node); }
+            if (node) {
+                element.append(node);
+            }
         }
     }
     setOnClick(element, onClick);
     return element;
 };
 
-export const setOnClick = (target: HTMLElement, onClick?: (element: HTMLElement) => any) => {
+export const setOnClick = (
+    target: HTMLElement,
+    onClick?: (element: HTMLElement) => any
+) => {
     if (onClick) target.addEventListener('click', () => onClick(target));
 };
 

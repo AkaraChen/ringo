@@ -5,18 +5,22 @@ import { stlx } from 'stlx';
 const height = new Height();
 
 type NoticeProperties = {
-    text: string,
-    marginTop?: number,
-    type?: 'info' | 'warning' | 'error' | 'success',
-    duration?: number,
+    text: string;
+    marginTop?: number;
+    type?: 'info' | 'warning' | 'error' | 'success';
+    duration?: number;
     onClick?: (element: HTMLElement) => any;
     onClose?: () => any;
     zIndex?: number;
     transitionDuration?: number;
     dangerouslyUseHTML?: boolean;
-}
+};
 
-function createNoticeElement({ text, type, dangerouslyUseHTML }: NoticeProperties) {
+function createNoticeElement({
+    text,
+    type,
+    dangerouslyUseHTML
+}: NoticeProperties) {
     return createElement({
         tag: 'div',
         className: `ringo-notice ringo-notice-${type || 'info'}`,
@@ -30,8 +34,12 @@ function createNoticeElement({ text, type, dangerouslyUseHTML }: NoticePropertie
 
 export function notice(property: NoticeProperties) {
     const {
-        marginTop = 12, duration = 3000, onClick, zIndex = 10_000,
-        transitionDuration = 300, onClose
+        marginTop = 12,
+        duration = 3000,
+        onClick,
+        zIndex = 10_000,
+        transitionDuration = 300,
+        onClose
     } = property;
     const element = createNoticeElement(property);
     document.body.append(element);

@@ -38,13 +38,15 @@ export const backdrop = (property: BackdropProperties = {}) => {
                 .zIndex('' + zIndex)
                 .transition('all', `${transitionDuration}ms`)
                 .opacity('0');
-            requestAnimationFrame(() => { backdropElement.style.opacity = '' + opacity; });
-            stlx(backdropElement).backgroundColor(isDark() ? colorDark : colorLight);
+            requestAnimationFrame(() => {
+                backdropElement.style.opacity = '' + opacity;
+            });
+            stlx(backdropElement).backgroundColor(
+                isDark() ? colorDark : colorLight
+            );
             onColorChange(event => {
                 stlx(backdropElement).backgroundColor(
-                    event.matches
-                        ? colorDark
-                        : colorLight
+                    event.matches ? colorDark : colorLight
                 );
             });
             document.body.append(backdropElement);

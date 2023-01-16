@@ -4,8 +4,6 @@ export const isDark = () => {
     return media()?.matches;
 };
 
-export const onColorChange = (
-    handler: (event: MediaQueryListEvent) => any
-) => {
+export const onColorChange = (handler: (event: MediaQueryListEvent) => any) => {
     media()?.addEventListener('change', handler);
 };

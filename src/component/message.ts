@@ -21,37 +21,45 @@ type MessageProperties = {
     zIndex?: number;
     transitionDuration?: number;
     dangerouslyUseHTML?: boolean;
-}
+};
 
 function createMessageElement(
     {
-        type = 'info', text, title = type, dangerouslyUseHTML,
-        duration = 0, showClose = duration === 0
+        type = 'info',
+        text,
+        title = type,
+        dangerouslyUseHTML,
+        duration = 0,
+        showClose = duration === 0
     }: MessageProperties,
     close: () => void
 ) {
     return createElement({
         tag: 'div',
         className: `ringo-message ringo-message-${type}`,
-        child: [createElement({
-            tag: 'h3',
-            className: 'ringo-message-head',
-            child: createElement({
-                tag: 'div',
-                className: 'ringo-message-title',
-                child: title
-            })
-        }),
-        createElement({
-            tag: 'p',
-            className: 'ringo-message-content',
-            child: dangerouslyUseHTML ? useHTML(text!) : text!
-        }),
-        when(showClose, createElement({
-            tag: 'i',
-            className: 'ringo-message-close',
-            onClick: close
-        }))
+        child: [
+            createElement({
+                tag: 'h3',
+                className: 'ringo-message-head',
+                child: createElement({
+                    tag: 'div',
+                    className: 'ringo-message-title',
+                    child: title
+                })
+            }),
+            createElement({
+                tag: 'p',
+                className: 'ringo-message-content',
+                child: dangerouslyUseHTML ? useHTML(text!) : text!
+            }),
+            when(
+                showClose,
+                createElement({
+                    tag: 'i',
+                    className: 'ringo-message-close',
+                    onClick: close
+                })
+            )
         ]
     });
 }
@@ -60,15 +68,24 @@ export function message(property: MessageProperties) {
     const element = createMessageElement(property, close);
     document.body.append(element);
     const {
-        width = 300, marginRight = 20, marginTop = 10,
-        transitionDuration = 300, onClick, duration = 3000,
-        zIndex = 10_000, onClose
+        width = 300,
+        marginRight = 20,
+        marginTop = 10,
+        transitionDuration = 300,
+        onClick,
+        duration = 3000,
+        zIndex = 10_000,
+        onClose
     } = property;
     stlx(element)
         .width(numberToPixel(width))
         .right(numberToPixel(-element.offsetWidth))
         .zIndex('' + zIndex);
-    animate(element, { right: numberToPixel(marginRight) }, { easing: spring() });
+    animate(
+        element,
+        { right: numberToPixel(marginRight) },
+        { easing: spring() }
+    );
     stlx(element).top(numberToPixel(height.getHeight() + marginRight));
     const target = { target: element, marginTop };
     height.add(target);

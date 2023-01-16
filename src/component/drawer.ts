@@ -19,35 +19,43 @@ export type DrawerProperties = {
     buttons: Button[];
     dangerouslyUseHTML?: boolean;
     clickBackdropClose?: boolean;
-}
+};
 
 const createDrawerElement = (
-    {
-        title, content, dangerouslyUseHTML, buttons
-    }: DrawerProperties,
+    { title, content, dangerouslyUseHTML, buttons }: DrawerProperties,
     close: () => void
 ) => {
     return createElement({
         className: 'ringo-drawer',
-        child: [createElement({
-            tag: 'div',
-            className: 'ringo-drawer-head',
-            child: [createElement({
-                tag: 'h2',
-                className: 'ringo-drawer-title',
-                child: title
-            }), createElement({
-                tag: 'i',
-                className: 'ringo-drawer-close',
-                onClick: close
-            })]
-        }), createElement({
-            className: 'ringo-drawer-content',
-            child: dangerouslyUseHTML ? useHTML(content!) : content
-        }), createElement({
-            className: 'ringo-drawer-btns',
-            child: when(buttons, buttons.map(button => createButton(button, close)))
-        })]
+        child: [
+            createElement({
+                tag: 'div',
+                className: 'ringo-drawer-head',
+                child: [
+                    createElement({
+                        tag: 'h2',
+                        className: 'ringo-drawer-title',
+                        child: title
+                    }),
+                    createElement({
+                        tag: 'i',
+                        className: 'ringo-drawer-close',
+                        onClick: close
+                    })
+                ]
+            }),
+            createElement({
+                className: 'ringo-drawer-content',
+                child: dangerouslyUseHTML ? useHTML(content!) : content
+            }),
+            createElement({
+                className: 'ringo-drawer-btns',
+                child: when(
+                    buttons,
+                    buttons.map(button => createButton(button, close))
+                )
+            })
+        ]
     });
 };
 
@@ -55,9 +63,13 @@ export const drawer = (property: DrawerProperties) => {
     const element = createDrawerElement(property, close);
     document.body.append(element);
     const {
-        position = 'right', width = 300,
-        clickBackdropClose = true, transitionDuration = 300,
-        withBackdrop = true, onClose, zIndex = 10_000
+        position = 'right',
+        width = 300,
+        clickBackdropClose = true,
+        transitionDuration = 300,
+        withBackdrop = true,
+        onClose,
+        zIndex = 10_000
     } = property;
     stlx(element)
         .width(numberToPixel(width))
