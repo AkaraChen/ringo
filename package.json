@@ -18,8 +18,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "5.48.1",
-        "@typescript-eslint/parser": "5.48.1",
+        "@typescript-eslint/eslint-plugin": "5.48.2",
+        "@typescript-eslint/parser": "5.48.2",
         "esbuild": "0.17.1",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.32.0",
