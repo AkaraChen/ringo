@@ -27,7 +27,7 @@
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-unicorn": "^45.0.2",
-        "happy-dom": "8.1.4",
+        "happy-dom": "8.1.5",
         "husky": "8.0.3",
         "motion": "^10.15.5",
         "nanoid": "4.0.0",
