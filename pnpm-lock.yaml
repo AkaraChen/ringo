@@ -10,7 +10,7 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-unicorn: ^45.0.2
-  happy-dom: 8.1.4
+  happy-dom: 8.1.5
   husky: 8.0.3
   motion: ^10.15.5
   nanoid: 4.0.0
@@ -34,7 +34,7 @@ devDependencies:
   eslint-config-prettier: 8.6.0_eslint@8.32.0
   eslint-plugin-prettier: 4.2.1_cn4lalcyadplruoxa5mhp7j3dq
   eslint-plugin-unicorn: 45.0.2_eslint@8.32.0
-  happy-dom: 8.1.4
+  happy-dom: 8.1.5
   husky: 8.0.3
   motion: 10.15.5
   nanoid: 4.0.0
@@ -45,7 +45,7 @@ devDependencies:
   typescript: 4.9.4
   vite: 4.0.4
   vitepress: 1.0.0-alpha.38
-  vitest: 0.27.3_happy-dom@8.1.4
+  vitest: 0.27.3_happy-dom@8.1.5
   vue: 3.2.45
 
 packages:
@@ -2444,8 +2444,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /happy-dom/8.1.4:
-    resolution: {integrity: sha512-mUCzXHhSO6fOQlZwKW6z2f/+rYavKNxNrgY4nJ4dp+r8gTGbTENgMZGfM6eJD0DJPRFF8DFyngXdBF93wF96UA==}
+  /happy-dom/8.1.5:
+    resolution: {integrity: sha512-/UXAJ2fHTs4H3vy7TS7c9PKFvPyaNialk2Er9NdXfpBKNaCITMOH03rkjHXp5jnJnSmRBa+av8E08PUAaIB1jQ==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -4001,7 +4001,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.27.3_happy-dom@8.1.4:
+  /vitest/0.27.3_happy-dom@8.1.5:
     resolution: {integrity: sha512-Ld3UVgRVhJUtqvQ3dW89GxiApFAgBsWJZBCWzK+gA3w2yG68csXlGZZ4WDJURf+8ecNfgrScga6xY+8YSOpiMg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -4031,7 +4031,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.1.4
+      happy-dom: 8.1.5
       local-pkg: 0.4.2
       picocolors: 1.0.0
       source-map: 0.6.1
