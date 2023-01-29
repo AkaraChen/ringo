@@ -1,12 +1,5 @@
 import { createElement, when } from '@/util';
-
-export type Button = {
-    text: string;
-    onClick?: (closeFunction: () => void) => any;
-    close?: boolean;
-    primary?: boolean;
-    type?: 'info' | 'warning' | 'error' | 'success';
-};
+import { Button } from '@/types';
 
 export const createButton = (
     {

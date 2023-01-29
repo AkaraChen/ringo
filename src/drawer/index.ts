@@ -1,5 +1,5 @@
 import { useHTML } from '@/util';
-import { DrawerProperties } from './type';
+import { DrawerProperties } from '@/types';
 import DrawerImpl from './impl/drawer';
 
 const createDrawerElement = ({

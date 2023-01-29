@@ -1,11 +1,9 @@
-type createElementProperties = {
+export const createElement = (property: {
     tag?: string;
     className?: string;
     child?: string | Node | Array<Node | string | undefined> | undefined;
     onClick?: (element: HTMLElement) => any;
-};
-
-export const createElement = (property: createElementProperties) => {
+}) => {
     let { tag = 'div', className = '', child, onClick } = property;
     const element = document.createElement(tag);
     element.className = className;

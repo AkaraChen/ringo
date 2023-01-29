@@ -1,6 +1,6 @@
 import { useHTML } from '@/util';
 import NoticeImpl from './impl/notice';
-import { NoticeProperties } from './type';
+import { NoticeProperties } from '@/types';
 
 function createNoticeElement({
     text,

@@ -1,4 +1,4 @@
-import { DialogProperties } from './type';
+import { DialogProperties } from '@/types';
 import { BaseModel } from '@/base';
 
 export class DialogModel extends BaseModel {

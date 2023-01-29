@@ -1,17 +1,6 @@
 import { createElement, isDark, onColorChange } from '@/util';
 import { stlx } from 'stlx';
-
-export type BackdropProperties = {
-    color?: 'light' | 'dark';
-    colorLight?: string;
-    colorDark?: string;
-    zIndex?: number;
-    opacity?: number;
-    onClick?(): any;
-    transitionDuration?: number;
-};
-
-export type Backdrop = ReturnType<typeof backdrop>;
+import { BackdropProperties } from '@/types';
 
 export const backdrop = (property: BackdropProperties = {}) => {
     const {

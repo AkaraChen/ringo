@@ -1,6 +1,6 @@
 import { useHTML, when } from '@/util';
 import DialogImpl from './impl/dialog';
-import { DialogProperties } from './type';
+import { DialogProperties } from '@/types';
 
 const createDialogElement = ({
     title,

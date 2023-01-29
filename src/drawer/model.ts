@@ -1,5 +1,5 @@
 import { BaseModel } from '@/base';
-import { DrawerProperties } from './type';
+import { DrawerProperties } from '@/types';
 
 export class DrawerModel extends BaseModel {
     props: DrawerProperties;

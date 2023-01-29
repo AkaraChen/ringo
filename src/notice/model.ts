@@ -1,6 +1,6 @@
 import { BaseModel } from '@/base';
 import { Instance } from '@/util';
-import { NoticeProperties } from './type';
+import { NoticeProperties } from '@/types';
 
 export class NoticeModel extends BaseModel {
     props: NoticeProperties;
