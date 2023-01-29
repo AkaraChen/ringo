@@ -1,4 +1,4 @@
-import { MessageModel } from '../model/message';
+import { MessageModel } from './model';
 
 export interface MessageProperties {
     type?: 'success' | 'info' | 'error' | 'warning';

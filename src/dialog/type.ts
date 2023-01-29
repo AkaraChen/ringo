@@ -1,5 +1,5 @@
 import { Button } from '@/component/button';
-import { DialogModel } from '@/model/dialog';
+import { DialogModel } from '@/dialog/model';
 
 export interface DialogProperties {
     title: string;

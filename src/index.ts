@@ -1,3 +1,5 @@
 export * from './component';
-export * from './model';
-export * from './types';
+export * from './dialog';
+export * from './drawer';
+export * from './message';
+export * from './notice';

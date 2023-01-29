@@ -3,13 +3,25 @@ import { createButton } from '@/component/button';
 import { numberToPixel } from '@/util/style';
 import { when } from '@/util/util';
 import { animate, spring } from 'motion';
-import { DialogModel } from '../dialog';
+import { DialogModel } from '../model';
 
 class DialogImpl extends DialogModel {
     backdrop: Backdrop | undefined;
 
     override onCreate(): void {
-        const { buttons } = this.props;
+        const {
+            buttons = [
+                {
+                    text: 'Yes',
+                    close: true,
+                    primary: true
+                },
+                {
+                    text: 'No',
+                    close: true
+                }
+            ]
+        } = this.props;
         const btnGroup = this.element.querySelector('.ringo-dialog-btns');
         const onClose = this.onClose.bind(this);
         if (buttons) {
@@ -21,11 +33,11 @@ class DialogImpl extends DialogModel {
 
     override onAppend(): void {
         const {
-            width = 350,
-            zIndex = 10_000,
             transitionDuration = 300,
             withBackdrop = true,
-            clickBackdropClose = true
+            clickBackdropClose = true,
+            width = 350,
+            zIndex = 10_000
         } = this.props;
         this.stlx
             .zIndex(zIndex)
@@ -36,11 +48,11 @@ class DialogImpl extends DialogModel {
         animate(
             this.element,
             { opacity: 1 },
-            { duration: transitionDuration / 1000 }
+            { duration: transitionDuration / 1000, easing: spring() }
         );
         const onClose = this.onClose.bind(this);
         this.backdrop = backdrop({
-            onClick: when(clickBackdropClose, onClose)
+            onClick: when(clickBackdropClose, () => onClose)
         });
         if (withBackdrop) this.backdrop.add();
     }

@@ -1,5 +1,5 @@
-import { Button } from '../component/button';
-import { DrawerModel } from '../model/drawer';
+import { Button } from '@/component/button';
+import { DrawerModel } from './model';
 
 export interface DrawerProperties {
     width?: number;

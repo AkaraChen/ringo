@@ -1,6 +1,6 @@
-import { BaseModel } from './base';
-import { MessageProperties } from '../types/message';
-import type { Instance } from '../util/height';
+import { BaseModel } from '@/base';
+import type { Instance } from '@/util/height';
+import { MessageProperties } from './type';
 
 export class MessageModel extends BaseModel {
     props: MessageProperties;

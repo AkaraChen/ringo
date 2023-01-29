@@ -1,6 +1,6 @@
-import { useHTML } from '../util/dom';
-import { NoticeProperties } from '../types/notice';
-import NoticeImpl from '../model/impl/notice';
+import { useHTML } from '@/util/dom';
+import NoticeImpl from './impl/notice';
+import { NoticeProperties } from './type';
 
 function createNoticeElement({
     text,

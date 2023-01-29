@@ -1,5 +1,5 @@
-import { DialogProperties } from '@/types/dialog';
-import { BaseModel } from './base';
+import { DialogProperties } from './type';
+import { BaseModel } from '@/base';
 
 export class DialogModel extends BaseModel {
     props: DialogProperties;

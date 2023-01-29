@@ -1,9 +1,9 @@
 import { createElement } from '../util/dom';
-import { when } from '../util/util';
+import { when } from '@/util/util';
 
 export type Button = {
     text: string;
-    onClick: (closeFunction: () => void) => any;
+    onClick?: (closeFunction: () => void) => any;
     close?: boolean;
     primary?: boolean;
     type?: 'info' | 'warning' | 'error' | 'success';

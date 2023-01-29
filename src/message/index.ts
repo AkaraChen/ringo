@@ -1,7 +1,7 @@
-import { createElement, useHTML } from '../util/dom';
+import { useHTML } from '../util/dom';
 import { when } from '../util/util';
-import { MessageProperties } from '../types/message';
-import MessageImpl from '../model/impl/message';
+import MessageImpl from './impl/message';
+import { MessageProperties } from './type';
 
 function createMessageElement({
     type = 'info',

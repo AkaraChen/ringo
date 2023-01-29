@@ -1,21 +1,30 @@
-import { useHTML } from '../util/dom';
-import { when } from '../util/util';
-import { DialogProperties } from '@/types/dialog';
-import DialogImpl from '../model/impl/dialog';
+import { useHTML } from '@/util/dom';
+import { when } from '@/util/util';
+import DialogImpl from './impl/dialog';
+import { DialogProperties } from './type';
 
-const createDialogElement = ({ title, showClose, text }: DialogProperties) => {
+const createDialogElement = ({
+    title,
+    showClose,
+    text,
+    buttons
+}: DialogProperties) => {
     return useHTML(/* html */ `
       <div class="ringo-dialog">
         <div class="ringo-dialog-head">
             <p class="ringo-dialog-title">
                 ${title}
-                ${when(showClose, '<i class="ringo-dialog-close"></i>')}
+                ${when(
+                    showClose,
+                    /* html */ `<i class="ringo-dialog-close"></i>`
+                )}
             </p>
         </div>
         <div class="ringo-dialog-body">
             ${text}
         </div>
-        <div class="ringo-dialog-btns"></div>
+        ${(when(buttons), `<div class="ringo-dialog-btns"></div>`)}
+  
       </div>
     `)[0];
 };

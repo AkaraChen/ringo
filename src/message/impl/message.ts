@@ -1,4 +1,4 @@
-import { MessageModel } from '../message';
+import { MessageModel } from '../model';
 import { numberToPixel } from '../../util/style';
 import { animate, spring } from 'motion';
 import { Height, useHeight } from '../../util/height';
