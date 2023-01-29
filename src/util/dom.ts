@@ -1,10 +1,10 @@
-export const createElement = (property: {
+export const createElement = (property?: {
     tag?: string;
     className?: string;
     child?: string | Node | Array<Node | string | undefined> | undefined;
     onClick?: (element: HTMLElement) => any;
 }) => {
-    let { tag = 'div', className = '', child, onClick } = property;
+    let { tag = 'div', className = '', child, onClick } = property || {};
     const element = document.createElement(tag);
     element.className = className;
     if (typeof child === 'string') {

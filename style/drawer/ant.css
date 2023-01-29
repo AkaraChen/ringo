@@ -1,4 +1,4 @@
-@import '../button/ant.css';
+@import url('../button/ant.css');
 
 .ringo-drawer {
     box-sizing: border-box;
@@ -11,13 +11,12 @@
     top: 0;
 }
 
-
 .ringo-drawer-head {
     display: flex;
     padding: 16px 24px;
     padding-bottom: 12px;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, .06);
+    border-bottom: 1px solid rgba(0, 0, 0, 6%);
     align-items: center;
 }
 
@@ -31,7 +30,6 @@
     .ringo-drawer-head {
         border-bottom: 1px solid #303030;
     }
-
 }
 
 .ringo-drawer-title {

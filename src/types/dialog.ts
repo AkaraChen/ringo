@@ -1,5 +1,5 @@
-import { Button } from '@/types';
 import { DialogModel } from '@/dialog/model';
+import { Button } from '@/types';
 
 export interface DialogProperties {
     title: string;

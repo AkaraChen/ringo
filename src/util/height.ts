@@ -1,5 +1,5 @@
-import { numberToPixel, pixelToNumber } from './style';
 import { animate } from 'motion';
+import { numberToPixel, pixelToNumber } from './style';
 
 export interface Instance {
     target: HTMLElement;

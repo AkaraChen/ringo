@@ -1,5 +1,5 @@
-import { createElement, when } from '@/util';
 import { Button } from '@/types';
+import { createElement, when } from '@/util';
 
 export const createButton = (
     {

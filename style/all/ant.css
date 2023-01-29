@@ -1,4 +1,4 @@
-@import '../dialog/ant.css';
-@import '../drawer/ant.css';
-@import '../message/ant.css';
-@import '../notice/ant.css';
+@import url('../dialog/ant.css');
+@import url('../drawer/ant.css');
+@import url('../message/ant.css');
+@import url('../notice/ant.css');

@@ -3,8 +3,7 @@
     box-sizing: border-box;
     background-color: #fff;
     padding: 16px 24px;
-    box-shadow: 0 3px 6px -4px #0000001f,
-        0 6px 16px #00000014,
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
         0 9px 28px 8px #0000000d;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -65,8 +64,7 @@
         background-color: #1f1f1f;
         color: #fff;
         box-shadow: 0 3px 6px -4px rgb(0 0 0 / 48%),
-            0 6px 16px 0 rgb(0 0 0 / 32%),
-            0 9px 28px 8px rgb(0 0 0 / 20%);
+            0 6px 16px 0 rgb(0 0 0 / 32%), 0 9px 28px 8px rgb(0 0 0 / 20%);
     }
 
     .ringo-message-close {

@@ -1,6 +1,6 @@
+import { MessageProperties } from '@/types';
 import { useHTML, when } from '@/util';
 import MessageImpl from './impl/message';
-import { MessageProperties } from '@/types';
 
 function createMessageElement({
     type = 'info',

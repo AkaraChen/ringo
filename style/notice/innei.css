@@ -27,8 +27,7 @@
 .ringo-notice-content {
     display: flex;
     align-items: center;
-    vertical-align: middle;
-    margin: 0px;
+    margin: 0;
     font-size: 14px;
 }
 

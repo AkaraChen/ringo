@@ -38,7 +38,6 @@
 .ringo-button:focus {
     border-color: var(--primary-hover);
     color: var(--primary-hover);
-    
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,7 +64,6 @@
 .ringo-button.ringo-button-type-error {
     --primary: #ff4d4f;
     --primary-hover: #ff7875;
-    
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,7 +76,6 @@
 .ringo-button.ringo-button-type-warning {
     --primary: #faad14;
     --primary-hover: #ffc53d;
-    
 }
 
 @media (prefers-color-scheme: dark) {

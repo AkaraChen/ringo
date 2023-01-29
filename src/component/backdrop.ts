@@ -1,6 +1,6 @@
+import { BackdropProperties } from '@/types';
 import { createElement, isDark, onColorChange } from '@/util';
 import { stlx } from 'stlx';
-import { BackdropProperties } from '@/types';
 
 export const backdrop = (property: BackdropProperties = {}) => {
     const {
@@ -18,7 +18,7 @@ export const backdrop = (property: BackdropProperties = {}) => {
 
     const createBackdrop = () => {
         if (!isCreated) {
-            backdropElement = createElement({ tag: 'div' });
+            backdropElement = createElement();
             stlx(backdropElement)
                 .position('fixed')
                 .top('0')
