@@ -1,5 +1,5 @@
-import { createElement } from '../util/dom';
-import { isDark, onColorChange } from '../util/theme';
+import { createElement } from '@/util/dom';
+import { isDark, onColorChange } from '@/util/theme';
 import { stlx } from 'stlx';
 
 export type BackdropProperties = {
@@ -11,6 +11,8 @@ export type BackdropProperties = {
     onClick?(): any;
     transitionDuration?: number;
 };
+
+export type Backdrop = ReturnType<typeof backdrop>;
 
 export const backdrop = (property: BackdropProperties = {}) => {
     const {

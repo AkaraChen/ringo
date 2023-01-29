@@ -7,12 +7,12 @@ function createNoticeElement({
     type = 'info',
     dangerouslyUseHTML
 }: NoticeProperties) {
-    return useHTML(`
-        <div class="ringo-notice ringo-notice-${type}">
-            <p class="ringo-notice-content">
-                ${dangerouslyUseHTML ? useHTML(text!) : text}
-            </p>
-        </div>
+    return useHTML(/* html */ `
+      <div class="ringo-notice ringo-notice-${type}">
+          <p class="ringo-notice-content">
+              ${dangerouslyUseHTML ? useHTML(text!) : text}
+          </p>
+      </div>
     `)[0];
 }
 

@@ -11,18 +11,18 @@ function createMessageElement({
     duration = 0,
     showClose = duration === 0
 }: MessageProperties) {
-    return useHTML(`
-    <div class="ringo-message ringo-message-${type}">
-        <h3 class="ringo-message-head">
-            <div class="ringo-message-title">
-                ${title}
-            </div>
-        </h3>
-        <p class="ringo-message-content">
-            ${dangerouslyUseHTML ? useHTML(text!) : text!}
-        </p>
-        ${when(showClose, '<i class="ringo-message-close"></i>')}
-    </div>
+    return useHTML(/* html */ `
+      <div class="ringo-message ringo-message-${type}">
+          <h3 class="ringo-message-head">
+              <div class="ringo-message-title">
+                  ${title}
+              </div>
+          </h3>
+          <p class="ringo-message-content">
+              ${dangerouslyUseHTML ? useHTML(text!) : text!}
+          </p>
+          ${when(showClose, '<i class="ringo-message-close"></i>')}
+      </div>
     `)[0];
 }
 
