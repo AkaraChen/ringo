@@ -24,7 +24,7 @@
         "esbuild": "0.17.4",
         "esbuild-plugin-d.ts": "1.1.0",
         "eslint": "8.32.0",
-        "eslint-config-akrc": "^1.1.1",
+        "eslint-config-akrc": "^1.2.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-unicorn": "^45.0.2",
