@@ -1,4 +1,6 @@
-import {defineConfig} from 'vitepress';
+import { defineConfig } from 'vitepress';
+import path from 'node:path';
+import url from 'node:url'
 
 export default defineConfig({
     title: 'Ringo.js',
@@ -19,4 +21,14 @@ export default defineConfig({
             },
         ],
     },
+    vite: {
+        resolve: {
+            alias: {
+                '@': path.resolve(
+                    path.dirname(url.fileURLToPath(import.meta.url)),
+                    '../../src'
+                )
+            }
+        }
+    }
 });
