@@ -20,7 +20,7 @@ import '@akrc/ringo/style/message/ant.css';
 ```
 
 ```ts
-export type MessageProps = {
+export interface MessageProperties {
     type?: 'success' | 'info' | 'error' | 'warning';
     text: string;
     title?: string;
@@ -33,6 +33,6 @@ export type MessageProps = {
     width?: number;
     zIndex?: number;
     transitionDuration?: number;
-    dangerouslyUseHTML?: boolean;
-};
+    model?: typeof MessageModel;
+}
 ```

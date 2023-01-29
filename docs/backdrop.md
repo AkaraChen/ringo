@@ -28,7 +28,7 @@ clear(); // force clear backdrop
 ```
 
 ```ts
-export type BackdropProp = {
+export interface BackdropProperties {
     color?: 'light' | 'dark';
     colorLight?: string;
     colorDark?: string;
@@ -36,5 +36,5 @@ export type BackdropProp = {
     opacity?: number;
     onClick?(): any;
     transitionDuration?: number;
-};
+}
 ```

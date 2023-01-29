@@ -36,8 +36,8 @@ drawer({
 ```
 
 ```ts
-export type DrawerProp = {
-    width?: string;
+export interface DrawerProperties {
+    width?: number;
     zIndex?: number;
     withBackdrop?: boolean;
     position?: 'left' | 'right';
@@ -46,15 +46,16 @@ export type DrawerProp = {
     showClose?: boolean;
     onClose?(): void;
     content?: string;
-    primaryButton?: Btn;
-    secondaryButton?: Btn;
-    dangerouslyUseHTML?: boolean;
+    buttons: Button[];
     clickBackdropClose?: boolean;
-};
+    model?: typeof DrawerModel;
+}
 
-type Btn = {
+export type Button = {
     text: string;
-    onClick(closeFn: () => void): any;
-    close?: true;
+    onClick?: (closeFunction: () => void) => any;
+    close?: boolean;
+    primary?: boolean;
+    type?: 'info' | 'warning' | 'error' | 'success';
 };
 ```

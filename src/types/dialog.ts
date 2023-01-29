@@ -1,4 +1,4 @@
-import { Button } from '@/component/button';
+import { Button } from '@/types';
 import { DialogModel } from '@/dialog/model';
 
 export interface DialogProperties {

@@ -9,14 +9,10 @@ import '../../style/dialog/ant.css'
 const onClick = () => {
     dialog({
         title: "Error Occurred", text: 'You need to be logged in to continue.',
-        primaryButton: {
-            text: 'Primary', onClick: () => { }, close: true
-        },
-        secondaryButton: {
-            text: 'Secondary', onClick: (close) => {
-                if (1 === 1) close()
-            }
-        },
+        buttons: [
+            { text: 'Primary', onClick: () => { }, close: true, primary: true },
+            { text: 'Secondary', close: true }
+        ],
     })
 }
 </script>

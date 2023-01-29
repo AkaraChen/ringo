@@ -20,15 +20,15 @@ import '@akrc/ringo/style/notice/ant.css';
 ```
 
 ```ts
-export type NoticeProps = {
-    type?: 'success' | 'info' | 'error' | 'warning';
+export interface NoticeProperties {
     text: string;
-    duration?: number;
-    onClick?: (element?: HTMLElement) => any;
-    onClose?: () => any;
     marginTop?: number;
+    type?: 'info' | 'warning' | 'error' | 'success';
+    duration?: number;
+    onClick?: (element: HTMLElement) => any;
+    onClose?: () => any;
     zIndex?: number;
     transitionDuration?: number;
-    dangerouslyUseHTML?: boolean;
-};
+    model?: typeof NoticeModel;
+}
 ```
