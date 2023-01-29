@@ -5,7 +5,7 @@
     "main": "./dist/esm.js",
     "scripts": {
         "prepare": "husky install",
-        "build": "node build.cjs",
+        "build": "node build.mjs",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix .",
         "test": "vitest run",
         "prepublish": "npm run build",
