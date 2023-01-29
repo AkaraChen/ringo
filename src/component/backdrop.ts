@@ -1,5 +1,4 @@
-import { createElement } from '@/util/dom';
-import { isDark, onColorChange } from '@/util/theme';
+import { createElement, isDark, onColorChange } from '@/util';
 import { stlx } from 'stlx';
 
 export type BackdropProperties = {

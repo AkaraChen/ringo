@@ -1,7 +1,6 @@
-import { backdrop, Backdrop } from '@/component';
+import { Backdrop, backdrop } from '@/component';
 import { createButton } from '@/component/button';
-import { numberToPixel } from '@/util/style';
-import { when } from '@/util/util';
+import { numberToPixel, when } from '@/util';
 import { animate, spring } from 'motion';
 import { DialogModel } from '../model';
 

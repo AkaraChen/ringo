@@ -1,4 +1,4 @@
-import { useHTML } from '@/util/dom';
+import { useHTML } from '@/util';
 import { DrawerProperties } from './type';
 import DrawerImpl from './impl/drawer';
 

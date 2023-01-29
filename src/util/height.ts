@@ -1,4 +1,4 @@
-import { pixelToNumber, numberToPixel } from './style';
+import { numberToPixel, pixelToNumber } from './style';
 import { animate } from 'motion';
 
 export interface Instance {

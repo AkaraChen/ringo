@@ -1,5 +1,5 @@
 import { BaseModel } from '@/base';
-import type { Instance } from '@/util/height';
+import type { Instance } from '@/util';
 import { MessageProperties } from './type';
 
 export class MessageModel extends BaseModel {

@@ -1,5 +1,4 @@
-import { createElement } from '../util/dom';
-import { when } from '@/util/util';
+import { createElement, when } from '@/util';
 
 export type Button = {
     text: string;
@@ -20,15 +19,15 @@ export const createButton = (
     closeFunction: () => any
 ) => {
     return createElement({
-        tag: 'button',
+        child: text,
         className: `ringo-button ${when(
             primary,
             'ringo-button-primary'
         )} ringo-button-type-${type}`,
-        child: text,
         onClick: () => {
             onClick(closeFunction);
             if (close) closeFunction();
-        }
+        },
+        tag: 'button'
     });
 };

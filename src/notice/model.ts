@@ -1,5 +1,5 @@
 import { BaseModel } from '@/base';
-import { Instance } from '@/util/height';
+import { Instance } from '@/util';
 import { NoticeProperties } from './type';
 
 export class NoticeModel extends BaseModel {

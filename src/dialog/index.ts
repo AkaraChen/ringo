@@ -1,5 +1,4 @@
-import { useHTML } from '@/util/dom';
-import { when } from '@/util/util';
+import { useHTML, when } from '@/util';
 import DialogImpl from './impl/dialog';
 import { DialogProperties } from './type';
 

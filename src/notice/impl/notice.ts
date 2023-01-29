@@ -1,5 +1,4 @@
-import { setOnClick } from '@/util/dom';
-import { Height, useHeight } from '@/util/height';
+import { Height, setOnClick, useHeight } from '@/util';
 import { NoticeModel } from '../model';
 
 const height = new Height();
