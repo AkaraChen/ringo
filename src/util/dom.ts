@@ -36,5 +36,6 @@ export const setOnClick = (
 
 export const useHTML = (html: string) => {
     const document = new DOMParser().parseFromString(html, 'text/html');
-    return [...document.body.childNodes] as HTMLElement[];
+    // eslint-disable-next-line unicorn/prefer-spread
+    return Array.from(document.body.childNodes) as HTMLElement[];
 };

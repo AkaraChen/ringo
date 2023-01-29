@@ -1,10 +1,10 @@
 import { pixelToNumber, numberToPixel } from './style';
 import { animate } from 'motion';
 
-type Instance = {
+export interface Instance {
     target: HTMLElement;
     marginTop: number;
-};
+}
 
 export class Height {
     list: Instance[] = [];

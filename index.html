@@ -53,9 +53,9 @@
         <sw-button id="dialog">Open</sw-button>
     </div>
     <script type="module">
+        import { message, notice, drawer, dialog } from './src/index.ts';
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
-        import { message, notice, drawer, dialog } from './src/index.ts';
         nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
         nashi('#mw').click(() => message({ text: lorem, type: 'warning', showClose: true }))
         nashi('#me').click(() => message({ text: lorem, type: 'error', showClose: true }))

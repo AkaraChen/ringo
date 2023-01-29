@@ -15,6 +15,7 @@
     border-radius: 32px;
     background-color: var(--backgroud-color);
     font-size: 14px;
+    transform: translateX(-50%);
 }
 
 @media (prefers-color-scheme: dark) {

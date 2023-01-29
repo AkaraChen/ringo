@@ -4,6 +4,7 @@
     ],
     "rules": {
         "no-unused-vars": "off",
-        "no-use-before-define": 0
+        "no-use-before-define": "off",
+        "class-methods-use-this": "off"
     }
 }
