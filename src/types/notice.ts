@@ -9,6 +9,5 @@ export interface NoticeProperties {
     onClose?: () => any;
     zIndex?: number;
     transitionDuration?: number;
-    dangerouslyUseHTML?: boolean;
     model?: typeof NoticeModel;
 }

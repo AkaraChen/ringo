@@ -13,6 +13,5 @@ export interface MessageProperties {
     width?: number;
     zIndex?: number;
     transitionDuration?: number;
-    dangerouslyUseHTML?: boolean;
     model?: typeof MessageModel;
 }

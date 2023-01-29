@@ -2,11 +2,7 @@ import { useHTML } from '@/util';
 import { DrawerProperties } from '@/types';
 import DrawerImpl from './impl/drawer';
 
-const createDrawerElement = ({
-    title,
-    content,
-    dangerouslyUseHTML
-}: DrawerProperties) => {
+const createDrawerElement = ({ title, content }: DrawerProperties) => {
     return useHTML(/* html */ `
       <div class="ringo-drawer">
           <div class="ringo-drawer-head">
@@ -16,7 +12,7 @@ const createDrawerElement = ({
             <i class="ringo-drawer-close"></i>
           </div>
           <div class="ringo-drawer-content">
-            ${dangerouslyUseHTML ? useHTML(content!) : content}
+            ${content}
           </div>
           <div class="ringo-drawer-btns"></div>
       </div>

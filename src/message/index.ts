@@ -6,7 +6,6 @@ function createMessageElement({
     type = 'info',
     text,
     title = type,
-    dangerouslyUseHTML,
     duration = 0,
     showClose = duration === 0
 }: MessageProperties) {
@@ -18,7 +17,7 @@ function createMessageElement({
               </div>
           </h3>
           <p class="ringo-message-content">
-              ${dangerouslyUseHTML ? useHTML(text!) : text!}
+              ${text}
           </p>
           ${when(showClose, '<i class="ringo-message-close"></i>')}
       </div>

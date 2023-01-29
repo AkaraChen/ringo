@@ -1,4 +1,4 @@
-import { Button } from '@/component/button';
+import { Button } from '@/types';
 import { DrawerModel } from '../drawer/model';
 
 export interface DrawerProperties {
@@ -12,7 +12,6 @@ export interface DrawerProperties {
     onClose?(): void;
     content?: string;
     buttons: Button[];
-    dangerouslyUseHTML?: boolean;
     clickBackdropClose?: boolean;
     model?: typeof DrawerModel;
 }
