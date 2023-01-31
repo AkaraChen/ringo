@@ -39,7 +39,7 @@
         "stlx": "0.0.3",
         "stylelint": "^14.16.1",
         "stylelint-config-akrc": "^0.0.2",
-        "typescript": "4.9.4",
+        "typescript": "4.9.5",
         "vite": "^4.0.4",
         "vitepress": "1.0.0-alpha.43",
         "vue": "3.2.45"
