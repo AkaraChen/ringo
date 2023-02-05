@@ -38,4 +38,4 @@ export const useHTML = (html: string) => {
     return Array.from(document.body.childNodes) as HTMLElement[];
 };
 
-export const hasHTML = (str: string) => /<\/?[a-z][\s\S]*>/i.test(str)
+export const hasHTML = (str: string) => /<\/?[a-z][\S\s]*>/i.test(str);

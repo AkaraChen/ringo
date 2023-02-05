@@ -9,7 +9,8 @@ const createDialogElement = ({
     buttons,
     dangerouslyUseHTML = false
 }: DialogProperties) => {
-    if (!dangerouslyUseHTML && hasHTML(text)) throw new Error(`Cannot use HTML.`)
+    if (!dangerouslyUseHTML && hasHTML(text))
+        throw new Error(`Cannot use HTML.`);
     return useHTML(/* html */ `
       <div class="ringo-dialog">
         <div class="ringo-dialog-head">

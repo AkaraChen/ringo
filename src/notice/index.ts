@@ -2,8 +2,13 @@ import { NoticeProperties } from '@/types';
 import { hasHTML, useHTML } from '@/util';
 import NoticeImpl from './impl/notice';
 
-function createNoticeElement({ text, type = 'info',dangerouslyUseHTML = false }: NoticeProperties) {
-    if (!dangerouslyUseHTML && hasHTML(text)) throw new Error(`Cannot use HTML.`)
+function createNoticeElement({
+    text,
+    type = 'info',
+    dangerouslyUseHTML = false
+}: NoticeProperties) {
+    if (!dangerouslyUseHTML && hasHTML(text))
+        throw new Error(`Cannot use HTML.`);
     return useHTML(/* html */ `
       <div class="ringo-notice ringo-notice-${type}">
           <p class="ringo-notice-content">

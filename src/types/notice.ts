@@ -10,5 +10,5 @@ export interface NoticeProperties {
     zIndex?: number;
     transitionDuration?: number;
     model?: typeof NoticeModel;
-    dangerouslyUseHTML?: boolean
+    dangerouslyUseHTML?: boolean;
 }

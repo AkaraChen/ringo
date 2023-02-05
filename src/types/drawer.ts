@@ -14,5 +14,5 @@ export interface DrawerProperties {
     buttons: Button[];
     clickBackdropClose?: boolean;
     model?: typeof DrawerModel;
-    dangerouslyUseHTML?: boolean
+    dangerouslyUseHTML?: boolean;
 }

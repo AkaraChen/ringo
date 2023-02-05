@@ -10,7 +10,8 @@ function createMessageElement({
     showClose = duration === 0,
     dangerouslyUseHTML = true
 }: MessageProperties) {
-    if (!dangerouslyUseHTML && hasHTML(text)) throw new Error(`Cannot use HTML.`)
+    if (!dangerouslyUseHTML && hasHTML(text))
+        throw new Error(`Cannot use HTML.`);
     return useHTML(/* html */ `
       <div class="ringo-message ringo-message-${type}">
           <h3 class="ringo-message-head">
