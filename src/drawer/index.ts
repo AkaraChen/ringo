@@ -1,8 +1,10 @@
 import { DrawerProperties } from '@/types';
 import { useHTML } from '@/util';
 import DrawerImpl from './impl/drawer';
+import { hasHTML } from '@/util';
 
-const createDrawerElement = ({ title, content }: DrawerProperties) => {
+const createDrawerElement = ({ title, content, dangerouslyUseHTML = false }: DrawerProperties) => {
+    if (!dangerouslyUseHTML && hasHTML(content!)) throw new Error(`Cannot use HTML.`)
     return useHTML(/* html */ `
       <div class="ringo-drawer">
           <div class="ringo-drawer-head">

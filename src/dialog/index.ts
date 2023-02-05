@@ -1,13 +1,15 @@
 import { DialogProperties } from '@/types';
-import { useHTML, when } from '@/util';
+import { hasHTML, useHTML, when } from '@/util';
 import DialogImpl from './impl/dialog';
 
 const createDialogElement = ({
     title,
     showClose,
     text,
-    buttons
+    buttons,
+    dangerouslyUseHTML = false
 }: DialogProperties) => {
+    if (!dangerouslyUseHTML && hasHTML(text)) throw new Error(`Cannot use HTML.`)
     return useHTML(/* html */ `
       <div class="ringo-dialog">
         <div class="ringo-dialog-head">
@@ -23,7 +25,6 @@ const createDialogElement = ({
             ${text}
         </div>
         ${(when(buttons), `<div class="ringo-dialog-btns"></div>`)}
-  
       </div>
     `)[0];
 };

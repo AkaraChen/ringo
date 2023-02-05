@@ -13,4 +13,5 @@ export interface DialogProperties {
     buttons?: Button[];
     form?: HTMLFormElement;
     model?: typeof DialogModel;
+    dangerouslyUseHTML?: boolean
 }

@@ -37,3 +37,5 @@ export const useHTML = (html: string) => {
     // eslint-disable-next-line unicorn/prefer-spread
     return Array.from(document.body.childNodes) as HTMLElement[];
 };
+
+export const hasHTML = (str: string) => /<\/?[a-z][\s\S]*>/i.test(str)

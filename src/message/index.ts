@@ -1,5 +1,5 @@
 import { MessageProperties } from '@/types';
-import { useHTML, when } from '@/util';
+import { hasHTML, useHTML, when } from '@/util';
 import MessageImpl from './impl/message';
 
 function createMessageElement({
@@ -7,8 +7,10 @@ function createMessageElement({
     text,
     title = type,
     duration = 0,
-    showClose = duration === 0
+    showClose = duration === 0,
+    dangerouslyUseHTML = true
 }: MessageProperties) {
+    if (!dangerouslyUseHTML && hasHTML(text)) throw new Error(`Cannot use HTML.`)
     return useHTML(/* html */ `
       <div class="ringo-message ringo-message-${type}">
           <h3 class="ringo-message-head">
