@@ -11,7 +11,7 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-unicorn: ^45.0.2
-  happy-dom: 8.3.2
+  happy-dom: 8.4.0
   husky: 8.0.3
   motion: ^10.15.5
   nanoid: 4.0.1
@@ -37,7 +37,7 @@ devDependencies:
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-plugin-prettier: 4.2.1_cj7mvq5o3dqsflion44kvn3oja
   eslint-plugin-unicorn: 45.0.2_eslint@8.34.0
-  happy-dom: 8.3.2
+  happy-dom: 8.4.0
   husky: 8.0.3
   motion: 10.15.5
   nanoid: 4.0.1
@@ -2604,8 +2604,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /happy-dom/8.3.2:
-    resolution: {integrity: sha512-Z0RigOkogHBIkkG/G3WHh5mMVZEO5Q8zSNFKEJ/e19kq83dbrHjWJJKOIXsDLOu9KtqM8QKj9IinpZC/tRNIQA==}
+  /happy-dom/8.4.0:
+    resolution: {integrity: sha512-FLqMCrgTAh3dK9YAQk0cFI0E2icr/E1SzSvCsEHATzHCpB92jfSaCCSVD/cRdmLjm0eLkh1vbBe90wi3qGU0kQ==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
