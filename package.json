@@ -24,7 +24,7 @@
         "@typescript-eslint/parser": "5.53.0",
         "esbuild": "0.17.10",
         "esbuild-plugin-d.ts": "1.1.0",
-        "eslint": "8.34.0",
+        "eslint": "8.35.0",
         "eslint-config-akrc": "^1.2.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
