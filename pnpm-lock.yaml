@@ -23,7 +23,7 @@ specifiers:
   stylelint-config-akrc: ^0.0.2
   typescript: 4.9.5
   vite: ^4.0.4
-  vitepress: 1.0.0-alpha.51
+  vitepress: 1.0.0-alpha.52
   vue: 3.2.47
 
 devDependencies:
@@ -49,7 +49,7 @@ devDependencies:
   stylelint-config-akrc: 0.0.2_stylelint@15.0.0
   typescript: 4.9.5
   vite: 4.0.4_@types+node@18.11.18
-  vitepress: 1.0.0-alpha.51_@types+node@18.11.18
+  vitepress: 1.0.0-alpha.52_@types+node@18.11.18
   vue: 3.2.47
 
 packages:
@@ -4554,8 +4554,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.51_@types+node@18.11.18:
-    resolution: {integrity: sha512-euZpjXeIaNUadLAQtd7NYbKhJJoDyZ6z8YK77qlM2c6NvUB5wmLPU6moP4rfcKUqpBDrsrxjJS6fdPk6azS5qQ==}
+  /vitepress/1.0.0-alpha.52_@types+node@18.11.18:
+    resolution: {integrity: sha512-DAaO5/yGXCVHXXwVJO/T1wS03curMgOhYnh1LVDTZAf0s1qr282id5j45IYEWthWcUZRD6ST9EAIZNsXHo4O7g==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.3
