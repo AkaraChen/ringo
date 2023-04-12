@@ -1,5 +1,5 @@
 import { backdrop, createButton } from '@/component';
-import { Backdrop } from '@/types';
+import { Backdrop } from '@/component/interfaces';
 import { numberToPixel } from '@/util';
 import { animate } from 'motion';
 import { DrawerModel } from '../model';

@@ -1,4 +1,4 @@
-import { DrawerProperties } from '@/types';
+import { DrawerProperties } from './interfaces';
 import { useHTML } from '@/util';
 import DrawerImpl from './impl/drawer';
 import { hasHTML } from '@/util';
@@ -34,3 +34,5 @@ export const drawer = (property: DrawerProperties) => {
     document.body.append(element);
     drawer.onAppend();
 };
+
+export * from './interfaces';

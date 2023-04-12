@@ -1,4 +1,4 @@
-import type { NoticeModel } from '../notice/model';
+import type { NoticeModel } from './model';
 
 export interface NoticeProperties {
     text: string;

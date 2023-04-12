@@ -1,6 +1,6 @@
 import { Height, numberToPixel, setOnClick, useHeight } from '@/util';
 import { animate, spring } from 'motion';
-import { MessageModel } from '../model';
+import { MessageModel } from '../interfaces';
 
 const height = new Height();
 

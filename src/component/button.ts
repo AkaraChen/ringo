@@ -1,4 +1,4 @@
-import { Button } from '@/types';
+import { Button } from './interfaces';
 import { createElement, when } from '@/util';
 
 export const createButton = (

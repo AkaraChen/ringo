@@ -1,4 +1,4 @@
-import { MessageProperties } from '@/types';
+import { MessageProperties } from './interfaces';
 import { hasHTML, useHTML, when } from '@/util';
 import MessageImpl from './impl/message';
 
@@ -35,3 +35,5 @@ export function message(property: MessageProperties) {
     document.body.append(element);
     message.onAppend();
 }
+
+export * from './interfaces';

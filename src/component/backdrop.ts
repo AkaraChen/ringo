@@ -1,4 +1,4 @@
-import { BackdropProperties } from '@/types';
+import { BackdropProperties } from './interfaces';
 import { createElement, isDark, onColorChange } from '@/util';
 import { stlx } from 'stlx';
 

@@ -1,4 +1,4 @@
-import { DialogProperties } from '@/types';
+import { DialogProperties } from './interfaces';
 import { hasHTML, useHTML, when } from '@/util';
 import DialogImpl from './impl/dialog';
 
@@ -38,3 +38,5 @@ export const dialog = (property: DialogProperties) => {
     document.body.append(element);
     dialog.onAppend();
 };
+
+export * from './interfaces';

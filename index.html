@@ -42,6 +42,7 @@
         <sw-button type="warning" primary id="nw">Warning</sw-button>
         <sw-button type="error" primary id="ne">Error</sw-button>
         <sw-button type="success" primary id="ns">Success</sw-button>
+        <sw-button primary id="ninnei">Innei Style</sw-button>
     </div>
     <div>
         <p>Drawer</p>
@@ -54,6 +55,7 @@
     </div>
     <script type="module">
         import { message, notice, drawer, dialog } from './src/index.ts';
+        import NoticeInnei from './src/notice/impl/innei.ts'
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
         nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
@@ -95,6 +97,13 @@
                 title: short,
                 text: lorem.slice(0, 100),
                 showClose: true
+            })
+        })
+        nashi('#ninnei').click(() => {
+            notice({
+                text: short,
+                type: 'info',
+                model: NoticeInnei,
             })
         })
     </script>
