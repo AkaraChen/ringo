@@ -1,0 +1,5 @@
+.ringo-notice-container {
+    position: fixed;
+    left: 50vw;
+    transform: translateX(-50%);
+}

@@ -1,5 +1,6 @@
+@import './util.css';
+
 .ringo-notice {
-    position: fixed;
     box-sizing: border-box;
     padding: 10px 16px;
     color: #333;
@@ -8,8 +9,6 @@
     font-size: 14px;
     background-color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    left: 50vw;
-    transform: translateX(-50%);
 }
 
 @media (prefers-color-scheme: dark) {
