@@ -14,7 +14,7 @@ specifiers:
   happy-dom: 8.9.0
   husky: 8.0.3
   motion: ^10.15.5
-  nanoid: 4.0.1
+  nanoid: 4.0.2
   prettier: ^2.8.3
   prettier-config-akrc: ^0.0.0
   rimraf: 4.4.0
@@ -40,7 +40,7 @@ devDependencies:
   happy-dom: 8.9.0
   husky: 8.0.3
   motion: 10.15.5
-  nanoid: 4.0.1
+  nanoid: 4.0.2
   prettier: 2.8.3
   prettier-config-akrc: 0.0.0
   rimraf: 4.4.0
@@ -3408,8 +3408,8 @@ packages:
     hasBin: true
     dev: true
 
-  /nanoid/4.0.1:
-    resolution: {integrity: sha512-udKGtCCUafD3nQtJg9wBhRP3KMbPglUsgV5JVsXhvyBs/oefqb4sqMEhKBBgqZncYowu58p1prsZQBYvAj/Gww==}
+  /nanoid/4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
     dev: true
