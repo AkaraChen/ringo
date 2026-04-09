@@ -34,7 +34,7 @@
         "motion": "^10.15.5",
         "nanoid": "4.0.1",
         "prettier": "^2.8.3",
-        "prettier-config-akrc": "^0.0.0",
+        "prettier-config-akrc": "^0.0.1",
         "rimraf": "4.4.0",
         "stlx": "0.0.3",
         "stylelint": "^15.0.0",

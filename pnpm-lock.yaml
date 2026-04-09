@@ -16,7 +16,7 @@ specifiers:
   motion: ^10.15.5
   nanoid: 4.0.1
   prettier: ^2.8.3
-  prettier-config-akrc: ^0.0.0
+  prettier-config-akrc: ^0.0.1
   rimraf: 4.4.0
   stlx: 0.0.3
   stylelint: ^15.0.0
@@ -42,7 +42,7 @@ devDependencies:
   motion: 10.15.5
   nanoid: 4.0.1
   prettier: 2.8.3
-  prettier-config-akrc: 0.0.0
+  prettier-config-akrc: 0.0.1
   rimraf: 4.4.0
   stlx: 0.0.3
   stylelint: 15.0.0
@@ -3749,8 +3749,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-config-akrc/0.0.0:
-    resolution: {integrity: sha512-HFo0Wi3dKLIUuIdEGgVvcVrL4vAJCP7dbY7Ra+X323LV45mRdfvJw795b879Qr3BYKTUYrJ41KyhWLHCxlB4eQ==}
+  /prettier-config-akrc/0.0.1:
+    resolution: {integrity: sha512-vfWqoOGfbS0m1popggwBbqNUAlbIcAqmuuwx6Z9Uau1J1jBVldA6c84aZoPauxAQVM0l/pIIkvGL4FsxqVNJig==}
     dev: true
 
   /prettier-linter-helpers/1.0.0:
