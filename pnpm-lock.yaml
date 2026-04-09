@@ -35,13 +35,13 @@ devDependencies:
   eslint: 8.36.0
   eslint-config-akrc: 1.2.0
   eslint-config-prettier: 8.6.0_eslint@8.36.0
-  eslint-plugin-prettier: 4.2.1_p35tmlr75f5jz4wr4jhrsmikda
+  eslint-plugin-prettier: 4.2.1_z2rbljmwybc4b34vxgyfevriuu
   eslint-plugin-unicorn: 46.0.0_eslint@8.36.0
   happy-dom: 8.9.0
   husky: 8.0.3
   motion: 10.15.5
   nanoid: 4.0.1
-  prettier: 2.8.3
+  prettier: 2.8.8
   prettier-config-akrc: 0.0.0
   rimraf: 4.4.0
   stlx: 0.0.3
@@ -1530,7 +1530,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /ci-info/3.7.1:
@@ -2269,7 +2269,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_p35tmlr75f5jz4wr4jhrsmikda:
+  /eslint-plugin-prettier/4.2.1_z2rbljmwybc4b34vxgyfevriuu:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2282,7 +2282,7 @@ packages:
     dependencies:
       eslint: 8.36.0
       eslint-config-prettier: 8.6.0_eslint@8.36.0
-      prettier: 2.8.3
+      prettier: 2.8.8
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -2626,8 +2626,8 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents/2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -3760,8 +3760,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier/2.8.3:
-    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -3910,7 +3910,7 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /rollup/3.12.0:
@@ -3918,7 +3918,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /run-parallel/1.2.0:
@@ -4642,7 +4642,7 @@ packages:
       resolve: 1.22.1
       rollup: 3.12.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /vite/4.1.4_@types+node@18.11.18:
@@ -4676,7 +4676,7 @@ packages:
       resolve: 1.22.1
       rollup: 3.12.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /vitepress/1.0.0-alpha.60_@types+node@18.11.18:
