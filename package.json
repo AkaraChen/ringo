@@ -32,7 +32,7 @@
         "happy-dom": "8.9.0",
         "husky": "8.0.3",
         "motion": "^10.15.5",
-        "nanoid": "4.0.1",
+        "nanoid": "4.0.2",
         "prettier": "^2.8.3",
         "prettier-config-akrc": "^0.0.0",
         "rimraf": "4.4.0",
