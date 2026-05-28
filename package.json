@@ -27,7 +27,7 @@
         "eslint": "8.36.0",
         "eslint-config-akrc": "^1.2.0",
         "eslint-config-prettier": "^8.6.0",
-        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-unicorn": "^46.0.0",
         "happy-dom": "8.9.0",
         "husky": "8.0.3",
