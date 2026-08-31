@@ -64,18 +64,24 @@ function ensureHost(props: BackdropProperties) {
 
 function show(props: BackdropProperties) {
     const node = ensureHost(props);
+    const ctx = { host: node, shadowRoot: getShadow(node) };
     if (removeTimer) {
         clearTimeout(removeTimer);
         removeTimer = undefined;
     }
-    if (!node.isConnected) document.body.append(node);
+    if (!node.isConnected) {
+        props.onCreate?.(ctx);
+        document.body.append(node);
+        props.onAppend?.(ctx);
+    }
     requestAnimationFrame(() => {
         node.setAttribute('data-open', '');
     });
 }
 
-function hide(transitionDuration = 250) {
+function hide(props: BackdropProperties, transitionDuration = 250) {
     if (!host) return;
+    props.onClose?.({ host, shadowRoot: getShadow(host) });
     host.removeAttribute('data-open');
     removeTimer = setTimeout(() => {
         host?.remove();
@@ -96,13 +102,13 @@ export function backdrop(property: BackdropProperties = {}): Backdrop {
                 const index = clickHandlers.lastIndexOf(onClick);
                 if (index !== -1) clickHandlers.splice(index, 1);
             }
-            if (count > 0 && --count === 0) hide(transitionDuration);
+            if (count > 0 && --count === 0) hide(property, transitionDuration);
         },
         clear() {
             clickHandlers.length = 0;
             if (count !== 0) {
                 count = 0;
-                hide(transitionDuration);
+                hide(property, transitionDuration);
             }
         }
     };
