@@ -1,7 +1,7 @@
 import path from 'node:path';
 import url from 'node:url';
 import { defineConfig } from 'vitepress';
-import { cssAsText } from '../../vite.css-text';
+import { vanillaExtractShadowVite } from '../../vanilla-extract-shadow';
 
 export default defineConfig({
     title: 'Ringo.js',
@@ -23,7 +23,7 @@ export default defineConfig({
         ]
     },
     vite: {
-        plugins: [cssAsText()],
+        plugins: [vanillaExtractShadowVite()],
         resolve: {
             alias: {
                 '@': path.resolve(

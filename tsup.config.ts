@@ -1,4 +1,6 @@
+import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import { defineConfig } from 'tsup';
+import { vanillaExtractCssAsRegister } from './vanilla-extract-shadow';
 
 export default defineConfig({
     entry: {
@@ -13,5 +15,6 @@ export default defineConfig({
     dts: true,
     sourcemap: true,
     clean: true,
-    treeshake: true
+    treeshake: true,
+    esbuildPlugins: [vanillaExtractCssAsRegister(), vanillaExtractPlugin()]
 });

@@ -1,10 +1,11 @@
-import { buttonTheme } from '../button/theme';
-import { drawerTheme } from './theme';
+import * as s from './drawer.css';
+import '../button/button.css';
 import { applyStyles } from '../core/styles';
 import { createHost, getShadow } from '../core/element';
-import { el } from '../core/dom';
+import { cx, el } from '../core/dom';
 import { numberToPixel } from '../core/style';
 import { getConfiguredStyles } from '../configure';
+import { vanillaCssFor } from '../core/ve-register';
 import { createButton } from '../button';
 import { backdrop } from '../backdrop';
 import { animate } from 'motion';
@@ -50,31 +51,46 @@ export function drawer(property: DrawerProperties): RingoInstance {
 
     applyStyles(
         shadow,
-        buttonTheme,
-        drawerTheme,
+        vanillaCssFor('button.css.ts', 'drawer.css.ts'),
         getConfiguredStyles(),
         styles
     );
 
     const closeBtn = showClose
-        ? el('i', { class: 'ringo-drawer-close', part: 'close' })
+        ? el('i', { class: cx(s.close, 'ringo-drawer-close'), part: 'close' })
         : undefined;
 
     const btnGroup =
         buttons.length > 0
-            ? el('div', { class: 'ringo-drawer-btns', part: 'buttons' })
+            ? el('div', {
+                  class: cx(s.buttons, 'ringo-drawer-btns'),
+                  part: 'buttons'
+              })
             : undefined;
 
-    const panel = el('div', { class: 'ringo-drawer', part: 'panel' }, [
-        el('div', { class: 'ringo-drawer-head' }, [
-            el('h2', { class: 'ringo-drawer-title', part: 'title' }, [title]),
-            closeBtn
-        ]),
-        el('div', { class: 'ringo-drawer-content', part: 'content' }, [
-            content
-        ]),
-        btnGroup
-    ]);
+    const panel = el(
+        'div',
+        { class: cx(s.panel, 'ringo-drawer'), part: 'panel' },
+        [
+            el('div', { class: cx(s.head, 'ringo-drawer-head') }, [
+                el(
+                    'h2',
+                    { class: cx(s.title, 'ringo-drawer-title'), part: 'title' },
+                    [title]
+                ),
+                closeBtn
+            ]),
+            el(
+                'div',
+                {
+                    class: cx(s.content, 'ringo-drawer-content'),
+                    part: 'content'
+                },
+                [content]
+            ),
+            btnGroup
+        ]
+    );
     shadow.append(panel);
 
     const ctx = { host, shadowRoot: shadow };

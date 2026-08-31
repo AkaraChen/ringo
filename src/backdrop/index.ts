@@ -1,7 +1,8 @@
-import { backdropTheme } from './theme';
+import './backdrop.css';
 import { applyStyles } from '../core/styles';
 import { createHost, getShadow } from '../core/element';
 import { getConfiguredStyles } from '../configure';
+import { vanillaCssFor } from '../core/ve-register';
 import { isDark, onColorChange } from '../core/theme';
 import type { CommonProps } from '../types';
 
@@ -45,7 +46,12 @@ function ensureHost(props: BackdropProperties) {
     host.style.setProperty('--ringo-duration', `${transitionDuration}ms`);
     host.style.setProperty('--ringo-bg', isDark() ? colorDark : colorLight);
 
-    applyStyles(shadow, backdropTheme, getConfiguredStyles(), styles);
+    applyStyles(
+        shadow,
+        vanillaCssFor('backdrop.css.ts'),
+        getConfiguredStyles(),
+        styles
+    );
 
     onColorChange((event) => {
         if (!host) return;

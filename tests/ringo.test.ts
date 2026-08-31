@@ -56,6 +56,20 @@ describe('message', () => {
         expect(createCtx.shadowRoot).toBe(host.shadowRoot);
     });
 
+    it('adopts vanilla-extract theme CSS into the shadow root', () => {
+        const { host } = message({ text: 've', duration: 0 });
+        const adopted = host.shadowRoot?.adoptedStyleSheets ?? [];
+        const fallback = [...(host.shadowRoot?.querySelectorAll('style') ?? [])]
+            .map((node) => node.textContent ?? '')
+            .join('\n');
+        const css = adopted
+            .flatMap((sheet) =>
+                [...(sheet.cssRules ?? [])].map((rule) => rule.cssText)
+            )
+            .join('\n');
+        expect(`${css}\n${fallback}`).toContain('--ringo-bg');
+    });
+
     it('applies user styles after the default theme', () => {
         const { host } = message({
             text: 'styled',

@@ -21,6 +21,6 @@
         "vite.config.ts",
         "vitest.config.ts",
         "tsup.config.ts",
-        "vite.css-text.ts"
+        "vanilla-extract-shadow.ts"
     ]
 }

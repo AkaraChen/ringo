@@ -84,6 +84,9 @@
     "devDependencies": {
         "@eslint/js": "^9.34.0",
         "@types/node": "^22.18.0",
+        "@vanilla-extract/css": "^1.21.2",
+        "@vanilla-extract/esbuild-plugin": "^2.3.22",
+        "@vanilla-extract/integration": "^8.0.10",
         "eslint": "^9.34.0",
         "happy-dom": "^18.0.1",
         "husky": "^9.1.7",

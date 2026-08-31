@@ -1,10 +1,10 @@
 import path from 'node:path';
 import url from 'node:url';
 import { defineConfig } from 'vite';
-import { cssAsText } from './vite.css-text';
+import { vanillaExtractShadowVite } from './vanilla-extract-shadow';
 
 export default defineConfig({
-    plugins: [cssAsText()],
+    plugins: [vanillaExtractShadowVite()],
     resolve: {
         alias: {
             '@': path.resolve(

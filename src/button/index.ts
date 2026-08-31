@@ -1,5 +1,6 @@
+import * as s from './button.css';
 import type { Button } from '../types';
-import { el } from '../core/dom';
+import { cx, el } from '../core/dom';
 
 export function createButton(
     {
@@ -11,15 +12,20 @@ export function createButton(
     }: Button,
     closeFunction: () => void
 ) {
-    const className = [
-        'ringo-button',
-        primary ? 'ringo-button-primary' : '',
-        `ringo-button-type-${type}`
-    ]
-        .filter(Boolean)
-        .join(' ');
-
-    const node = el('button', { class: className }, [text]);
+    const node = el(
+        'button',
+        {
+            class: cx(
+                s.button,
+                primary && s.primary,
+                s.tone[type],
+                'ringo-button',
+                primary && 'ringo-button-primary',
+                `ringo-button-type-${type}`
+            )
+        },
+        [text]
+    );
     node.addEventListener('click', () => {
         onClick(closeFunction);
         if (close) closeFunction();

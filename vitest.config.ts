@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitest/config';
-import { cssAsText } from './vite.css-text';
+import { vanillaExtractShadowVite } from './vanilla-extract-shadow';
 
 export default defineConfig({
-    plugins: [cssAsText()],
+    plugins: [vanillaExtractShadowVite()],
     test: {
         environment: 'happy-dom',
         include: ['tests/**/*.test.ts']

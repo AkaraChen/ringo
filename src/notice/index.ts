@@ -1,11 +1,12 @@
-import { noticeAntTheme } from './ant-theme';
-import { noticeInneiTheme } from './innei-theme';
+import * as ant from './notice.css';
+import * as innei from './innei.css';
 import { applyStyles } from '../core/styles';
 import { createHost, getShadow } from '../core/element';
-import { el, setOnClick } from '../core/dom';
+import { cx, el, setOnClick } from '../core/dom';
 import { Height, useHeight } from '../core/height';
 import { numberToPixel } from '../core/style';
 import { getConfiguredStyles } from '../configure';
+import { vanillaCssFor } from '../core/ve-register';
 import type { CommonProps, MessageType, RingoInstance } from '../types';
 
 export interface NoticeProperties extends CommonProps {
@@ -37,6 +38,7 @@ export function notice(property: NoticeProperties): RingoInstance {
         onClose
     } = property;
 
+    const theme = variant === 'innei' ? innei : ant;
     const host = createHost(TAG);
     const shadow = getShadow(host);
     host.setAttribute('type', type);
@@ -45,24 +47,40 @@ export function notice(property: NoticeProperties): RingoInstance {
 
     applyStyles(
         shadow,
-        variant === 'innei' ? noticeInneiTheme : noticeAntTheme,
+        vanillaCssFor(variant === 'innei' ? 'innei.css.ts' : 'notice.css.ts'),
         getConfiguredStyles(),
         styles
     );
 
     const panel = el(
         'div',
-        { class: `ringo-notice ringo-notice-${type}`, part: 'panel' },
-        [el('p', { class: 'ringo-notice-content', part: 'content' }, [text])]
+        {
+            class: cx(
+                theme.panel,
+                theme.type[type],
+                'ringo-notice',
+                `ringo-notice-${type}`,
+                variant === 'innei'
+                    ? cx(innei.enter, 'ringo-innei-notice-enter')
+                    : undefined
+            ),
+            part: 'panel'
+        },
+        [
+            el(
+                'p',
+                {
+                    class: cx(theme.content, 'ringo-notice-content'),
+                    part: 'content'
+                },
+                [text]
+            )
+        ]
     );
     shadow.append(panel);
 
     const ctx = { host, shadowRoot: shadow };
     let closed = false;
-
-    if (variant === 'innei') {
-        panel.classList.add('ringo-innei-notice-enter');
-    }
 
     onCreate?.(ctx);
     document.body.append(host);
@@ -82,7 +100,7 @@ export function notice(property: NoticeProperties): RingoInstance {
         closed = true;
         onClose?.(ctx);
         if (variant === 'innei') {
-            panel.classList.add('ringo-innei-notice-leave');
+            panel.classList.add(innei.leave, 'ringo-innei-notice-leave');
         }
         stack.remove(heightTarget, variant !== 'innei');
         setTimeout(() => host.remove(), transitionDuration);

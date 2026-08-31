@@ -1,10 +1,11 @@
-import { messageTheme } from './theme';
+import * as s from './message.css';
 import { applyStyles } from '../core/styles';
 import { createHost, getShadow } from '../core/element';
-import { el, setOnClick } from '../core/dom';
+import { cx, el, setOnClick } from '../core/dom';
 import { Height, useHeight } from '../core/height';
 import { numberToPixel } from '../core/style';
 import { getConfiguredStyles } from '../configure';
+import { vanillaCssFor } from '../core/ve-register';
 import { animate, spring } from 'motion';
 import type { CommonProps, MessageType, RingoInstance } from '../types';
 
@@ -49,24 +50,47 @@ export function message(property: MessageProperties): RingoInstance {
     host.style.setProperty('--ringo-z-index', String(zIndex));
     host.style.width = numberToPixel(width);
 
-    applyStyles(shadow, messageTheme, getConfiguredStyles(), styles);
+    applyStyles(
+        shadow,
+        vanillaCssFor('message.css.ts'),
+        getConfiguredStyles(),
+        styles
+    );
 
     const closeBtn = showClose
-        ? el('i', { class: 'ringo-message-close', part: 'close' })
+        ? el('i', { class: cx(s.close, 'ringo-message-close'), part: 'close' })
         : undefined;
 
     const panel = el(
         'div',
-        { class: `ringo-message ringo-message-${type}`, part: 'panel' },
+        {
+            class: cx(
+                s.panel,
+                s.type[type],
+                'ringo-message',
+                `ringo-message-${type}`
+            ),
+            part: 'panel'
+        },
         [
-            el('h3', { class: 'ringo-message-head' }, [
-                el('div', { class: 'ringo-message-title', part: 'title' }, [
-                    title
-                ])
+            el('h3', { class: cx(s.head, 'ringo-message-head') }, [
+                el(
+                    'div',
+                    {
+                        class: cx(s.title, 'ringo-message-title'),
+                        part: 'title'
+                    },
+                    [title]
+                )
             ]),
-            el('p', { class: 'ringo-message-content', part: 'content' }, [
-                text
-            ]),
+            el(
+                'p',
+                {
+                    class: cx(s.content, 'ringo-message-content'),
+                    part: 'content'
+                },
+                [text]
+            ),
             closeBtn
         ]
     );
