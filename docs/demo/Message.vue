@@ -6,19 +6,14 @@
 </template>
 
 <script lang="ts" setup>
-import { message } from "@/index"
-import { MessageProperties } from '@/types'
-import "../../style/message/ant.css"
-import Button from "./Button.vue"
+import { message } from '../../src';
+import type { MessageProperties } from '../../src';
+import Button from './Button.vue';
 
 const lorem =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi fugit fuga incidunt.';
 
 const $message = (arg?: Partial<MessageProperties>) => {
-    message(Object.assign({ text: lorem, showClose: true, duration: 0 }, arg))
-}
+    message(Object.assign({ text: lorem, showClose: true, duration: 0 }, arg));
+};
 </script>
-
-<style scoped>
-
-</style>

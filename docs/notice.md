@@ -15,8 +15,9 @@ Displays a global notification message at the top of the page.
 ## API
 
 ```ts
-import {notice} from '@akrc/ringo';
-import '@akrc/ringo/style/notice/ant.css';
+import { notice } from '@akrc/ringo';
+
+notice({ text: 'Saved', variant: 'innei' });
 ```
 
 ```ts
@@ -25,10 +26,13 @@ export interface NoticeProperties {
     marginTop?: number;
     type?: 'info' | 'warning' | 'error' | 'success';
     duration?: number;
-    onClick?: (element: HTMLElement) => any;
-    onClose?: () => any;
+    onClick?: (element: HTMLElement) => void;
+    onCreate?: LifecycleHook;
+    onAppend?: LifecycleHook;
+    onClose?: LifecycleHook;
+    styles?: StyleInput | StyleInput[];
     zIndex?: number;
     transitionDuration?: number;
-    model?: typeof NoticeModel;
+    variant?: 'ant' | 'innei';
 }
 ```

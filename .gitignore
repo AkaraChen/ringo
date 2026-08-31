@@ -130,3 +130,4 @@ dist
 # Vitepress
 
 docs/.vitepress/cache/**
+docs/.vitepress/dist

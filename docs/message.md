@@ -15,8 +15,9 @@ Used to show feedback after an activity. The difference with Notice is that the 
 ## API
 
 ```ts
-import {message} from '@akrc/ringo';
-import '@akrc/ringo/style/message/ant.css';
+import { message } from '@akrc/ringo';
+
+message({ text: 'Hello, Ringo!' });
 ```
 
 ```ts
@@ -25,14 +26,16 @@ export interface MessageProperties {
     text: string;
     title?: string;
     duration?: number;
-    onClick?: (element?: HTMLElement) => any;
+    onClick?: (element: HTMLElement) => void;
     showClose?: boolean;
-    onClose?: () => any;
+    onCreate?: LifecycleHook;
+    onAppend?: LifecycleHook;
+    onClose?: LifecycleHook;
+    styles?: StyleInput | StyleInput[];
     marginTop?: number;
     marginRight?: number;
     width?: number;
     zIndex?: number;
     transitionDuration?: number;
-    model?: typeof MessageModel;
 }
 ```
