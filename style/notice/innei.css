@@ -3,55 +3,63 @@
     Author: Innei https://github.com/innei
 */
 
-@import './util.css';
+:host {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: var(--ringo-z-index, 10000);
+    --ringo-bg: #fff;
+    --ringo-radius: 32px;
+    --ringo-shadow:
+        0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
+        0 9px 28px 8px rgb(0 0 0 / 5%);
+}
 
 @keyframes fade-small-large {
-  from {
-    opacity: 0;
-    transform: scale(0.5, 0.5);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
 
-  to {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 @keyframes fade-large-small {
-  from {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+    from {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 
-  to {
-    opacity: 0;
-    transform: scale(0.5, 0.5);
-  }
+    to {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
 }
 
 .ringo-innei-notice-enter {
-  animation: fade-small-large 0.3s both;
+    animation: fade-small-large 0.3s both;
 }
 
 .ringo-innei-notice-leave {
-  animation: fade-large-small 0.3s both;
+    animation: fade-large-small 0.3s both;
 }
 
 .ringo-notice {
-    --backgroud-color: #fff;
-
     box-sizing: border-box;
     padding: 10px 16px;
-    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
-        0 9px 28px 8px rgb(0 0 0 / 5%);
-    border-radius: 32px;
-    background-color: var(--backgroud-color);
+    box-shadow: var(--ringo-shadow);
+    border-radius: var(--ringo-radius);
+    background-color: var(--ringo-bg);
     font-size: 14px;
 }
 
 @media (prefers-color-scheme: dark) {
-    .ringo-notice {
-        --backgroud-color: #212121;
+    :host {
+        --ringo-bg: #212121;
     }
 }
 

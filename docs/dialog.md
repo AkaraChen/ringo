@@ -15,23 +15,21 @@ Informs users while preserving the current page state.
 ## API
 
 ```ts
-import {dialog} from '@akrc/ringo';
-import '@akrc/ringo/style/dialog/ant.css';
+import { dialog } from '@akrc/ringo';
 
 dialog({
     title: 'Error Occurred',
     text: 'You need to be logged in to continue.',
-    primaryButton: {
-        text: 'Primary',
-        onClick: () => {},
-        close: true,
-    },
-    secondaryButton: {
-        text: 'Secondary',
-        onClick: (close) => {
-            if (1 === 1) close();
-        },
-    },
+    showClose: true,
+    buttons: [
+        { text: 'Primary', onClick: () => {}, close: true, primary: true },
+        {
+            text: 'Secondary',
+            onClick: (close) => {
+                close();
+            }
+        }
+    ]
 });
 ```
 
@@ -46,7 +44,9 @@ export interface DialogProperties {
     text: string;
     showClose?: boolean;
     buttons?: Button[];
-    form?: HTMLFormElement;
-    model?: typeof DialogModel;
+    onCreate?: LifecycleHook;
+    onAppend?: LifecycleHook;
+    onClose?: LifecycleHook;
+    styles?: StyleInput | StyleInput[];
 }
 ```

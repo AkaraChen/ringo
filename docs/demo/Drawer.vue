@@ -4,21 +4,25 @@
 </template>
 
 <script setup lang="ts">
-import Button from "./Button.vue"
-import { drawer } from "../../src/index"
-import "../../style/drawer/ant.css"
+import Button from './Button.vue';
+import { drawer } from '../../src';
 
-const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, odit, corrupti unde velit minus commodi eaque libero dolor laudantium aliquid laboriosam est? Mollitia delectus sequi nesciunt placeat rerum exercitationem facilis?"
-const onClick = (position: 'left' | 'right' = 'right') => drawer({
-    width: 300, title: 'Test', content: lorem,
-    buttons: [
-        { text: 'Primary', onClick: () => { }, close: true, primary: true },
-        {
-            text: 'Secondary', onClick: (close) => {
-                if (1 === 1) close();
-            },
-        }
-    ],
-    position
-})
+const lorem =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, odit, corrupti unde velit minus commodi eaque libero dolor laudantium aliquid laboriosam est? Mollitia delectus sequi nesciunt placeat rerum exercitationem facilis?';
+const onClick = (position: 'left' | 'right' = 'right') =>
+    drawer({
+        width: 300,
+        title: 'Test',
+        content: lorem,
+        buttons: [
+            { text: 'Primary', onClick: () => {}, close: true, primary: true },
+            {
+                text: 'Secondary',
+                onClick: close => {
+                    close();
+                }
+            }
+        ],
+        position
+    });
 </script>

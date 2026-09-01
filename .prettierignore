@@ -1,1 +1,6 @@
-dist/*.js
+dist
+pnpm-lock.yaml
+docs/.vitepress/cache
+docs/.vitepress/dist
+coverage
+node_modules

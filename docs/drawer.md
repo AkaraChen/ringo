@@ -8,30 +8,27 @@ import Drawer from "./demo/Drawer.vue"
 
 # Drawer
 
-Informs users while preserving the current page state.
+A slide-in panel that keeps the current page underneath.
 
 <Drawer />
 
 ## API
 
 ```ts
-import {drawer} from '@akrc/ringo';
-import '@akrc/ringo/style/drawer/ant.css';
+import { drawer } from '@akrc/ringo';
 
 drawer({
     title: 'Test',
-    content: lorem,
-    primaryButton: {
-        text: 'Primary',
-        onClick: () => {},
-        close: true,
-    },
-    secondaryButton: {
-        text: 'Secondary',
-        onClick: (close) => {
-            if (1 === 1) close();
-        },
-    },
+    content: 'Hello',
+    buttons: [
+        { text: 'Primary', onClick: () => {}, close: true, primary: true },
+        {
+            text: 'Secondary',
+            onClick: (close) => {
+                close();
+            }
+        }
+    ]
 });
 ```
 
@@ -44,16 +41,18 @@ export interface DrawerProperties {
     transitionDuration?: number;
     title?: string;
     showClose?: boolean;
-    onClose?(): void;
     content?: string;
-    buttons: Button[];
+    buttons?: Button[];
     clickBackdropClose?: boolean;
-    model?: typeof DrawerModel;
+    onCreate?: LifecycleHook;
+    onAppend?: LifecycleHook;
+    onClose?: LifecycleHook;
+    styles?: StyleInput | StyleInput[];
 }
 
 export type Button = {
     text: string;
-    onClick?: (closeFunction: () => void) => any;
+    onClick?: (closeFunction: () => void) => void;
     close?: boolean;
     primary?: boolean;
     type?: 'info' | 'warning' | 'error' | 'success';

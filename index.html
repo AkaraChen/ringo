@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/button/ant.css">
-    <link rel="stylesheet" href="./style/dialog/ant.css">
-    <link rel="stylesheet" href="./style/drawer/ant.css">
-    <link rel="stylesheet" href="./style/message/ant.css">
-    <link rel="stylesheet" href="./style/notice/innei.css">
     <script src="https://esm.sh/@akrc/seaweed@latest" type="module"></script>
     <script src="https://unpkg.com/@akrc/nashi@latest/dist/legacy.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@akrc/fish@latest/fish.min.css">
@@ -20,8 +15,12 @@
             margin: auto;
             padding: 16px;
         }
+
+        ringo-message {
+            --ringo-radius: 4px;
+        }
     </style>
-    <title>Document</title>
+    <title>Ringo Playground</title>
 </head>
 
 <body>
@@ -55,13 +54,12 @@
     </div>
     <script type="module">
         import { message, notice, drawer, dialog } from './src/index.ts';
-        import NoticeInnei from './src/notice/impl/innei.ts'
         const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam quas, iure natus totam, nam quaerat provident doloremque ad reprehenderit necessitatibus molestias numquam maxime eum recusandae sapiente molestiae ipsa eius suscipit?'
         const short = 'This is a short message.'
-        nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true }))
-        nashi('#mw').click(() => message({ text: lorem, type: 'warning', showClose: true }))
-        nashi('#me').click(() => message({ text: lorem, type: 'error', showClose: true }))
-        nashi('#ms').click(() => message({ text: lorem, type: 'success', showClose: true }))
+        nashi('#mi').click(() => message({ text: lorem, type: 'info', showClose: true, duration: 0 }))
+        nashi('#mw').click(() => message({ text: lorem, type: 'warning', showClose: true, duration: 0 }))
+        nashi('#me').click(() => message({ text: lorem, type: 'error', showClose: true, duration: 0 }))
+        nashi('#ms').click(() => message({ text: lorem, type: 'success', showClose: true, duration: 0 }))
         nashi('#ni').click(() => notice({ text: short, type: 'info' }))
         nashi('#nw').click(() => notice({ text: short, type: 'warning' }))
         nashi('#ne').click(() => notice({ text: short, type: 'error' }))
@@ -74,7 +72,7 @@
                 { text: 'Primary', close: true, primary: true },
                 {
                     text: 'Secondary', onClick: (close) => {
-                        if (1 === 1) close();
+                        close();
                     },
                 }
             ],
@@ -87,7 +85,7 @@
                 { text: 'Primary', onClick: () => { }, close: true, primary: true },
                 {
                     text: 'Secondary', onClick: (close) => {
-                        if (1 === 1) close();
+                        close();
                     },
                 }
             ],
@@ -103,7 +101,7 @@
             notice({
                 text: short,
                 type: 'info',
-                model: NoticeInnei,
+                variant: 'innei',
             })
         })
     </script>
